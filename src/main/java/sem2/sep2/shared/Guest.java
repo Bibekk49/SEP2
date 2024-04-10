@@ -10,6 +10,7 @@ public class Guest {
     public Guest(String username, String password) {
         this.username = username;
         this.password = password;
+        reservations=new ArrayList<>();
     }
 
     public String getUsername() {
