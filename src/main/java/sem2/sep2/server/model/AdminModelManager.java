@@ -4,7 +4,7 @@ public class AdminModelManager implements AdminModel
 {
   Admin admin;
   public AdminModelManager(){
-
+    admin = new Admin("admin");
   }
   @Override
   public void setPassword(String password){

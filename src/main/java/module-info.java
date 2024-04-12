@@ -4,5 +4,6 @@ module sem2.sep2 {
 
 
     opens sem2.sep2 to javafx.fxml;
+    opens sem2.sep2.server.view to javafx.fxml;
     exports sem2.sep2;
 }

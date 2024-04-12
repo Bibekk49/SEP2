@@ -18,7 +18,7 @@ public class ViewFactory
   public Region loadLoginView(){
     if(loginViewController==null){
       FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("ManagerLogin.fxml"));
+      loader.setLocation(getClass().getResource("/sem2.sep2.server.view/ManagerLogin.fxml"));
       try{
         Region root = loader.load();
         loginViewController = loader.getController();
