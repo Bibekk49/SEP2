@@ -1,8 +1,11 @@
 package sem2.sep2.shared.room;
 
+import sem2.sep2.shared.room.roomState.RoomState;
+
 public class Room {
     private String bedType;
     private int price;
+    private RoomState roomState;
 
     public Room(String bedType, int price) {
         this.bedType = bedType;
@@ -24,9 +27,28 @@ public class Room {
     public void setPrice(int price) {
         this.price = price;
     }
-    public void reserve(){
 
+    public RoomState getRoomState() {
+        return roomState;
     }
-    public void
 
+    public void setRoomState(RoomState roomState) {
+        this.roomState = roomState;
+    }
+
+    public void reserve() {
+        roomState.reserve(this);
+    }
+
+    public void checkIn() {
+        roomState.checkIn(this);
+    }
+
+    public void checkOut() {
+        roomState.checkOut(this);
+    }
+
+    public void cancelReservation() {
+        roomState.cancelReservation(this);
+    }
 }
