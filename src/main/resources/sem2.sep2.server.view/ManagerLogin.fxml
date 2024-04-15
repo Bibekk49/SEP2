@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.server.view.LoginViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.server.view.LoginViewController">
 <center>
 <AnchorPane prefHeight="400.0" prefWidth="437.0" BorderPane.alignment="CENTER">
    <children>
@@ -21,4 +23,4 @@
    </children>
 </AnchorPane>
 </center>
-        </BorderPane>
+</BorderPane>
