@@ -1,16 +1,17 @@
 package sem2.sep2.shared;
 
-import java.util.ArrayList;
+import sem2.sep2.shared.room.Room;
+import sem2.sep2.shared.room.Roomlist;
 
 public class Guest {
     private String username;
     private String password;
-    private ArrayList<Reservation> reservations;
+    private Roomlist reservations;
 
-    public Guest(String username, String password) {
+    public Guest(String username, String password, Roomlist roomlist) {
         this.username = username;
         this.password = password;
-        reservations=new ArrayList<>();
+        reservations=roomlist;
     }
 
     public String getUsername() {
@@ -29,15 +30,15 @@ public class Guest {
         this.password = password;
     }
 
-    public void addReservation(Reservation reservation) {
-        reservations.add(reservation);
+    public void addReservation(Room room) {
+        reservations.addRoom(room);
     }
 
-    public void cancelReservation(Reservation reservation) {
-        reservations.remove(reservation);
+    public void cancelReservation(Room room) {
+        reservations.removeRoom(room);
     }
 
-    public ArrayList<Reservation> getAllReservations() {
+    public Roomlist getAllReservations() {
         return reservations;
     }
 }
