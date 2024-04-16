@@ -1,17 +1,14 @@
 package sem2.sep2.shared;
 
-import sem2.sep2.shared.room.Room;
-import sem2.sep2.shared.room.Roomlist;
-
 public class Guest {
     private String username;
     private String password;
-    private Roomlist reservations;
+    private ReservationList reservations;
 
-    public Guest(String username, String password, Roomlist roomlist) {
+    public Guest(String username, String password) {
         this.username = username;
         this.password = password;
-        reservations=roomlist;
+        reservations = new ReservationList();
     }
 
     public String getUsername() {
@@ -30,15 +27,15 @@ public class Guest {
         this.password = password;
     }
 
-    public void addReservation(Room room) {
-        reservations.addRoom(room);
+    public void addReservation(Reservation reservation) {
+        reservations.addReservation(reservation);
     }
 
-    public void cancelReservation(Room room) {
-        reservations.removeRoom(room);
+    public void cancelReservation(Reservation reservation) {
+        reservations.removeReservation(reservation);
     }
 
-    public Roomlist getAllReservations() {
+    public ReservationList getAllReservations() {
         return reservations;
     }
 }
