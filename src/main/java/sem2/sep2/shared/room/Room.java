@@ -4,7 +4,7 @@ import sem2.sep2.shared.room.roomState.RoomState;
 
 public class Room {
     private String bedType;
-    private int price;
+    private double price;
     private RoomState roomState;
 
     public Room(String bedType, int price) {
@@ -20,7 +20,7 @@ public class Room {
         this.bedType = bedType;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
