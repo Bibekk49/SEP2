@@ -13,4 +13,8 @@ public class Roomlist {
     public void removeRoom(Room room){
         rooms.remove(room);
     }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
 }
