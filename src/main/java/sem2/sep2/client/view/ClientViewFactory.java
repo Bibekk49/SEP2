@@ -19,7 +19,8 @@ public class ClientViewFactory
   public Region loadLoginView(){
     if(clientLoginViewController == null){
       FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("/sem2.sep2.client.view/GuestLogin.fxml"));
+      loader.setLocation(getClass().getResource(
+          "/sem2.sep2.client.view/GuestLogin.fxml"));
       try{
         Region root = loader.load();
         clientLoginViewController = loader.getController();

@@ -14,7 +14,7 @@ public class testClient extends Application
     ClientModel model = new ClientModelManager();
     ClientViewModelFactory clientViewModelFactory = new ClientViewModelFactory(model);
     ClientViewHandler clientViewHandler = new ClientViewHandler(clientViewModelFactory);
-    clientViewHandler.openLoginView();
+    clientViewHandler.startLogin(stage);
   }
   public static void main(String[] args){
     launch(args);
