@@ -14,12 +14,30 @@ public class ViewHandler
     this.viewFactory = new ViewFactory(this,viewModelFactory);
     this.currentScene = new Scene(new Region());
   }
+
   public void startLogin(Stage stage){
     this.stage = stage;
     openLoginView();
   }
   public void openLoginView(){
     Region root =viewFactory.loadLoginView();
+    currentScene.setRoot(root);
+    if(root.getUserData()==null){
+      stage.setTitle(" ");
+    }else{
+      stage.setTitle(root.getUserData().toString());
+    }
+    stage.setScene(currentScene);
+    stage.sizeToScene();
+    stage.show();
+  }
+
+  public void startManageRoom(Stage stage){
+    this.stage = stage;
+    openManageRoomView();
+  }
+  public void openManageRoomView(){
+    Region root =viewFactory.loadManageRoomViewController();
     currentScene.setRoot(root);
     if(root.getUserData()==null){
       stage.setTitle(" ");
