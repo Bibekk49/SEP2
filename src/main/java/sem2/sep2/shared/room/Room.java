@@ -3,21 +3,21 @@ package sem2.sep2.shared.room;
 import sem2.sep2.shared.room.roomState.RoomState;
 
 public class Room {
-    private String bedType;
+    private String type;
     private double price;
     private RoomState roomState;
 
-    public Room(String bedType, int price) {
-        this.bedType = bedType;
+    public Room(String type, int price) {
+        this.type = type;
         this.price = price;
     }
 
     public String getBedType() {
-        return bedType;
+        return type;
     }
 
-    public void setBedType(String bedType) {
-        this.bedType = bedType;
+    public void setBedType(String type) {
+        this.type = type;
     }
 
     public double getPrice() {
