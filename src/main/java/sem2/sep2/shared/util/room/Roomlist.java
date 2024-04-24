@@ -1,4 +1,4 @@
-package sem2.sep2.shared.room;
+package sem2.sep2.shared.util.room;
 
 import java.util.ArrayList;
 

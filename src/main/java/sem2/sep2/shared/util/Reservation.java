@@ -1,6 +1,6 @@
-package sem2.sep2.shared;
+package sem2.sep2.shared.util;
 
-import sem2.sep2.shared.room.Room;
+import sem2.sep2.shared.util.room.Room;
 
 import java.util.Date;
 

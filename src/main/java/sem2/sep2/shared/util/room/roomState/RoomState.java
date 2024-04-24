@@ -1,6 +1,6 @@
-package sem2.sep2.shared.room.roomState;
+package sem2.sep2.shared.util.room.roomState;
 
-import sem2.sep2.shared.room.Room;
+import sem2.sep2.shared.util.room.Room;
 
 public interface RoomState {
     public void reserve(Room room);

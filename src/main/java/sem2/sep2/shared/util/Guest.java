@@ -1,4 +1,4 @@
-package sem2.sep2.shared;
+package sem2.sep2.shared.util;
 
 public class Guest {
     private String username;

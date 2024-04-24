@@ -1,7 +1,7 @@
-package sem2.sep2.shared;
+package sem2.sep2.shared.util;
 
-import sem2.sep2.shared.room.Room;
-import sem2.sep2.shared.room.Roomlist;
+import sem2.sep2.shared.util.room.Room;
+import sem2.sep2.shared.util.room.Roomlist;
 
 public class Hotel {
     private Roomlist roomlist;

@@ -1,4 +1,4 @@
-package sem2.sep2.shared;
+package sem2.sep2.shared.util;
 
 import java.util.ArrayList;
 

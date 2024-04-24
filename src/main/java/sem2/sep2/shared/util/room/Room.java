@@ -1,6 +1,6 @@
-package sem2.sep2.shared.room;
+package sem2.sep2.shared.util.room;
 
-import sem2.sep2.shared.room.roomState.RoomState;
+import sem2.sep2.shared.util.room.roomState.RoomState;
 
 public class Room {
     private String type;
