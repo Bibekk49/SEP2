@@ -34,4 +34,22 @@ public class ClientViewFactory
     clientLoginViewController.reset();
     return clientLoginViewController.getRoot();
   }
+//  public Region loadReserveView(){
+//    if( == null){
+//      FXMLLoader loader = new FXMLLoader();
+//      loader.setLocation(getClass().getResource(
+//          ""));
+//      try{
+//        Region root = loader.load();
+//         = loader.getController();
+//        .init(clientViewHandler,clientViewModelFactory.getClientLoginViewModel(),root);
+//      }
+//      catch (IOException e)
+//      {
+//        throw new RuntimeException(e);
+//      }
+//    }
+//    .reset();
+//    return .getRoot();
+//  }
 }
