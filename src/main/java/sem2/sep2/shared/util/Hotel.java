@@ -1,38 +1,39 @@
 package sem2.sep2.shared.util;
 
 import sem2.sep2.shared.util.room.Room;
-import sem2.sep2.shared.util.room.Roomlist;
+
+import java.util.ArrayList;
 
 public class Hotel {
-    private Roomlist roomlist;
-    private GuestList guestList;
+    private ArrayList<Room> roomlist;
+    private ArrayList<Guest> guestList;
 
     public Hotel() {
-        this.roomlist = new Roomlist();
-        this.guestList = new GuestList();
+        this.roomlist = new ArrayList<>();
+        this.guestList = new ArrayList<>();
     }
 
     public void addroom(Room room) {
-        roomlist.addRoom(room);
+        roomlist.add(room);
     }
 
     public void removeRoom(Room room) {
-        roomlist.removeRoom(room);
+        roomlist.remove(room);
     }
 
     public void addGuest(Guest guest) {
-        guestList.addGuest(guest);
+        guestList.add(guest);
     }
 
     public void removeGuest(Guest guest) {
-        guestList.removeGuest(guest);
+        guestList.remove(guest);
     }
 
-    public Roomlist getAllrooms() {
+    public ArrayList<Room> getAllrooms() {
         return roomlist;
     }
 
-    public GuestList getALlGuests() {
+    public ArrayList<Guest> getALlGuests() {
         return guestList;
     }
 }

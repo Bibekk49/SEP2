@@ -15,7 +15,6 @@ public class Reservation {
         this.room = room;
         this.startDate = startDate;
         this.endDate = endDate;
-
     }
 
     public int getReservationID() {

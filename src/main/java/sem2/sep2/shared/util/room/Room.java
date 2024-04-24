@@ -1,5 +1,6 @@
 package sem2.sep2.shared.util.room;
 
+import sem2.sep2.shared.util.room.roomState.AvailableState;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
 public class Room {
@@ -10,13 +11,14 @@ public class Room {
     public Room(String type, int price) {
         this.type = type;
         this.price = price;
+        this.roomState=new AvailableState();
     }
 
-    public String getBedType() {
+    public String getType() {
         return type;
     }
 
-    public void setBedType(String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
