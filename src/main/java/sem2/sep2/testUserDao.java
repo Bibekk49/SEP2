@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class testUserDao
 {
   public static void main(String[] args) {
-    //连接数据库并使用 UserDao 类 
+    //连接数据库并使用 UserDao 类
     String url = "jdbc:postgresql://localhost:5432/postgres";//?currentSchema=jdbc
     String username = "postgres";
     String password = "050420";

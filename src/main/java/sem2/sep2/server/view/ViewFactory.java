@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;
 import sem2.sep2.server.viewModel.ViewModelFactory;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ViewFactory
 {
@@ -41,9 +42,15 @@ public class ViewFactory
       try{
         Region root = loader.load();
         manageRoomViewController = loader.getController();
-        manageRoomViewController.init(viewHandler,viewModelFactory.getAdminViewModel(),root);
+        manageRoomViewController.init(viewHandler,
+            viewModelFactory.getAdminViewModel(),
+            root);
       }
       catch (IOException e)
+      {
+        throw new RuntimeException(e);
+      }
+      catch (SQLException e)
       {
         throw new RuntimeException(e);
       }

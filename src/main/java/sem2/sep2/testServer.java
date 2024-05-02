@@ -7,6 +7,10 @@ import sem2.sep2.server.model.AdminModelManager;
 import sem2.sep2.server.view.ViewHandler;
 import sem2.sep2.server.viewModel.ViewModelFactory;
 
+import java.sql.Connection;
+
+import static sem2.sep2.UserDao.connection;
+
 public class testServer extends Application
 {
   @Override
