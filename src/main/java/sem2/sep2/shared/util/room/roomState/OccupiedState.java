@@ -23,4 +23,8 @@ public class OccupiedState implements RoomState{
     public void cancelReservation(Room room) {
         room.setRoomState(new AvailableState());
     }
+    @Override
+    public String toString(){
+        return "Occupied";
+    }
 }

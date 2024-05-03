@@ -23,4 +23,8 @@ public class AvailableState implements RoomState{
     public void cancelReservation(Room room) {
         //Already available
     }
+    @Override
+    public String toString(){
+        return "Available";
+    }
 }

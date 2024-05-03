@@ -10,4 +10,5 @@ public interface RoomState {
     public void checkOut(Room room);
 
     public void cancelReservation(Room room);
+    public String toString();
 }
