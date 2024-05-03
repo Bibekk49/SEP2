@@ -39,7 +39,7 @@
                         <Button layoutX="112.0" layoutY="273.0" mnemonicParsing="false" text="Deleting" />
                         <TextField layoutX="64.0" layoutY="175.0" />
                         <Label layoutX="102.0" layoutY="99.0" text="Room Number" />
-                        <ListView layoutX="281.0" prefHeight="373.0" prefWidth="319.0" />
+                        <ListView fx:id="roomListView" layoutX="281.0" prefHeight="373.0" prefWidth="319.0" />
                      </children>
                   </AnchorPane>
                </content>

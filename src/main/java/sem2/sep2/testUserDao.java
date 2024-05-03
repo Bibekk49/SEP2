@@ -17,12 +17,16 @@ public class testUserDao
 
       userDao.createUser("user1", "password1");
       userDao.createUser("user2", "password2");
+      userDao.createUser("user3", "password3");
+      userDao.createUser("user4", "password4");
+      userDao.createUser("user5", "password5");
 
-      userDao.deleteUser(1);
 
-      userDao.updateUsername(2, "new_username");
-
-      userDao.updatePassword(2, "new_password");
+//      userDao.deleteUser(1);
+//
+//      userDao.updateUsername(2, "new_username");
+//
+//      userDao.updatePassword(2, "new_password");
     } catch (SQLException e) {
       e.printStackTrace();
     }

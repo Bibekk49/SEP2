@@ -1,13 +1,16 @@
 package sem2.sep2.server.view;
 
+import javafx.beans.binding.ObjectExpression;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
+import sem2.sep2.RoomDao;
 import sem2.sep2.UserDao;
 import sem2.sep2.server.viewModel.AdminViewModel;
 import sem2.sep2.shared.util.Guest;
+import sem2.sep2.shared.util.room.Room;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +22,10 @@ public class ManageRoomViewController
   private AdminViewModel adminViewModel;
   private Region root;
   @FXML
+  private ListView<Room> roomListView = new ListView<>();
+  @FXML
   private ListView<Guest> userListView = new ListView<>();
+  ObservableList<Room> roomList = FXCollections.observableArrayList();
   ObservableList<Guest> userList = FXCollections.observableArrayList();
 
   public void init(ViewHandler viewHandler, AdminViewModel adminViewModel,Region root)
@@ -34,8 +40,12 @@ public class ManageRoomViewController
     String password = "050420";
     Connection connection = DriverManager.getConnection(url, username, password);
     UserDao userDao = new UserDao(connection);
+    RoomDao roomDao = new RoomDao(connection);
 
+
+    roomList.addAll(roomDao.getAllRooms());
     userList.addAll(userDao.getAllUsers());
+    roomListView.setItems(roomList);
     userListView.setItems(userList);
   }
   public void reset(){

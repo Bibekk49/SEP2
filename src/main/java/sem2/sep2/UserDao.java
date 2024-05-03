@@ -65,7 +65,7 @@ public class UserDao {
     return guest;
   }
 
-  public static ArrayList<Guest> getAllUsers() throws SQLException {
+  public  ArrayList<Guest> getAllUsers() throws SQLException {
     ArrayList<Guest> userList = new ArrayList<>();
     String sql = "SELECT * FROM users ORDER BY user_id";
     try (Statement statement = connection.createStatement();

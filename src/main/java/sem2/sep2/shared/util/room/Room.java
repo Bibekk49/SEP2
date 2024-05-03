@@ -7,8 +7,10 @@ public class Room {
     private String type;
     private double price;
     private RoomState roomState;
+    private int room_id;
 
-    public Room(String type, int price) {
+    public Room(int room_id,String type, Double price) {
+        this.room_id = room_id;
         this.type = type;
         this.price = price;
         this.roomState=new AvailableState();
@@ -24,6 +26,9 @@ public class Room {
 
     public double getPrice() {
         return price;
+    }
+    public int getRoom_id(){
+        return room_id;
     }
 
     public void setPrice(int price) {
@@ -52,5 +57,9 @@ public class Room {
 
     public void cancelReservation() {
         roomState.cancelReservation(this);
+    }
+    @Override
+    public String toString(){
+        return "Room: "+room_id+" Type: "+type+" price: "+price;
     }
 }
