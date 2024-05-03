@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import sem2.sep2.server.core.ViewHandler;
+import sem2.sep2.server.core.ViewModelFactory;
 import sem2.sep2.server.viewModel.LoginViewModel;
 import sem2.sep2.shared.util.Guest;
 import sem2.sep2.shared.util.room.Room;
@@ -27,9 +28,9 @@ public class ManageRoomViewController {
     ObservableList<Room> roomList = FXCollections.observableArrayList();
     ObservableList<Guest> userList = FXCollections.observableArrayList();
 
-    public void init(ViewHandler viewHandler, LoginViewModel adminViewModel, Region root) throws SQLException {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws SQLException {
         this.viewHandler = viewHandler;
-        this.adminViewModel = adminViewModel;
+        this.adminViewModel = viewModelFactory.getLoginViewModel();
         this.root = root;
 
         String url = "jdbc:postgresql://localhost:5432/postgres";//?currentSchema=jdbc

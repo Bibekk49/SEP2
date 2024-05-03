@@ -3,11 +3,14 @@ package sem2.sep2.server.core;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import sem2.sep2.server.view.ManageRoomViewController;
 import sem2.sep2.server.view.ViewController;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ViewHandler {
     private Stage stage;
@@ -24,10 +27,10 @@ public class ViewHandler {
         openLoginView();
     }
 
-    private Parent loadFXMLFile(String path) {
+    private Region loadLoginFXMLFile(String path) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
-        Parent root = null;
+        Region root = null;
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -35,16 +38,35 @@ public class ViewHandler {
         }
         ViewController ctrl = loader.getController();
         try {
-            ctrl.init(this, viewModelFactory);
+            ctrl.init(this, viewModelFactory,root);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
         return root;
     }
+    private Region loadManageFXMLFile(String path) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+        Region root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ManageRoomViewController ctrl = loader.getController();
+        try {
+            ctrl.init(this, viewModelFactory,root);
+        }
+        catch (SQLException e)
+        {
+          throw new RuntimeException(e);
+        }
+      return root;
+    }
 
     public void openLoginView() {
         if (loginScene == null) {
-            Parent root = loadFXMLFile("/sem2.sep2.server.view/ManagerLogin.fxml");
+            Parent root = loadLoginFXMLFile("/sem2.sep2.server.view/ManagerLogin.fxml");
             loginScene = new Scene(root);
             stage.setTitle("Login");
         }
@@ -53,11 +75,13 @@ public class ViewHandler {
     }
 
     public void openManageRoomView() {
-        if (loginScene == null) {
-            Parent root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
-            loginScene = new Scene(root);
-            stage.setTitle("Login");
-        }
+
+        stage.close();
+
+        loginScene = null;
+        Parent root = loadManageFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
+        loginScene = new Scene(root);
+        stage.setTitle("ManageRoom");
         stage.setScene(loginScene);
         stage.show();
     }

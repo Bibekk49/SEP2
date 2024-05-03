@@ -5,20 +5,20 @@ import sem2.sep2.shared.util.room.Room;
 import java.util.ArrayList;
 
 public class Hotel {
-    private ArrayList<Room> roomlist;
+    private ArrayList<Room> roomList;
     private ArrayList<Guest> guestList;
 
     public Hotel() {
-        this.roomlist = new ArrayList<>();
+        this.roomList = new ArrayList<>();
         this.guestList = new ArrayList<>();
     }
 
-    public void addroom(Room room) {
-        roomlist.add(room);
+    public void addRoom(Room room) {
+        roomList.add(room);
     }
 
     public void removeRoom(Room room) {
-        roomlist.remove(room);
+        roomList.remove(room);
     }
 
     public void addGuest(Guest guest) {
@@ -29,8 +29,8 @@ public class Hotel {
         guestList.remove(guest);
     }
 
-    public ArrayList<Room> getAllrooms() {
-        return roomlist;
+    public ArrayList<Room> getAllRooms() {
+        return roomList;
     }
 
     public ArrayList<Guest> getALlGuests() {

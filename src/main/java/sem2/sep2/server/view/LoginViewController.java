@@ -12,16 +12,17 @@ import java.rmi.RemoteException;
 
 public class LoginViewController implements ViewController {
     private LoginViewModel loginViewModel;
-    private sem2.sep2.server.core.ViewHandler ViewHandler;
+    private sem2.sep2.server.core.ViewHandler viewHandler;
     private Region root;
 
     @FXML
     private TextField password;
 
     @Override
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) throws RemoteException {
-        this.ViewHandler = viewHandler;
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException {
+        this.viewHandler = viewHandler;
         this.loginViewModel = viewModelFactory.getLoginViewModel();
+        this.root = root;
     }
 
     public void reset() {
@@ -36,6 +37,7 @@ public class LoginViewController implements ViewController {
         String passwords = password.getText();
         if (loginViewModel.isCorrect(passwords)) {
             System.out.println("login successfully");
+            viewHandler.openManageRoomView();
         } else {
             System.out.println("login failed");
         }
