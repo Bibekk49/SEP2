@@ -27,7 +27,7 @@
                         <ChoiceBox fx:id="roomType" layoutX="266.0" layoutY="119.0" prefWidth="150.0" />
                         <ChoiceBox fx:id="availability" layoutX="266.0" layoutY="192.0" prefWidth="150.0" />
                         <Button layoutX="146.0" layoutY="255.0" mnemonicParsing="false" onAction="#AddingButtonPressed" text="Adding" />
-                        <Button layoutX="359.0" layoutY="255.0" mnemonicParsing="false" text="Editing" />
+                        <Button layoutX="359.0" layoutY="255.0" mnemonicParsing="false" onAction="#EditingButtonPressed" text="Editing" />
                      </children>
                   </AnchorPane>
                </content>

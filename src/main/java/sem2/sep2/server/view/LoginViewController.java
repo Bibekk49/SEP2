@@ -23,13 +23,14 @@ public class LoginViewController implements ViewController {
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException,
         SQLException
     {
+        password.setText("");
         this.viewHandler = viewHandler;
         this.viewModel = viewModelFactory.getLoginViewModel();
         this.root = root;
     }
 
     public void reset() {
-        //
+        password.setText("");
     }
 
     public Region getRoot() {
@@ -39,10 +40,11 @@ public class LoginViewController implements ViewController {
     public void loginButtonPressed(ActionEvent actionEvent) {
         String passwords = password.getText();
         if (viewModel.isCorrect(passwords)) {
-            System.out.println("login successfully");
+            viewModel.alarm("Login","Login successfully");
             viewHandler.openManageRoomView();
         } else {
-            System.out.println("login failed");
+            reset();
+            viewModel.alarm("Login","Login Failed");
         }
     }
 }
