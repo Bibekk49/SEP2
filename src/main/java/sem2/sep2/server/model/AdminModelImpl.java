@@ -1,9 +1,9 @@
 package sem2.sep2.server.model;
 
-public class AdminModelManager implements AdminModel
+public class AdminModelImpl implements AdminModel
 {
-  Admin admin;
-  public AdminModelManager(){
+  private Admin admin;
+  public AdminModelImpl(){
     admin = new Admin("admin");
   }
   @Override
