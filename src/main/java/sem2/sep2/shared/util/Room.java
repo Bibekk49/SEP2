@@ -1,4 +1,4 @@
-package sem2.sep2.shared.util.room;
+package sem2.sep2.shared.util;
 
 //import sem2.sep2.shared.util.room.roomState.AvailableState;
 //import sem2.sep2.shared.util.room.roomState.RoomState;

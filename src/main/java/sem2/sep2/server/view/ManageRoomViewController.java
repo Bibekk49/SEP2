@@ -12,7 +12,7 @@ import sem2.sep2.server.core.ViewHandler;
 import sem2.sep2.server.core.ViewModelFactory;
 import sem2.sep2.server.viewModel.ViewModel;
 import sem2.sep2.shared.util.Guest;
-import sem2.sep2.shared.util.room.Room;
+import sem2.sep2.shared.util.Room;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;

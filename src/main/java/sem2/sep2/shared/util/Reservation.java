@@ -1,7 +1,5 @@
 package sem2.sep2.shared.util;
 
-import sem2.sep2.shared.util.room.Room;
-
 import java.util.Date;
 
 public class Reservation {

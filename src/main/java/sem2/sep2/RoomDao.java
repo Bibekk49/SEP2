@@ -1,6 +1,6 @@
 package sem2.sep2;
 
-import sem2.sep2.shared.util.room.Room;
+import sem2.sep2.shared.util.Room;
 
 import java.sql.*;
 import java.util.ArrayList;
