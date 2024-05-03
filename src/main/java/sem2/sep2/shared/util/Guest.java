@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Guest {
     private String username;
+    private int id;
     private String password;
     private ArrayList<Reservation> reservations;
 
-    public Guest(String username, String password) {
+    public Guest(int id,String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
         reservations = new ArrayList<>();
@@ -39,5 +41,9 @@ public class Guest {
 
     public ArrayList<Reservation> getAllReservations() {
         return reservations;
+    }
+    @Override
+    public String toString() {
+        return "ID:"+id+"  Username: "+username;
     }
 }
