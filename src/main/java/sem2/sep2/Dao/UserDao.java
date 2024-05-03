@@ -1,4 +1,4 @@
-package sem2.sep2;
+package sem2.sep2.Dao;
 
 import sem2.sep2.shared.util.Guest;
 

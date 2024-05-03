@@ -18,8 +18,8 @@ import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import sem2.sep2.RoomDao;
-import sem2.sep2.UserDao;
+import sem2.sep2.Dao.RoomDao;
+import sem2.sep2.Dao.UserDao;
 
 public class ManageRoomViewController implements ViewController{
     private ViewHandler viewHandler;
