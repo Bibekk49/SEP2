@@ -2,7 +2,7 @@ package sem2.sep2.server.model;
 
 public class Admin
 {
-  String password;
+  private String password;
   public Admin(String password){
     this.password = password;
   }
