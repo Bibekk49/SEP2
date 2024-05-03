@@ -11,13 +11,15 @@ import sem2.sep2.server.core.ViewModelFactory;
 import sem2.sep2.server.viewModel.LoginViewModel;
 import sem2.sep2.shared.util.Guest;
 import sem2.sep2.shared.util.room.Room;
+
+import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import sem2.sep2.RoomDao;
 import sem2.sep2.UserDao;
 
-public class ManageRoomViewController {
+public class ManageRoomViewController implements ViewController{
     private ViewHandler viewHandler;
     private LoginViewModel adminViewModel;
     private Region root;
@@ -28,7 +30,8 @@ public class ManageRoomViewController {
     ObservableList<Room> roomList = FXCollections.observableArrayList();
     ObservableList<Guest> userList = FXCollections.observableArrayList();
 
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws SQLException {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws
+        RemoteException, SQLException{
         this.viewHandler = viewHandler;
         this.adminViewModel = viewModelFactory.getLoginViewModel();
         this.root = root;

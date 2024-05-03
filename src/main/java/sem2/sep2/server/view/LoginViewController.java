@@ -9,6 +9,7 @@ import sem2.sep2.server.viewModel.LoginViewModel;
 import sem2.sep2.server.core.ViewModelFactory;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class LoginViewController implements ViewController {
     private LoginViewModel loginViewModel;
@@ -19,7 +20,9 @@ public class LoginViewController implements ViewController {
     private TextField password;
 
     @Override
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException,
+        SQLException
+    {
         this.viewHandler = viewHandler;
         this.loginViewModel = viewModelFactory.getLoginViewModel();
         this.root = root;

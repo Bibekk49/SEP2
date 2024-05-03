@@ -3,6 +3,7 @@ package sem2.sep2.client.core;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
@@ -26,10 +27,10 @@ public class ViewHandler {
         openLoginView();
     }
 
-    private Parent loadFXMLFile(String path) {
+    private Region loadFXMLFile(String path) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
-        Parent root = null;
+        Region root = null;
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -37,7 +38,7 @@ public class ViewHandler {
         }
         ViewController ctrl = loader.getController();
         try {
-            ctrl.init(this, viewModelFactory);
+            ctrl.init(this, viewModelFactory,root);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +47,7 @@ public class ViewHandler {
 
     public void openLoginView() {
         if (loginScene == null) {
-            Parent root = loadFXMLFile("/sem2.sep2.client.view/GuestLogin.fxml");
+            Region root = loadFXMLFile("/sem2.sep2.client.view/GuestLogin.fxml");
             loginScene = new Scene(root);
             stage.setTitle("Login");
         }
