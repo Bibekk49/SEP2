@@ -23,6 +23,23 @@ public class RoomDao
       preparedStatement.executeUpdate();
     }
   }
+  public boolean deleteRoom(int room_id) {
+    String sql = "DELETE FROM rooms WHERE room_id = ?";
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+      preparedStatement.setInt(1, room_id);
+      int rowsAffected = preparedStatement.executeUpdate();
+      if (rowsAffected > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+
   public  ArrayList<Room> getAllRooms() throws SQLException {
     ArrayList<Room> roomList = new ArrayList<>();
     String sql = "SELECT * FROM rooms ORDER BY room_id";
@@ -38,5 +55,4 @@ public class RoomDao
     }
     return roomList;
   }
-
 }

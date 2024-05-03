@@ -5,14 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import sem2.sep2.server.core.ViewHandler;
-import sem2.sep2.server.viewModel.LoginViewModel;
+import sem2.sep2.server.viewModel.ViewModel;
 import sem2.sep2.server.core.ViewModelFactory;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class LoginViewController implements ViewController {
-    private LoginViewModel loginViewModel;
+    private ViewModel viewModel;
     private sem2.sep2.server.core.ViewHandler viewHandler;
     private Region root;
 
@@ -24,7 +24,7 @@ public class LoginViewController implements ViewController {
         SQLException
     {
         this.viewHandler = viewHandler;
-        this.loginViewModel = viewModelFactory.getLoginViewModel();
+        this.viewModel = viewModelFactory.getLoginViewModel();
         this.root = root;
     }
 
@@ -35,10 +35,10 @@ public class LoginViewController implements ViewController {
     public Region getRoot() {
         return root;
     }
-
+    //button here
     public void loginButtonPressed(ActionEvent actionEvent) {
         String passwords = password.getText();
-        if (loginViewModel.isCorrect(passwords)) {
+        if (viewModel.isCorrect(passwords)) {
             System.out.println("login successfully");
             viewHandler.openManageRoomView();
         } else {

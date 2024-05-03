@@ -60,6 +60,6 @@ public class Room {
     }
     @Override
     public String toString(){
-        return "Room: "+room_id+" Type: "+type+"\n"+" price: "+price +" Availability: "+getRoomState().toString();
+        return "Room: "+room_id+" Type: "+type+" price: "+price +" Availability: "+getRoomState().toString();
     }
 }
