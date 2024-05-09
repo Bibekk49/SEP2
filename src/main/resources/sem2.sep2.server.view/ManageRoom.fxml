@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -36,7 +37,7 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="62.0" layoutY="175.0" mnemonicParsing="false" text="Deleting" onAction="#DeleteButtonPressed"/>
+                        <Button layoutX="62.0" layoutY="175.0" mnemonicParsing="false" onAction="#DeleteButtonPressed" text="Deleting" />
                         <TextField fx:id="idnumber" layoutX="14.0" layoutY="116.0" />
                         <Label layoutX="52.0" layoutY="67.0" text="Room Number" />
                         <ListView fx:id="roomListView" layoutX="187.0" prefHeight="373.0" prefWidth="413.0" />
@@ -51,6 +52,18 @@
                      <children>
                         <ListView fx:id="userListView" prefHeight="297.0" prefWidth="600.0" />
                         <Button layoutX="273.0" layoutY="317.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Contact">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="userListView1" layoutX="31.0" layoutY="23.0" prefHeight="323.0" prefWidth="139.0" />
+                        <TextArea layoutX="188.0" layoutY="23.0" prefHeight="200.0" prefWidth="370.0" />
+                        <TextArea layoutX="185.0" layoutY="239.0" prefHeight="107.0" prefWidth="375.0" />
+                        <Button layoutX="494.0" layoutY="307.0" mnemonicParsing="false" text="Send" />
                      </children>
                   </AnchorPane>
                </content>
