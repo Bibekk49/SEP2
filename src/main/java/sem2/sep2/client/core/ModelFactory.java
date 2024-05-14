@@ -1,14 +1,20 @@
 package sem2.sep2.client.core;
 
-import sem2.sep2.client.model.loginModel.LoginModel;
-import sem2.sep2.client.model.loginModel.LoginModelImpl;
+import sem2.sep2.client.model.clientloginModel.ClientLoginModel;
+import sem2.sep2.client.model.clientloginModel.ClientLoginModelImpl;
 
 public class ModelFactory {
-    private LoginModelImpl loginModelImpl;
-    public LoginModel getLoginViewModel() {
-        if (loginModelImpl ==null){
-            loginModelImpl =new LoginModelImpl();
+    private ClientLoginModelImpl loginModelImpl;
+
+    public ClientLoginModel getLoginModel() {
+        if (loginModelImpl == null) {
+            loginModelImpl = new ClientLoginModelImpl();
         }
         return loginModelImpl;
+    }
+
+
+    public ClientLoginModel getLoginViewModel() {
+        return null;
     }
 }

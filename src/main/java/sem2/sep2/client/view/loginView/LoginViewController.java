@@ -1,25 +1,65 @@
 package sem2.sep2.client.view.loginView;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.view.ViewController;
-import sem2.sep2.client.viewModel.LoginViewModel;
 import sem2.sep2.client.core.ViewModelFactory;
 
 import java.rmi.RemoteException;
 
 public class LoginViewController implements ViewController
 {
-  private sem2.sep2.client.core.ViewHandler ViewHandler;
+  @FXML
+  private Text errorText;
+  @FXML private TextField guestNameField;
+  @FXML private PasswordField passwordField;
+
+  private ViewHandler viewHandler;
   private LoginViewModel loginViewModel;
   private Region root;
 
+
+
+  public void reset()
+  {
+    loginViewModel.reset();
+  }
+
+  public Region getRoot()
+  {
+    return root;
+  }
+
+  @FXML public void onRegister()
+  {
+    boolean success = loginViewModel.register();
+
+    if (success)
+      System.out.println("User registered" );
+  }
+
+  @FXML public void onLogin()
+  {
+    boolean success = loginViewModel.login();
+
+    if (success)
+      System.out.println("User logged in");
+  }
+
   @Override
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,
-      Region root) throws RemoteException {
-    this.ViewHandler = viewHandler;
-    this.loginViewModel=viewModelFactory.getLoginViewModel();
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root) throws RemoteException {
+    LoginViewModel loginViewModel = viewModelFactory.getLoginViewModel();
+    this.viewHandler = viewHandler;
+    this.loginViewModel = loginViewModel;
     this.root = root;
+
+    errorText.textProperty().bind(loginViewModel.errorProperty());
+    guestNameField.textProperty().bindBidirectional(loginViewModel.userNameProperty());
+    passwordField.textProperty().bindBidirectional(loginViewModel.passwordProperty());
   }
 
 }

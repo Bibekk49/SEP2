@@ -1,15 +1,26 @@
 package sem2.sep2.server.core;
 
 
-import sem2.sep2.server.model.AdminModel;
-import sem2.sep2.server.model.AdminModelImpl;
+import sem2.sep2.server.model.ManageRoomModel.ManageRoomModel;
+import sem2.sep2.server.model.ManageRoomModel.ManageRoomModelImpl;
+import sem2.sep2.server.model.managerLoginModel.ManagerLoginModel;
+import sem2.sep2.server.model.managerLoginModel.ManagerLoginModelImpl;
 
 public class ModelFactory {
-    private AdminModelImpl adminModelImpl;
-    public AdminModel getAdminModel() {
-        if (adminModelImpl ==null){
-            adminModelImpl =new AdminModelImpl();
+    private ManagerLoginModel loginModel;
+    private ManageRoomModel manageRoomModel;
+    public ManagerLoginModel getLoginModel() {
+        if (loginModel ==null){
+            loginModel =new ManagerLoginModelImpl();
         }
-        return adminModelImpl;
+        return loginModel;
+    }
+
+
+    public ManageRoomModel getManageRoomModel() {
+        if (manageRoomModel ==null){
+            manageRoomModel =new ManageRoomModelImpl();
+        }
+        return manageRoomModel;
     }
 }
