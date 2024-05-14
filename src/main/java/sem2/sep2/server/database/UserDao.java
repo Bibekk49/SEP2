@@ -1,6 +1,6 @@
 package sem2.sep2.server.database;
 
-import sem2.sep2.shared.util.guest.Guest;
+import sem2.sep2.shared.util.users.Guest;
 
 import java.sql.*;
 import java.util.ArrayList;

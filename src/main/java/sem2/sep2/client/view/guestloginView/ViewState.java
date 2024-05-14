@@ -1,4 +1,4 @@
-package sem2.sep2.client.view.loginView;
+package sem2.sep2.client.view.guestloginView;
 
 public class ViewState {
     private String GuestName;

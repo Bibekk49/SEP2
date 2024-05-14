@@ -1,5 +1,5 @@
 package sem2.sep2.server.model.managerLoginModel;
-import sem2.sep2.shared.util.manager.Manager;
+import sem2.sep2.shared.util.users.Manager;
 
 public class ManagerLoginModelImpl implements ManagerLoginModel
 {

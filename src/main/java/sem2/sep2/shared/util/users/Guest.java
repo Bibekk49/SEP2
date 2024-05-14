@@ -1,21 +1,23 @@
-package sem2.sep2.shared.util.guest;
+package sem2.sep2.shared.util.users;
 
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.reservation.ReservationList;
 
 import java.util.ArrayList;
 
-public class Guest {
+public class Guest extends User {
     private String username;
     private int id;
     private String password;
     private final ReservationList reservations;
-
     public Guest(int id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+        super(id, username, password);
         reservations = new ReservationList();
+    }
+
+    @Override
+    public String getEmployeeType() {
+        return UserType.GUEST.toString();
     }
 
     public String getUsername() {
@@ -63,4 +65,5 @@ public class Guest {
         this.username = username;
         this.password = password;
     }
+
 }

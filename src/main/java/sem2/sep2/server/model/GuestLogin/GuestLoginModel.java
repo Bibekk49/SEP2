@@ -1,6 +1,6 @@
 package sem2.sep2.server.model.GuestLogin;
 
-import sem2.sep2.shared.util.guest.Guest;
+import sem2.sep2.shared.util.users.Guest;
 
 public interface GuestLoginModel{
     void login(int id,String username, String password);

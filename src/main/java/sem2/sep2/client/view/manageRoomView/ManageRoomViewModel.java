@@ -1,4 +1,4 @@
-package sem2.sep2.server.view.manageRoomView;
+package sem2.sep2.client.view.manageRoomView;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

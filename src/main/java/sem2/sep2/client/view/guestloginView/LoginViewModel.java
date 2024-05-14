@@ -1,4 +1,4 @@
-package sem2.sep2.client.view.loginView;
+package sem2.sep2.client.view.guestloginView;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

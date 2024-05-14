@@ -1,6 +1,6 @@
 package sem2.sep2.server.model.GuestLogin;
 
-import sem2.sep2.shared.util.guest.Guest;
+import sem2.sep2.shared.util.users.Guest;
 import sem2.sep2.shared.util.guest.GuestList;
 
 public class GuestLoginImpl implements GuestLoginModel{

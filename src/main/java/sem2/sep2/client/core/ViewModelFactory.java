@@ -1,7 +1,7 @@
 package sem2.sep2.client.core;
 
-import sem2.sep2.client.view.loginView.LoginViewModel;
-import sem2.sep2.client.view.loginView.ViewState;
+import sem2.sep2.client.view.guestloginView.LoginViewModel;
+import sem2.sep2.client.view.guestloginView.ViewState;
 
 public class ViewModelFactory {
     private final ModelFactory modelFactory;

@@ -1,4 +1,4 @@
-package sem2.sep2.server.view.loginView;
+package sem2.sep2.client.view.adminLoginView;
 
 import javafx.scene.control.Alert;
 import sem2.sep2.server.model.managerLoginModel.ManagerLoginModel;
