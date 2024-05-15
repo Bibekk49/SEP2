@@ -1,11 +1,9 @@
 package sem2.sep2.client.core;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
 
 import java.io.IOException;
@@ -47,7 +45,7 @@ public class ViewHandler {
 
     public void openLoginView() {
         if (loginScene == null) {
-            Region root = loadFXMLFile("/sem2.sep2.client.view/GuestLogin.fxml");
+            Region root = loadFXMLFile("/sem2.sep2.client.view/Login.fxml");
             loginScene = new Scene(root);
             stage.setTitle("Login");
         }

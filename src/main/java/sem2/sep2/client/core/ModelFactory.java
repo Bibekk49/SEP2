@@ -1,20 +1,19 @@
 package sem2.sep2.client.core;
 
-import sem2.sep2.client.model.clientloginModel.ClientLoginModel;
-import sem2.sep2.client.model.clientloginModel.ClientLoginModelImpl;
+import sem2.sep2.client.model.login.LoginModel;
+import sem2.sep2.client.model.login.LoginModelImpl;
 
 public class ModelFactory {
-    private ClientLoginModelImpl loginModelImpl;
-
-    public ClientLoginModel getLoginModel() {
-        if (loginModelImpl == null) {
-            loginModelImpl = new ClientLoginModelImpl();
-        }
-        return loginModelImpl;
+    private ClientFactoey clientFactory;
+    private LoginModel loginModel;
+    public ModelFactory(ClientFactoey clientFactory) {
+        this.clientFactory = clientFactory;
     }
 
-
-    public ClientLoginModel getLoginViewModel() {
-        return null;
+    public LoginModel getLoginModel() {
+        if (loginModel == null) {
+            loginModel = new LoginModelImpl(clientFactory.getLoginClient());
+        }
+        return loginModel;
     }
 }

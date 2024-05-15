@@ -1,28 +1,19 @@
-package sem2.sep2.client.view.guestloginView;
+package sem2.sep2.client.view.loginView;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import sem2.sep2.client.model.clientloginModel.ClientLoginModel;
+import javafx.beans.property.*;
+import sem2.sep2.client.model.login.LoginModel;
 
 public class LoginViewModel {
-    private final ClientLoginModel model;
+    private StringProperty errorLogin, usernameLogin, passwordLogin;
+    private BooleanProperty signInScene;
+    private LoginModel loginModel;
 
-    private ViewState viewState;
-    private StringProperty userNameProperty;
-    private StringProperty passwordProperty;
-    private StringProperty errorProperty;
-    private IntegerProperty idProperty;
-
-    public LoginViewModel(ClientLoginModel model, ViewState viewState) {
-        this.model = model;
-        this.viewState = viewState;
-
-        this.userNameProperty = new SimpleStringProperty();
-        this.passwordProperty = new SimpleStringProperty();
-        this.errorProperty = new SimpleStringProperty();
-        this.idProperty = new SimpleIntegerProperty();
+    public LoginViewModel(LoginModel loginModel) {
+        this.loginModel = loginModel;
+        errorLogin = new SimpleStringProperty();
+        usernameLogin = new SimpleStringProperty();
+        passwordLogin = new SimpleStringProperty();
+        signInScene = new SimpleBooleanProperty();
     }
 
     public void reset() {

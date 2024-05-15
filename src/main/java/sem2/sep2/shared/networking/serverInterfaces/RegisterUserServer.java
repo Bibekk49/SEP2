@@ -4,5 +4,5 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RegisterUserServer extends Remote {
-    String addUser(int id, String username, String password, String userType) throws RemoteException;
+    String addUser(String username, String password, String userType) throws RemoteException;
 }

@@ -2,15 +2,17 @@ package sem2.sep2;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import sem2.sep2.client.core.ClientFactoey;
 import sem2.sep2.client.core.ModelFactory;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 
 public class testClient extends Application {
+    ClientFactoey clientFactory = new ClientFactoey();
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            ModelFactory modelFactory = new ModelFactory();
+            ModelFactory modelFactory = new ModelFactory(clientFactory);
             ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
             ViewHandler viewHandler = new ViewHandler(stage, viewModelFactory);
             viewHandler.start();

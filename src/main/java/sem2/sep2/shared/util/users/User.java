@@ -3,12 +3,10 @@ package sem2.sep2.shared.util.users;
 import java.io.Serializable;
 
 public abstract class User implements Serializable {
-    private int userId;
     private String userName;
     private String password;
 
-    public User(int userId, String userName, String password) {
-        this.userId = userId;
+    public User(String userName, String password) {
         validateUsername(userName);
         this.userName = userName;
         validatePassword(password);
@@ -18,7 +16,7 @@ public abstract class User implements Serializable {
     public boolean equals(Object obj) {
         if (obj instanceof User) {
             User other = (User) obj;
-            return userId == other.userId;
+            return userName.equals(other.userName);
         }
         return false;
     }

@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class Guest extends User {
     private String username;
-    private int id;
     private String password;
     private final ReservationList reservations;
-    public Guest(int id, String username, String password) {
-        super(id, username, password);
+    public Guest(String username, String password) {
+        super(username, password);
         reservations = new ReservationList();
     }
 
@@ -30,14 +29,6 @@ public class Guest extends User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void setPassword(String password) {
@@ -60,8 +51,7 @@ public class Guest extends User {
     public void cancelReservation(int id) {
         reservations.cancelReservation(id);
     }
-    void login(int id, String username, String password) {
-        this.id = id;
+    void login( String username, String password) {
         this.username = username;
         this.password = password;
     }

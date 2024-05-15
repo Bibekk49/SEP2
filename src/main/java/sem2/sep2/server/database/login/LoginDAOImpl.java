@@ -21,13 +21,13 @@ public class LoginDAOImpl implements LoginDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                int userId = resultSet.getInt("user_id");
+                String userId = resultSet.getString("username");
                 String userType = resultSet.getString("user_type");
 
                 if (userType.equals("Manager")) {
                     return new Request("Login successful as Manager", new Manager(password));
                 } else if (userType.equals("Guest")) {
-                    return new Request("Login successful as Guest", new Guest(userId, username, password));
+                    return new Request("Login successful as Guest", new Guest(userId, password));
                 } else {
                     return new Request("Unknown user type", null);
                 }

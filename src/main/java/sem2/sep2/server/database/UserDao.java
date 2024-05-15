@@ -57,7 +57,7 @@ public class UserDao {
           int id = resultSet.getInt("user_id");
           String username = resultSet.getString("username");
           String password = resultSet.getString("password");
-          guest = new Guest(id, username, password);
+          guest = new Guest( username, password);
         }
       }
     }
@@ -73,7 +73,7 @@ public class UserDao {
         int id = resultSet.getInt("user_id");
         String username = resultSet.getString("username");
         String password = resultSet.getString("password");
-        Guest guest = new Guest(id, username, password);
+        Guest guest = new Guest(username, password);
         userList.add(guest);
       }
     }

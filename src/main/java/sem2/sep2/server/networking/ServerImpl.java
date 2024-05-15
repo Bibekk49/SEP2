@@ -1,6 +1,7 @@
 package sem2.sep2.server.networking;
 
 import sem2.sep2.shared.networking.serverInterfaces.LoginServer;
+import sem2.sep2.shared.networking.serverInterfaces.RegisterUserServer;
 import sem2.sep2.shared.networking.serverInterfaces.Server;
 
 import java.rmi.AlreadyBoundException;
@@ -11,6 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ServerImpl implements Server {
     private LoginServer loginServer;
+    private RegisterUserServer registerUserServer;
     public ServerImpl(LoginServer loginServer) throws RemoteException {
         this.loginServer = loginServer;
         UnicastRemoteObject.exportObject(this, 0);
@@ -19,6 +21,11 @@ public class ServerImpl implements Server {
     @Override
     public LoginServer getLoginServer() throws RemoteException {
         return loginServer;
+    }
+
+    @Override
+    public RegisterUserServer getRegisterUserServer() throws RemoteException {
+        return registerUserServer;
     }
 
     @Override

@@ -1,10 +1,10 @@
 package sem2.sep2.client.core;
 
-import sem2.sep2.client.view.guestloginView.LoginViewModel;
-import sem2.sep2.client.view.guestloginView.ViewState;
+import sem2.sep2.client.view.loginView.LoginViewModel;
+import sem2.sep2.client.view.loginView.ViewState;
 
 public class ViewModelFactory {
-    private final ModelFactory modelFactory;
+    private  ModelFactory modelFactory;
     private LoginViewModel clientLoginViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
@@ -13,7 +13,7 @@ public class ViewModelFactory {
 
     public LoginViewModel getLoginViewModel() {
         if (clientLoginViewModel == null) {
-            clientLoginViewModel = new LoginViewModel(modelFactory.getLoginViewModel(), new ViewState());
+            clientLoginViewModel = new LoginViewModel(modelFactory.getLoginModel(), new ViewState());
         }
         return clientLoginViewModel;
     }

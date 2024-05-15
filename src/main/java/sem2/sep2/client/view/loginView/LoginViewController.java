@@ -1,4 +1,4 @@
-package sem2.sep2.client.view.guestloginView;
+package sem2.sep2.client.view.loginView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
