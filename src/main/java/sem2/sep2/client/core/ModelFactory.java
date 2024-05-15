@@ -10,12 +10,12 @@ import sem2.sep2.client.model.reserve.ReserveModel;
 import sem2.sep2.client.model.reserve.ReserveModelImpl;
 
 public class ModelFactory {
-    private ClientFactoey clientFactory;
+    private ClientFactory clientFactory;
     private LoginModel loginModel;
     private CreateModel createModel;
     private ContactModel contactModel;
     private ReserveModel reserveModel;
-    public ModelFactory(ClientFactoey clientFactory) {
+    public ModelFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
     }
 
