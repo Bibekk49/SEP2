@@ -2,13 +2,13 @@ package sem2.sep2;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import sem2.sep2.client.core.ClientFactoey;
+import sem2.sep2.client.core.ClientFactory;
 import sem2.sep2.client.core.ModelFactory;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 
 public class testClient extends Application {
-    ClientFactoey clientFactory = new ClientFactoey();
+    ClientFactory clientFactory = new ClientFactory();
     @Override
     public void start(Stage stage) throws Exception {
         try {

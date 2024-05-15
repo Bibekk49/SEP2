@@ -7,7 +7,7 @@ import sem2.sep2.client.networking.register.CreateClientImpl;
 import sem2.sep2.client.networking.reserve.ReserveClient;
 import sem2.sep2.client.networking.reserve.ReserveClientImpl;
 
-public class ClientFactoey {
+public class ClientFactory {
     private LoginClient loginClient;
     private CreateClient createCLient;
     private ReserveClient reserveClient;
