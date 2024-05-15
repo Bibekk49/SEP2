@@ -2,10 +2,13 @@ package sem2.sep2.client.core;
 
 import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.login.LoginModelImpl;
+import sem2.sep2.client.model.register.CreateImpl;
+import sem2.sep2.client.model.register.CreateModel;
 
 public class ModelFactory {
     private ClientFactoey clientFactory;
     private LoginModel loginModel;
+    private CreateModel createModel;
     public ModelFactory(ClientFactoey clientFactory) {
         this.clientFactory = clientFactory;
     }
@@ -15,5 +18,12 @@ public class ModelFactory {
             loginModel = new LoginModelImpl(clientFactory.getLoginClient());
         }
         return loginModel;
+    }
+
+    public CreateModel getCreateModel() {
+        if (createModel == null) {
+            createModel = new CreateImpl(clientFactory.getCreateClient());
+        }
+        return createModel;
     }
 }

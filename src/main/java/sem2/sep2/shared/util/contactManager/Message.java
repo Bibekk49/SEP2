@@ -22,8 +22,8 @@ public class Message implements Serializable {
         return messageBody;
     }
 
-    public int getGuestID() {
-        return guestSender.getId();
+    public String getGuestID() {
+        return guestSender.getUsername();
     }
 
 }

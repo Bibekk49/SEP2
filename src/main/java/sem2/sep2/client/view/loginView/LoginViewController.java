@@ -57,9 +57,9 @@ public class LoginViewController implements ViewController
     this.loginViewModel = loginViewModel;
     this.root = root;
 
-    errorText.textProperty().bind(loginViewModel.errorProperty());
-    guestNameField.textProperty().bindBidirectional(loginViewModel.userNameProperty());
-    passwordField.textProperty().bindBidirectional(loginViewModel.passwordProperty());
+    errorText.textProperty().bind(loginViewModel.errorLogin());
+    guestNameField.textProperty().bindBidirectional(loginViewModel.usernameLogin());
+    passwordField.textProperty().bindBidirectional(loginViewModel.passwordLogin());
   }
 
 }

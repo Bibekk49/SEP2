@@ -13,8 +13,9 @@ import java.rmi.server.UnicastRemoteObject;
 public class ServerImpl implements Server {
     private LoginServer loginServer;
     private RegisterUserServer registerUserServer;
-    public ServerImpl(LoginServer loginServer) throws RemoteException {
+    public ServerImpl(LoginServer loginServer, RegisterUserServer registerUserServer) throws RemoteException {
         this.loginServer = loginServer;
+        this.registerUserServer = registerUserServer;
         UnicastRemoteObject.exportObject(this, 0);
     }
 

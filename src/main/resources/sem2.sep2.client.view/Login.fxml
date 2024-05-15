@@ -25,18 +25,16 @@
                <Font size="36.0" />
             </font>
          </Label>
-         <Button layoutX="185.0" layoutY="291.0" mnemonicParsing="false" text="Log in">
+         <Button onAction="#onLogin" layoutX="185.0" layoutY="291.0" mnemonicParsing="false" text="Log in">
             <font>
                <Font size="14.0" />
             </font>
          </Button>
-         <Button layoutX="353.0" layoutY="291.0" mnemonicParsing="false" text="Sign up">
+         <Button onAction="#onRegister" layoutX="353.0" layoutY="291.0" mnemonicParsing="false" text="Sign up">
             <font>
                <Font size="14.0" />
             </font>
          </Button>
-      </children>
-      <children>
          <Text fx:id="errorText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0"
                text="This username is already taken. Please choose another one."/>
       </children>

@@ -11,7 +11,7 @@ public class CreateHandlerImpl implements CreateHandler{
 
 
     @Override
-    public String addUser( String username, String password, String userType) {
-        return createDAO.addUser( username, password, userType);
+    public String addUser( String username, String password) {
+        return createDAO.addUser(username, password);
     }
 }

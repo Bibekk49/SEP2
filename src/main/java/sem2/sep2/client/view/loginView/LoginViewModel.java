@@ -2,62 +2,69 @@ package sem2.sep2.client.view.loginView;
 
 import javafx.beans.property.*;
 import sem2.sep2.client.model.login.LoginModel;
+import sem2.sep2.client.model.register.CreateModel;
 
 public class LoginViewModel {
-    private StringProperty errorLogin, usernameLogin, passwordLogin;
+    private StringProperty errorLogin, usernameLogin, passwordLogin, userType;
     private BooleanProperty signInScene;
     private LoginModel loginModel;
+    private CreateModel createModel;
 
-    public LoginViewModel(LoginModel loginModel) {
+    public LoginViewModel(LoginModel loginModel, CreateModel createModel) {
         this.loginModel = loginModel;
+        this.createModel = createModel;
         errorLogin = new SimpleStringProperty();
         usernameLogin = new SimpleStringProperty();
         passwordLogin = new SimpleStringProperty();
         signInScene = new SimpleBooleanProperty();
+        userType = new SimpleStringProperty();
     }
 
     public void reset() {
-        userNameProperty.set(null);
-        passwordProperty.set(null);
-        errorProperty.set(null);
-        idProperty.set(0);
+        usernameLogin.set(null);
+        passwordLogin.set(null);
+        errorLogin.set(null);
     }
 
-    public StringProperty userNameProperty() {
-        return userNameProperty;
+    public StringProperty errorLogin() {
+        return errorLogin;
     }
 
-    public StringProperty passwordProperty() {
-        return passwordProperty;
+    public StringProperty usernameLogin() {
+        return usernameLogin;
     }
 
-    public StringProperty errorProperty() {
-        return errorProperty;
+    public StringProperty passwordLogin() {
+        return passwordLogin;
+    }
+
+    public StringProperty userType() {
+        return userType;
     }
 
     public boolean register() {
-        errorProperty.set(null);
+        errorLogin.set(null);
 
         try {
-            model.register(idProperty.get(), userNameProperty.get(), passwordProperty.get());
-            viewState.setGuestName(userNameProperty.get());
+            createModel.addUser(usernameLogin.get(), passwordLogin.get());
+            //viewState.setGuestName(userNameProperty.get());
             return true;
         } catch (IllegalArgumentException | IllegalStateException e) {
-            errorProperty.set(e.getMessage());
+            errorLogin.set(e.getMessage());
         }
 
         return false;
     }
 
     public boolean login() {
-        errorProperty.set(null);
+        errorLogin.set(null);
 
         try {
-            model.login(idProperty.get(), userNameProperty.get(), passwordProperty.get());
-            viewState.setGuestName(userNameProperty.get());
+            loginModel.login(usernameLogin.get(), passwordLogin.get());
+            //viewState.setGuestName(userNameProperty.get());
             return true;
         } catch (IllegalArgumentException | IllegalStateException e) {
-            errorProperty.set(e.getMessage());
+            errorLogin.set(e.getMessage());
         }
 
         return false;

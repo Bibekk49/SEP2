@@ -13,9 +13,9 @@ public class CreateClientImpl implements CreateClient{
         }
     }
     @Override
-    public String addUser(String username, String password, String userType) {
+    public String addUser(String username, String password) {
         try {
-            return server.getRegisterUserServer().addUser(username,password,userType);
+            return server.getRegisterUserServer().addUser(username,password);
         } catch (Exception e) {
             return "Cannot connect to server";
         }

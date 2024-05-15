@@ -18,8 +18,8 @@ public class RegisterUserServerImpl implements RegisterUserServer{
         UnicastRemoteObject.exportObject(this,0);
     }
     @Override
-    public String addUser(String username, String password, String userType) {
-       return createHandler.addUser(username,password,userType);
+    public String addUser(String username, String password) {
+       return createHandler.addUser(username,password);
     }
 
 }

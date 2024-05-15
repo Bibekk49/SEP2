@@ -1,10 +1,14 @@
 package sem2.sep2.server;
 
+import sem2.sep2.server.model.create.CreateHandler;
+import sem2.sep2.server.model.create.CreateHandlerImpl;
 import sem2.sep2.server.model.login.LoginHandler;
 import sem2.sep2.server.model.login.LoginHandlerImpl;
 import sem2.sep2.server.networking.ServerImpl;
 import sem2.sep2.server.networking.login.LoginServerImpl;
+import sem2.sep2.server.networking.login.RegisterUserServerImpl;
 import sem2.sep2.shared.networking.serverInterfaces.LoginServer;
+import sem2.sep2.shared.networking.serverInterfaces.RegisterUserServer;
 import sem2.sep2.shared.networking.serverInterfaces.Server;
 
 import java.rmi.AlreadyBoundException;
@@ -16,7 +20,10 @@ public class RunServer {
         LoginHandler loginHandler = new LoginHandlerImpl();
         LoginServer loginServer = new LoginServerImpl(loginHandler);
 
-        Server server = new ServerImpl(loginServer);
+        CreateHandler createHandler = new CreateHandlerImpl();
+        RegisterUserServer registerUserServer = new RegisterUserServerImpl(createHandler);
+
+        Server server = new ServerImpl(loginServer, registerUserServer);
         server.startServer();
     }
 }

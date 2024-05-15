@@ -8,7 +8,7 @@ public class CreateImpl implements CreateModel{
         this.client = client;
     }
     @Override
-    public String addUser(String username, String password, String userType) {
-        return client.addUser(username, password, userType);
+    public String addUser(String username, String password) {
+        return client.addUser(username, password);
     }
 }
