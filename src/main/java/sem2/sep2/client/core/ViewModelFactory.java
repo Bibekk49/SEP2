@@ -11,9 +11,9 @@ public class ViewModelFactory
     this.modelFactory = modelFactory;
   }
   public LoginViewModel getLoginViewModel(){
-    if(clientLoginViewModel==null){
-clientLoginViewModel=new LoginViewModel(modelFactory.getLoginViewModel());
-    }
+//    if(clientLoginViewModel==null){
+//        clientLoginViewModel=new LoginViewModel(modelFactory.getLoginViewModel());
+//    }
     return clientLoginViewModel;
   }
 }

@@ -7,15 +7,19 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
+import sem2.sep2.shared.networking.LoginService;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class ViewHandler {
     private Stage stage;
     private final ViewModelFactory viewModelFactory;
     private Scene loginScene;
+    private Scene reserveScene;
+    private LoginService loginService;
 
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
@@ -23,6 +27,13 @@ public class ViewHandler {
     }
 
     public void start() {
+        try{
+            Registry registry = LocateRegistry.getRegistry("localhost",1099);
+            loginService = (LoginService) registry.lookup("LoginService");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         stage = new Stage();
         openLoginView();
     }
@@ -38,7 +49,7 @@ public class ViewHandler {
         }
         ViewController ctrl = loader.getController();
         try {
-            ctrl.init(this, viewModelFactory,root);
+            ctrl.init(this, viewModelFactory,root,loginService);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -52,6 +63,15 @@ public class ViewHandler {
             stage.setTitle("Login");
         }
         stage.setScene(loginScene);
+        stage.show();
+    }
+    public void openReserveView(){
+        if (reserveScene == null) {
+            Region root = loadFXMLFile("/sem2.sep2.client.view/ReserveGUI.fxml");
+            reserveScene = new Scene(root);
+            stage.setTitle("Reserve");
+        }
+        stage.setScene(reserveScene);
         stage.show();
     }
 }

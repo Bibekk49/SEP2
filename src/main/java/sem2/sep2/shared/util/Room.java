@@ -3,19 +3,22 @@ package sem2.sep2.shared.util;
 //import sem2.sep2.shared.util.room.roomState.AvailableState;
 //import sem2.sep2.shared.util.room.roomState.RoomState;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable
+{
     private String type;
     private double price;
 //    private RoomState roomState;
     private int room_id;
-    private String availability;
+    private String status;
 
-    public Room(int room_id,String type, Double price,String availability) {
+    public Room(int room_id,String type, Double price,String status) {
         this.room_id = room_id;
         this.type = type;
         this.price = price;
 //        this.roomState=new AvailableState();
-        this.availability = availability;
+        this.status = status;
     }
 
     public String getType() {
@@ -27,8 +30,8 @@ public class Room {
     public int getRoom_id(){
         return room_id;
     }
-    public String getAvailability(){
-        return availability;
+    public String getStatus(){
+        return status;
     }
 
 //    public RoomState getRoomState() {
@@ -56,6 +59,6 @@ public class Room {
 //    }
     @Override
     public String toString(){
-        return "Room: "+room_id+" Type: "+type+" price: "+price +" Availability: "+availability;
+        return "Room: "+room_id+" Type: "+type+" price: "+price +" Status: "+status;
     }
 }

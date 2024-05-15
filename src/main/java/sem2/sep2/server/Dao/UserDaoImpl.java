@@ -1,19 +1,24 @@
-package sem2.sep2.Dao;
+package sem2.sep2.server.Dao;
 
+import sem2.sep2.shared.Dao.UserDao;
 import sem2.sep2.shared.util.Guest;
 
+import java.rmi.RemoteException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class UserDao {
+public class UserDaoImpl implements UserDao
+{
   public static Connection connection;
 
-  public UserDao(Connection connection) {
+  public UserDaoImpl(Connection connection) {
+    super();
     this.connection = connection;
   }
-
-  public void createUser(String username, String password) throws SQLException {
+  @Override
+  public void createUser(String username, String password) throws SQLException,
+      RemoteException
+  {
     String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
       preparedStatement.setString(1, username);
@@ -21,16 +26,16 @@ public class UserDao {
       preparedStatement.executeUpdate();
     }
   }//jdbc:postgresql://localhost:5432/postgres
-
-  public void deleteUser(int userId) throws SQLException {
+  @Override
+  public void deleteUser(int userId) throws SQLException,RemoteException {
     String sql = "DELETE FROM users WHERE user_id = ?";
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
       preparedStatement.setInt(1, userId);
       preparedStatement.executeUpdate();
     }
   }
-
-  public void updateUsername(int userId, String newUsername) throws SQLException {
+  @Override
+  public void updateUsername(int userId, String newUsername) throws SQLException,RemoteException {
     String sql = "UPDATE users SET username = ? WHERE user_id = ?";
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
       preparedStatement.setString(1, newUsername);
@@ -38,8 +43,8 @@ public class UserDao {
       preparedStatement.executeUpdate();
     }
   }
-
-  public void updatePassword(int userId, String newPassword) throws SQLException {
+  @Override
+  public void updatePassword(int userId, String newPassword) throws SQLException,RemoteException {
     String sql = "UPDATE users SET password = ? WHERE user_id = ?";
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
       preparedStatement.setString(1, newPassword);
@@ -47,8 +52,8 @@ public class UserDao {
       preparedStatement.executeUpdate();
     }
   }
-
-  public Guest readById(int userId) throws SQLException {
+  @Override
+  public Guest readById(int userId) throws SQLException,RemoteException {
     Guest guest = null;
     String sql = "SELECT * FROM users WHERE user_id = ?";
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -64,8 +69,8 @@ public class UserDao {
     }
     return guest;
   }
-
-  public  ArrayList<Guest> getAllUsers() throws SQLException {
+  @Override
+  public ArrayList<Guest> getAllUsers() throws SQLException,RemoteException {
     ArrayList<Guest> userList = new ArrayList<>();
     String sql = "SELECT * FROM users ORDER BY user_id";
     try (Statement statement = connection.createStatement();
@@ -79,6 +84,16 @@ public class UserDao {
       }
     }
     return userList;
+  }
+  @Override
+  public boolean login(String username,String password)throws RemoteException,SQLException{
+    String sql ="SELECT * FROM users WHERE username = ? AND password = ?";
+    try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+      preparedStatement.setString(1,username);
+      preparedStatement.setString(2,password);
+      ResultSet resultSet = preparedStatement.executeQuery();
+      return resultSet.next();
+    }
   }
 
 

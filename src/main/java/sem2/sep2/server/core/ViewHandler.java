@@ -7,9 +7,13 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import sem2.sep2.server.view.ManageRoomViewController;
 import sem2.sep2.server.view.ViewController;
+import sem2.sep2.shared.networking.LoginService;
+import sem2.sep2.shared.networking.LoginServiceImpl;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.sql.SQLException;
 
 public class ViewHandler {
@@ -23,6 +27,15 @@ public class ViewHandler {
     }
 
     public void start() {
+        try{
+            LoginService loginService = new LoginServiceImpl();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("LoginService",loginService);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         stage = new Stage();
         openLoginView();
     }

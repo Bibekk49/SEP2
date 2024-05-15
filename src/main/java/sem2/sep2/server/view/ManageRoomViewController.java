@@ -11,6 +11,8 @@ import javafx.scene.layout.Region;
 import sem2.sep2.server.core.ViewHandler;
 import sem2.sep2.server.core.ViewModelFactory;
 import sem2.sep2.server.viewModel.ViewModel;
+import sem2.sep2.shared.Dao.RoomDao;
+import sem2.sep2.shared.Dao.UserDao;
 import sem2.sep2.shared.util.Guest;
 import sem2.sep2.shared.util.Room;
 
@@ -18,8 +20,8 @@ import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import sem2.sep2.Dao.RoomDao;
-import sem2.sep2.Dao.UserDao;
+import sem2.sep2.server.Dao.RoomDaoImpl;
+import sem2.sep2.server.Dao.UserDaoImpl;
 
 public class ManageRoomViewController implements ViewController{
     private ViewHandler viewHandler;
@@ -54,8 +56,8 @@ public class ManageRoomViewController implements ViewController{
         String username = "postgres";
         String password = "050420";
         Connection connection = DriverManager.getConnection(url, username, password);
-        userDao = new UserDao(connection);
-        roomDao = new RoomDao(connection);
+        userDao = new UserDaoImpl(connection);
+        roomDao = new RoomDaoImpl(connection);
 
 
         roomList.addAll(roomDao.getAllRooms());
@@ -71,7 +73,7 @@ public class ManageRoomViewController implements ViewController{
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
-        availability.setItems(FXCollections.observableArrayList("Available", "Occupied", "Reserved"));
+        availability.setItems(FXCollections.observableArrayList("Available", "Unavailable"));
         availability.setValue("Available");
 
     }
@@ -84,7 +86,8 @@ public class ManageRoomViewController implements ViewController{
         availability.setValue("Available");
     }
 
-    public void refresh() throws SQLException {
+    public void refresh() throws SQLException, RemoteException
+    {
         roomList.clear();
         userList.clear();
 
@@ -100,18 +103,19 @@ public class ManageRoomViewController implements ViewController{
     }
 
     //button here rg1
-    public void AddingButtonPressed(ActionEvent actionEvent) throws SQLException
+    public void AddingButtonPressed(ActionEvent actionEvent)
+        throws SQLException, RemoteException
     {
         if(viewModel.confirm()){
             String id = room_id.getText();
             String Price = price.getText();
             String type = (String) roomType.getValue();
-            String available = (String) availability.getValue();
+            String status = (String) availability.getValue();
             if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
                 int roomId = Integer.parseInt(id);
                 if(!roomDao.isRoomExist(roomId)){
                     Double price_ = Double.parseDouble(Price);
-                    roomDao.createRoom(new Room(roomId,type,price_,available));
+                    roomDao.createRoom(new Room(roomId,type,price_,status));
                     viewModel.alarm("Successfully","Add successfully!");
                 }else{
                     viewModel.alarm("Alarm","The room has already exist.");
@@ -125,19 +129,20 @@ public class ManageRoomViewController implements ViewController{
 
     }
 
-    public void EditingButtonPressed(ActionEvent actionEvent)throws SQLException
+    public void EditingButtonPressed(ActionEvent actionEvent)
+        throws SQLException, RemoteException
     {
         if(viewModel.confirm()){
             String id = room_id.getText();
             String Price = price.getText();
             String type = (String) roomType.getValue();
-            String available = (String) availability.getValue();
+            String status = (String) availability.getValue();
             if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
                 int roomId = Integer.parseInt(id);
                 if(roomDao.isRoomExist(roomId)){
                     Double price_ = Double.parseDouble(Price);
                     roomDao.deleteRoom(roomId);
-                    roomDao.createRoom(new Room(roomId,type,price_,available));
+                    roomDao.createRoom(new Room(roomId,type,price_,status));
                     viewModel.alarm("Successfully","Editing room successfully.");
                 }else{
                     viewModel.alarm("Alarm","The room does not exist");
@@ -153,7 +158,8 @@ public class ManageRoomViewController implements ViewController{
 
 
     //button pg 2/3
-    public void DeleteButtonPressed(ActionEvent actionEvent)throws SQLException
+    public void DeleteButtonPressed(ActionEvent actionEvent)
+        throws SQLException, RemoteException
     {
         String id = idnumber.getText();
         if(viewModel.isIntDouble(id)){
@@ -174,7 +180,7 @@ public class ManageRoomViewController implements ViewController{
         reset();
     }
     public void refreshButtonPressed(ActionEvent actionEvent)
-        throws SQLException
+        throws SQLException, RemoteException
     {
         this.refresh();
     }

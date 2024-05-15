@@ -5,6 +5,10 @@ import javafx.stage.Stage;
 import sem2.sep2.client.core.ModelFactory;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
+import sem2.sep2.shared.networking.LoginService;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class testClient extends Application {
     @Override
