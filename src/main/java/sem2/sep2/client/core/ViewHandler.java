@@ -60,4 +60,12 @@ public class ViewHandler {
         stage.setScene(scene);
         stage.show();
     }
+    public void openContactView() {
+        Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
+        Scene scene = new Scene(root);
+        Stage contactStage = new Stage();
+        contactStage.setTitle("Contact");
+        contactStage.setScene(scene);
+        contactStage.show();
+    }
 }

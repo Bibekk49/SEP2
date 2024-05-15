@@ -65,5 +65,8 @@ public class ReserveViewController implements ViewController {
         reset();
 //        roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
     }
+    public void ContactUsPressed(ActionEvent event)throws Exception{
+        viewHandler.openContactView();
+    }
 
 }

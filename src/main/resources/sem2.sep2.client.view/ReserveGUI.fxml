@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane fx:controller="sem2.sep2.client.view.reserveView.ReserveViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.reserveView.ReserveViewController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -32,7 +31,7 @@
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Contact us" />
+                  <MenuItem mnemonicParsing="false" onAction="#ContactUsPressed" text="Contact us" />
             </items>
           </Menu>
         </menus>
