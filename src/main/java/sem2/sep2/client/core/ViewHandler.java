@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 public class ViewHandler {
     private Stage stage;
     private final ViewModelFactory viewModelFactory;
-    private Scene loginScene;
+    private Scene Scene;
 
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
@@ -44,12 +44,19 @@ public class ViewHandler {
     }
 
     public void openLoginView() {
-        if (loginScene == null) {
+        if (Scene == null) {
             Region root = loadFXMLFile("/sem2.sep2.client.view/Login.fxml");
-            loginScene = new Scene(root);
+            Scene = new Scene(root);
             stage.setTitle("Login");
         }
-        stage.setScene(loginScene);
+        stage.setScene(Scene);
         stage.show();
+    }
+
+    public void openReserveView() {
+        Region root = loadFXMLFile("/sem2.sep2.client.view/ReserveGUI.fxml");
+        Scene scene = new Scene(root);
+        stage.setTitle("Reserve");
+        stage.setScene(scene);
     }
 }

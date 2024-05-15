@@ -48,6 +48,7 @@ public class LoginViewController implements ViewController
 
     if (success)
       System.out.println("User logged in");
+      viewHandler.openReserveView();
   }
 
   @Override

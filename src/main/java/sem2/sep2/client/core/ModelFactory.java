@@ -4,11 +4,13 @@ import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.login.LoginModelImpl;
 import sem2.sep2.client.model.register.CreateImpl;
 import sem2.sep2.client.model.register.CreateModel;
+import sem2.sep2.client.model.reserve.ReserveModel;
 
 public class ModelFactory {
     private ClientFactoey clientFactory;
     private LoginModel loginModel;
     private CreateModel createModel;
+    private ReserveModel reserveModel;
     public ModelFactory(ClientFactoey clientFactory) {
         this.clientFactory = clientFactory;
     }
@@ -25,5 +27,12 @@ public class ModelFactory {
             createModel = new CreateImpl(clientFactory.getCreateClient());
         }
         return createModel;
+    }
+
+    public ReserveModel getReserveModel() {
+        if (reserveModel == null) {
+            reserveModel = new ReserveModelImpl(clientFactory.getReserveClient());
+        }
+        return reserveModel;
     }
 }
