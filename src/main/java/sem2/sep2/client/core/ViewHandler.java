@@ -58,5 +58,6 @@ public class ViewHandler {
         Scene scene = new Scene(root);
         stage.setTitle("Reserve");
         stage.setScene(scene);
+        stage.show();
     }
 }

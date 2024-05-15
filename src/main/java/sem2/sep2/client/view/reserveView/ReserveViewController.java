@@ -1,10 +1,13 @@
 package sem2.sep2.client.view.reserveView;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
@@ -12,6 +15,7 @@ import sem2.sep2.client.view.ViewController;
 import sem2.sep2.shared.util.room.Room;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 
 public class ReserveViewController implements ViewController {
 
@@ -38,9 +42,8 @@ public class ReserveViewController implements ViewController {
         this.viewHandler = viewHandler;
         this.reserveViewModel = viewModelFactory.getReserveViewModel();
         this.root = root;
-        this.loginService = loginService;
 
-        roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("room_id"));
+        roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
@@ -60,7 +63,7 @@ public class ReserveViewController implements ViewController {
             return;
         }
         reset();
-        roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
+//        roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
     }
 
 }

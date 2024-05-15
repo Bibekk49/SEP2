@@ -10,4 +10,5 @@ public interface ViewController {
 
     void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,
         Region root) throws RemoteException;
+    void reset();
 }

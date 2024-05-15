@@ -5,6 +5,7 @@ import sem2.sep2.client.model.login.LoginModelImpl;
 import sem2.sep2.client.model.register.CreateImpl;
 import sem2.sep2.client.model.register.CreateModel;
 import sem2.sep2.client.model.reserve.ReserveModel;
+import sem2.sep2.client.model.reserve.ReserveModelImpl;
 
 public class ModelFactory {
     private ClientFactoey clientFactory;

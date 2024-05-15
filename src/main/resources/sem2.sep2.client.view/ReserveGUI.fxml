@@ -41,11 +41,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="250.0" layoutY="3.0" prefHeight="367.0" prefWidth="343.0">
+            <TableView fx:id="tableView" layoutX="250.0" layoutY="3.0" prefHeight="367.0" prefWidth="343.0">
               <columns>
-                <TableColumn prefWidth="119.3333740234375" text="Room number" />
-                <TableColumn prefWidth="87.3333740234375" text="Type" />
-                  <TableColumn prefWidth="165.33331298828125" text="Price per day" />
+                <TableColumn fx:id="roomNumberColumn" prefWidth="119.3333740234375" text="Room number" />
+                <TableColumn fx:id="typeColumn" prefWidth="87.3333740234375" text="Type" />
+                  <TableColumn fx:id="pricePerDayColumn" prefWidth="165.33331298828125" text="Price per day" />
               </columns>
             </TableView>
             <DatePicker layoutX="73.0" layoutY="51.0" prefHeight="23.0" prefWidth="149.0" />
