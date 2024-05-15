@@ -15,8 +15,10 @@ public class LoginViewController implements ViewController
 {
   @FXML
   private Text errorText;
-  @FXML private TextField guestNameField;
-  @FXML private PasswordField passwordField;
+  @FXML
+  private TextField guestNameField;
+  @FXML
+  private PasswordField passwordField;
 
   private ViewHandler viewHandler;
   private LoginViewModel loginViewModel;

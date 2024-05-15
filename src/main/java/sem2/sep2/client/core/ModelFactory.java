@@ -1,5 +1,7 @@
 package sem2.sep2.client.core;
 
+import sem2.sep2.client.model.contact.ContactModel;
+import sem2.sep2.client.model.contact.ContactModelImpl;
 import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.login.LoginModelImpl;
 import sem2.sep2.client.model.register.CreateImpl;
@@ -11,6 +13,7 @@ public class ModelFactory {
     private ClientFactoey clientFactory;
     private LoginModel loginModel;
     private CreateModel createModel;
+    private ContactModel contactModel;
     private ReserveModel reserveModel;
     public ModelFactory(ClientFactoey clientFactory) {
         this.clientFactory = clientFactory;
@@ -36,4 +39,12 @@ public class ModelFactory {
         }
         return reserveModel;
     }
+
+  public Object getContactModel()
+  {
+      if(contactModel == null){
+          contactModel = new ContactModelImpl(clientFactory.getReserveClient());
+      }
+      return contactModel;
+  }
 }
