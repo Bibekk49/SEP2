@@ -16,13 +16,6 @@ public class ReservationList {
         }
     }
 
-    public Reservation getReservationByID(int id) {
-        for (Reservation r : reservationList) {
-            if (r.getReservationID() == id)
-                return r;
-        }
-        throw new IllegalArgumentException("Reservation not found");
-    }
 
     public ArrayList<Reservation> getAllReservations() {
         return reservationList;

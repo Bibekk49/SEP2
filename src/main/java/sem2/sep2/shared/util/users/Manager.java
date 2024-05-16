@@ -20,13 +20,4 @@ public class Manager extends User {
         return "admin";
     }
 
-    public int getId() {
-        return 0;
-    }
-
-
-    @Override
-    public String getEmployeeType() {
-        return UserType.MANAGER.toString();
-    }
 }

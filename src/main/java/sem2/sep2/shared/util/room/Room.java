@@ -1,28 +1,29 @@
 package sem2.sep2.shared.util.room;
 
-import sem2.sep2.shared.util.room.roomState.Available;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
 public class Room {
     private String type;
     private double price;
-  private RoomState roomState;
+    private RoomState roomState;
     private int roomNumber;
 
-    public Room(int roomNumber,String type, Double price, RoomState roomState) {
+    public Room(int roomNumber, String type, Double price, RoomState roomState) {
         this.roomNumber = roomNumber;
         this.type = type;
         this.price = price;
-        this.roomState=roomState;
+        this.roomState = roomState;
     }
 
     public String getType() {
         return type;
     }
+
     public double getPrice() {
         return price;
     }
-    public int getRoomNumber(){
+
+    public int getRoomNumber() {
         return roomNumber;
     }
 

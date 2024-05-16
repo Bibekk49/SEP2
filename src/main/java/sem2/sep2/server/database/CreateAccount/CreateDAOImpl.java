@@ -17,6 +17,8 @@ public class CreateDAOImpl implements CreateDAO {
 
     @Override
     public String addUser(String username, String password) {
+        validateUsername(username);
+        validatePassword(password);
         try (Connection connection = DataBaseConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM SEP2.users WHERE username=?;");
             statement.setString(1, username);
@@ -34,6 +36,20 @@ public class CreateDAOImpl implements CreateDAO {
             }
         } catch (SQLException throwables) {
             return throwables.getMessage();
+        }
+    }
+    private void validatePassword(String password) {
+        if (password.length() < 3) {
+            throw new IllegalStateException("Password should be between 3 and 8 characters.");
+        } else if (password.length() > 9) {
+            throw new IllegalStateException("Password should be between 3 and 8 characters.");
+        }
+    }
+    private void validateUsername(String username) {
+        if (username.length() < 3) {
+            throw new IllegalStateException("Username should be between 3 and 8 characters.");
+        } else if (username.length() > 9) {
+            throw new IllegalStateException("Username should be between 3 and 8 characters.");
         }
     }
 
