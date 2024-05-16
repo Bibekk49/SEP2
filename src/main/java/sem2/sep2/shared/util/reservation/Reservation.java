@@ -1,20 +1,21 @@
 package sem2.sep2.shared.util.reservation;
 
-import sem2.sep2.shared.util.room.Room;
-
-import java.util.Date;
+import java.sql.Date;
 
 public class Reservation {
     private int reservationID;
     private Date startDate;
-    private Date endDate;
-    private Room room;
 
-    public Reservation(int reservationID, Room room, Date startDate, Date endDate) {
+    private Date endDate;
+    private int roomNumber;
+    private String guestUsername;
+
+    public Reservation(int reservationID, int roomNumber, String guestUsername, Date startDate, Date endDate) {
         this.reservationID = reservationID;
-        this.room = room;
+        this.roomNumber = roomNumber;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.guestUsername = guestUsername;
     }
 
     public int getReservationID() {
@@ -25,13 +26,14 @@ public class Reservation {
         this.reservationID = reservationID;
     }
 
-    public Room getRoom() {
-        return room;
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public String getGuestUsername() {
+        return guestUsername;
     }
+
 
     public Date getStartDate() {
         return startDate;
