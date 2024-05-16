@@ -1,4 +1,4 @@
-package sem2.sep2.server.database.CreateAccount;
+package sem2.sep2.server.database.create;
 
 
 

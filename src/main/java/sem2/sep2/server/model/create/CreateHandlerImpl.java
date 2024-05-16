@@ -1,7 +1,7 @@
 package sem2.sep2.server.model.create;
 
-import sem2.sep2.server.database.CreateAccount.CreateDAO;
-import sem2.sep2.server.database.CreateAccount.CreateDAOImpl;
+import sem2.sep2.server.database.create.CreateDAO;
+import sem2.sep2.server.database.create.CreateDAOImpl;
 
 public class CreateHandlerImpl implements CreateHandler{
     private CreateDAO createDAO;
