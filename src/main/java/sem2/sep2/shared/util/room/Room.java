@@ -9,11 +9,11 @@ public class Room {
   private RoomState roomState;
     private int roomNumber;
 
-    public Room(int room_id,String type, Double price) {
-        this.roomNumber = room_id;
+    public Room(int roomNumber,String type, Double price, RoomState roomState) {
+        this.roomNumber = roomNumber;
         this.type = type;
         this.price = price;
-        this.roomState=new Available();
+        this.roomState=roomState;
     }
 
     public String getType() {

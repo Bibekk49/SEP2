@@ -18,6 +18,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public String addReservation(Reservation reservation) {
+        if (!checkRoomAvailability(reservation)) {
+            return "Room is not available for the selected date range.";
+        }
         String query = "INSERT INTO SEP2.reservations(room_number, username, start_date, end_date) VALUES (?, ?, ?, ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -106,4 +109,26 @@ public class ReservationDAOImpl implements ReservationDAO {
         }
 
     }
+
+    public boolean checkRoomAvailability(Reservation newReservation) {
+        String query = "SELECT COUNT(*) FROM SEP2.reservations WHERE room_number = ? AND start_date <= ? AND end_date >= ?;";
+        try (Connection connection = DataBaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, newReservation.getRoomNumber());
+            statement.setDate(2, newReservation.getEndDate());
+            statement.setDate(3, newReservation.getStartDate());
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count == 0; // Room is available if count is 0 (no overlapping reservations)
+            }
+            return false;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
 }
