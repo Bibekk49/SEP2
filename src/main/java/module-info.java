@@ -17,7 +17,6 @@ module sem2.sep2 {
 
     opens sem2.sep2.server.database to javafx.fxml;
     opens sem2.sep2.client.view.manageRoomView to javafx.fxml;
-    opens sem2.sep2.client.view.adminLoginView to javafx.fxml;
 
     exports sem2.sep2.client.view.contactView to javafx.fxml;
     exports sem2.sep2.server.database;

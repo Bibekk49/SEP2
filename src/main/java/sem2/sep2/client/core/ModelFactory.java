@@ -40,10 +40,10 @@ public class ModelFactory {
         return reserveModel;
     }
 
-  public Object getContactModel()
+  public ContactModel getContactModel()
   {
       if(contactModel == null){
-          contactModel = new ContactModelImpl(clientFactory.getReserveClient());
+          contactModel = new ContactModelImpl(clientFactory.getContactClient());
       }
       return contactModel;
   }
