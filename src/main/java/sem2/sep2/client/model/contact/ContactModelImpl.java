@@ -13,4 +13,8 @@ public class ContactModelImpl implements ContactModel
   public void sendMessage(String message){
     contactClient.sendMessage(message);
   }
+  @Override
+  public String receiveMessage(){
+    return "";
+  }
 }
