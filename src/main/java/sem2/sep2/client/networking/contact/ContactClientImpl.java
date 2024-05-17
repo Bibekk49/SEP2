@@ -16,6 +16,7 @@ public class ContactClientImpl implements ContactClient
   }
   @Override
   public Request sendMessage(String message){
-    return server.contactManagerServer().sendMessage();
+//    return server.contactManagerServer().sendMessage();;
+    return null;
   }
 }
