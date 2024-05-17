@@ -45,9 +45,9 @@ public class ManageRoomViewController implements ViewController
         this.viewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
 
-
-        roomList.addAll(roomDao.getAllRooms());
-        userList.addAll(userDao.getAllUsers());
+//
+//        roomList.addAll(roomDao.getAllRooms());
+//        userList.addAll(userDao.getAllUsers());
         roomListView.setItems(roomList);
         userListView.setItems(userList);
 
@@ -76,8 +76,8 @@ public class ManageRoomViewController implements ViewController
         roomList.clear();
         userList.clear();
 
-        roomList.addAll(roomDao.getAllRooms());
-        userList.addAll(userDao.getAllUsers());
+//        roomList.addAll(roomDao.getAllRooms());
+//        userList.addAll(userDao.getAllUsers());
 
         roomListView.setItems(roomList);
         userListView.setItems(userList);
@@ -90,53 +90,30 @@ public class ManageRoomViewController implements ViewController
     //button here rg1
     public void AddingButtonPressed(ActionEvent actionEvent) throws SQLException
     {
-        if(viewModel.confirm()){
-            String id = room_id.getText();
-            String Price = price.getText();
-            String type = (String) roomType.getValue();
-            String available = (String) availability.getValue();
-            if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-                int roomId = Integer.parseInt(id);
-                if(!roomDao.isRoomExist(roomId)){
-                    Double price_ = Double.parseDouble(Price);
-                    roomDao.createRoom(new Room(roomId,type,price_));
-                    viewModel.alarm("Successfully","Add successfully!");
-                }else{
-                    viewModel.alarm("Alarm","The room has already exist.");
-                }
-            }else{
-                viewModel.alarm("Alarm","Please check the id and price.");
-            }
-            refresh();
-            reset();
-        }
+        String id = room_id.getText();
+        String Price = price.getText();
+        String type = (String) roomType.getValue();
+        String available = (String) availability.getValue();
+        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
+            int roomId = Integer.parseInt(id);
+        }else{
 
+        }
+        refresh();
+        reset();
     }
 
     public void EditingButtonPressed(ActionEvent actionEvent)throws SQLException
     {
-        if(viewModel.confirm()){
-            String id = room_id.getText();
-            String Price = price.getText();
-            String type = (String) roomType.getValue();
-            String available = (String) availability.getValue();
-            if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-                int roomId = Integer.parseInt(id);
-                if(roomDao.isRoomExist(roomId)){
-                    Double price_ = Double.parseDouble(Price);
-                    roomDao.deleteRoom(roomId);
-                    roomDao.createRoom(new Room(roomId,type,price_));
-                    viewModel.alarm("Successfully","Editing room successfully.");
-                }else{
-                    viewModel.alarm("Alarm","The room does not exist");
-                }
-            }else{
-                viewModel.alarm("Alarm","Please check the id and price.");
-            }
-            refresh();
-            reset();
+        String id = room_id.getText();
+        String Price = price.getText();
+        String type = (String) roomType.getValue();
+        String available = (String) availability.getValue();
+        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
+            int roomId = Integer.parseInt(id);
         }
-
+        refresh();
+        reset();
     }
 
 
@@ -144,19 +121,9 @@ public class ManageRoomViewController implements ViewController
     public void DeleteButtonPressed(ActionEvent actionEvent)throws SQLException
     {
         String id = idnumber.getText();
-        if(viewModel.isIntDouble(id)){
+        if(viewModel.isIntDouble(id))
+        {
             int roomId = Integer.parseInt(id);
-            if(roomDao.isRoomExist(roomId)){
-                if(roomDao.deleteRoom(roomId)){
-                    viewModel.alarm("Successfully","Delete Successfully");
-                }else{
-                    viewModel.alarm("Failed","Delete Failed");
-                }
-            }else{
-                viewModel.alarm("Failed","The room doesn't exist");
-            }
-        }else{
-            viewModel.alarm("Alarm","Please check the id.");
         }
         refresh();
         reset();

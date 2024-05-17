@@ -42,8 +42,5 @@ public class ClientFactory {
         return contactClient;
     }
 
-    public RoomClient getRoomClient()
-    {
 
-    }
 }
