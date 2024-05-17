@@ -2,12 +2,12 @@ package sem2.sep2.client.view.manageRoomView;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import sem2.sep2.server.model.room.RoomModel;
+import sem2.sep2.server.model.room.RoomHandler;
 public class ManageRoomViewModel
 {
-    private final RoomModel model;
+    private final RoomHandler model;
 
-    public ManageRoomViewModel(RoomModel model) {
+    public ManageRoomViewModel(RoomHandler model) {
         this.model = model;
     }
 

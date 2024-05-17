@@ -5,6 +5,7 @@ module sem2.sep2 {
 
     requires java.sql;
     requires org.postgresql.jdbc;
+    requires java.desktop;
 
     opens sem2.sep2.client.view.reserveView to javafx.fxml;
 

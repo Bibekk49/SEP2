@@ -14,6 +14,4 @@ public interface ReservationDAO {
     ReservationList getCurrentReservationsByGuest(String username);
 
     ReservationList getAllCurrentReservations();
-
-
 }

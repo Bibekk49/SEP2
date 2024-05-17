@@ -38,13 +38,13 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public void removeRoom(int roomNumber) {
+    public void removeRoom(Room room) {
         String query = "DELETE FROM SEP2.rooms WHERE room_number=?;";
 
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setInt(1, roomNumber);
+            statement.setInt(1, room.getRoomNumber());
 
             statement.executeUpdate();
         } catch (SQLException throwables) {
@@ -184,13 +184,13 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomList getAllAvailableRoomsByType(String category, Date dateFrom, Date dateTo) {
+    public RoomList getAllAvailableRoomsByType(String roomType, Date dateFrom, Date dateTo) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=? AND room_number NOT IN (SELECT room_number FROM SEP2.reservations WHERE start_date <= ? AND end_date >= ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setString(1, category);
+            statement.setString(1, roomType);
             statement.setDate(2, dateFrom);
             statement.setDate(3, dateTo);
 

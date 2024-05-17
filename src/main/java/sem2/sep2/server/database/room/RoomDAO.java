@@ -7,11 +7,11 @@ import java.sql.Date;
 
 public interface RoomDAO {
     String  addRoom(Room room);
-    void removeRoom(int roomNumber);
+    void removeRoom(Room room);
     void updateRoom(Room room);
     RoomList getAllRooms();
     RoomList getAvailableRooms(Date dateFrom, Date dateTo);
     RoomList getAllRoomsByType(String category);
-    RoomList getAllAvailableRoomsByType(String category, Date dateFrom, Date dateTo);
+    RoomList getAllAvailableRoomsByType(String roomType, Date dateFrom, Date dateTo);
 
 }
