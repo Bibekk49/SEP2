@@ -22,4 +22,14 @@ public class RegisterUserServerImpl implements RegisterUserServer{
        return createHandler.addUser(username,password);
     }
 
+    @Override
+    public String changePassword(String username, String password) throws RemoteException {
+        return createHandler.changePassword(username,password);
+    }
+
+    @Override
+    public String changeUsername(String username, String newUsername) throws RemoteException {
+        return createHandler.changeUsername(username,newUsername);
+    }
+
 }

@@ -11,4 +11,14 @@ public class CreateImpl implements CreateModel{
     public String addUser(String username, String password) {
         return client.addUser(username, password);
     }
+
+    @Override
+    public String changePassword(String username, String password) {
+        return client.changePassword(username, password);
+    }
+
+    @Override
+    public String changeUsername(String username, String newUsername) {
+        return client.changeUsername(username, newUsername);
+    }
 }
