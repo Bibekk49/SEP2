@@ -16,7 +16,11 @@ public class ContactClientImpl implements ContactClient
   }
   @Override
   public Request sendMessage(String message){
+<<<<<<< Updated upstream
 //    return server.contactManagerServer().sendMessage();;
+=======
+//    return server.contactManagerServer().sendMessage();
+>>>>>>> Stashed changes
     return null;
   }
 }

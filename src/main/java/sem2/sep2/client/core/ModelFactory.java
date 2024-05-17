@@ -6,15 +6,15 @@ import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.login.LoginModelImpl;
 import sem2.sep2.client.model.register.CreateImpl;
 import sem2.sep2.client.model.register.CreateModel;
-import sem2.sep2.client.model.reserve.ReserveModel;
-import sem2.sep2.client.model.reserve.ReserveModelImpl;
+import sem2.sep2.client.model.Room.RoomModel;
+import sem2.sep2.client.model.Room.RoomModelImpl;
 
 public class ModelFactory {
     private ClientFactory clientFactory;
     private LoginModel loginModel;
     private CreateModel createModel;
     private ContactModel contactModel;
-    private ReserveModel reserveModel;
+    private RoomModel reserveModel;
     public ModelFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
     }
@@ -33,9 +33,9 @@ public class ModelFactory {
         return createModel;
     }
 
-    public ReserveModel getReserveModel() {
+    public RoomModel getReserveModel() {
         if (reserveModel == null) {
-            reserveModel = new ReserveModelImpl(clientFactory.getReserveClient());
+            reserveModel = new RoomModelImpl(clientFactory.getReserveClient());
         }
         return reserveModel;
     }

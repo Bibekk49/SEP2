@@ -1,7 +1,6 @@
 package sem2.sep2.client.model.contact;
 
 import sem2.sep2.client.networking.contact.ContactClient;
-import sem2.sep2.client.networking.reserve.ReserveClient;
 
 public class ContactModelImpl implements ContactModel
 {

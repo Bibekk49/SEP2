@@ -1,9 +1,6 @@
 package sem2.sep2.server.networking;
 
-import sem2.sep2.shared.networking.serverInterfaces.ContactManagerServer;
-import sem2.sep2.shared.networking.serverInterfaces.LoginServer;
-import sem2.sep2.shared.networking.serverInterfaces.RegisterUserServer;
-import sem2.sep2.shared.networking.serverInterfaces.Server;
+import sem2.sep2.shared.networking.serverInterfaces.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -15,6 +12,7 @@ public class ServerImpl implements Server {
     private LoginServer loginServer;
     private RegisterUserServer registerUserServer;
     private ContactManagerServer contactManagerServer;
+    private RoomServer roomServer;
     public ServerImpl(LoginServer loginServer, RegisterUserServer registerUserServer,ContactManagerServer contactManagerServer) throws RemoteException {
         this.loginServer = loginServer;
         this.registerUserServer = registerUserServer;
@@ -41,5 +39,10 @@ public class ServerImpl implements Server {
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("Server", this);
         System.out.println("Server started.....");
+    }
+
+    @Override
+    public RoomServer getRoomServer() throws RemoteException{
+        return roomServer;
     }
 }

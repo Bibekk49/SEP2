@@ -11,5 +11,7 @@ public interface Server extends Remote {
     RegisterUserServer getRegisterUserServer() throws RemoteException;
     ContactManagerServer getContactManagerServer() throws RemoteException;
     void startServer() throws RemoteException, AlreadyBoundException;
+
+    RoomServer getRoomServer() throws RemoteException;
 //    void search/reserve
 }

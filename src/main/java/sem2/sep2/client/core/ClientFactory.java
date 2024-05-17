@@ -6,13 +6,13 @@ import sem2.sep2.client.networking.login.LoginClient;
 import sem2.sep2.client.networking.login.LoginClientImpl;
 import sem2.sep2.client.networking.register.CreateClient;
 import sem2.sep2.client.networking.register.CreateClientImpl;
-import sem2.sep2.client.networking.reserve.ReserveClient;
-import sem2.sep2.client.networking.reserve.ReserveClientImpl;
+import sem2.sep2.client.networking.room.RoomClient;
+import sem2.sep2.client.networking.room.RoomClientImpl;
 
 public class ClientFactory {
     private LoginClient loginClient;
     private CreateClient createCLient;
-    private ReserveClient reserveClient;
+    private RoomClient reserveClient;
     private ContactClient contactClient;
     public LoginClient getLoginClient() {
         if (loginClient == null) {
@@ -27,9 +27,9 @@ public class ClientFactory {
         }
         return createCLient;
     }
-    public ReserveClient getReserveClient() {
+    public RoomClient getReserveClient() {
         if (reserveClient == null) {
-            reserveClient = new ReserveClientImpl();
+            reserveClient = new RoomClientImpl();
         }
         return reserveClient;
     }
