@@ -69,7 +69,7 @@ public class ViewHandler {
         contactStage.show();
     }
 
-    public void ManagerView()
+    public void openManagerView()
     {
         if (Scene == null) {
             Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");

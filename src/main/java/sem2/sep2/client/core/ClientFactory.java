@@ -12,7 +12,7 @@ import sem2.sep2.client.networking.room.RoomClientImpl;
 public class ClientFactory {
     private LoginClient loginClient;
     private CreateClient createCLient;
-    private RoomClient reserveClient;
+    private RoomClient roomClient;
     private ContactClient contactClient;
     public LoginClient getLoginClient() {
         if (loginClient == null) {
@@ -27,11 +27,11 @@ public class ClientFactory {
         }
         return createCLient;
     }
-    public RoomClient getReserveClient() {
-        if (reserveClient == null) {
-            reserveClient = new RoomClientImpl();
+    public RoomClient getRoomClient() {
+        if (roomClient == null) {
+            roomClient = new RoomClientImpl();
         }
-        return reserveClient;
+        return roomClient;
     }
 
     public ContactClient getContactClient()
@@ -40,5 +40,10 @@ public class ClientFactory {
             contactClient = new ContactClientImpl();
         }
         return contactClient;
+    }
+
+    public RoomClient getRoomClient()
+    {
+
     }
 }

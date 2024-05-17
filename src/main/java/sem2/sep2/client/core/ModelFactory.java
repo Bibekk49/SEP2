@@ -15,6 +15,7 @@ public class ModelFactory {
     private CreateModel createModel;
     private ContactModel contactModel;
     private RoomModel reserveModel;
+    private RoomModel roomModel;
     public ModelFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
     }
@@ -35,7 +36,7 @@ public class ModelFactory {
 
     public RoomModel getReserveModel() {
         if (reserveModel == null) {
-            reserveModel = new RoomModelImpl(clientFactory.getReserveClient());
+            reserveModel = new RoomModelImpl(clientFactory.getRoomClient());
         }
         return reserveModel;
     }
@@ -46,5 +47,11 @@ public class ModelFactory {
           contactModel = new ContactModelImpl(clientFactory.getContactClient());
       }
       return contactModel;
+  }
+  public RoomModel getRoomModel(){
+      if(roomModel == null){
+          roomModel = new RoomModelImpl(clientFactory.getRoomClient());
+      }
+      return roomModel;
   }
 }

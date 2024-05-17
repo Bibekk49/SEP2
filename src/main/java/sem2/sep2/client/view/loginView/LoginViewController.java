@@ -51,7 +51,7 @@ public class LoginViewController implements ViewController
     if (success)
       System.out.println("User logged in");
       if (guestNameField.equals("admin")){
-        viewHandler.ManagerView();
+        viewHandler.openManagerView();
       }else{
         viewHandler.openReserveView();
       }

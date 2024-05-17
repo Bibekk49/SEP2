@@ -7,5 +7,6 @@ public class ReserveViewModel {
 //  private SearchModel searchModel;
   public ReserveViewModel(RoomModel reserveModel)
   {
+    this.reserveModel = reserveModel;
   }
 }
