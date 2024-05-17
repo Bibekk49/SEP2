@@ -33,9 +33,10 @@ public class ContactViewController implements ViewController
   }
   @Override
   public void reset(){
-
+    chatField.setText("");
   }
   public void SendButtonPressed(ActionEvent event){
-
+    contactViewModel.sendMessage();
+    reset();
   }
 }

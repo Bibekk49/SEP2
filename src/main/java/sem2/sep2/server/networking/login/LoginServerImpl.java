@@ -16,6 +16,6 @@ public class LoginServerImpl implements LoginServer {
     }
     @Override
     public Request isLoginPossible(String username, String password) throws RemoteException {
-        return loginHandler.login( username, password);
+        return loginHandler.login(username, password);
     }
 }
