@@ -49,12 +49,17 @@ public class LoginViewController implements ViewController
     boolean success = loginViewModel.login();
 
     if (success)
+    {
       System.out.println("User logged in");
-      if (guestNameField.equals("admin")){
+      if (guestNameField.getText().equals("admin"))
+      {
         viewHandler.openManagerView();
-      }else{
+      }
+      else
+      {
         viewHandler.openReserveView();
       }
+    }
   }
 
   @Override

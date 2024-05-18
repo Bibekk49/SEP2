@@ -71,11 +71,10 @@ public class ViewHandler {
 
     public void openManagerView()
     {
-        if (Scene == null) {
-            Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
-            Scene = new Scene(root);
-            stage.setTitle("Manager");
-        }
+        Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
+        Scene = new Scene(root);
+        stage.setTitle("Manager");
+        
         stage.setScene(Scene);
         stage.show();
     }
