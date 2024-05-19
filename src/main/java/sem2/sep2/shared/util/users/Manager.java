@@ -1,6 +1,9 @@
 package sem2.sep2.shared.util.users;
 
-public class Manager extends User {
+import java.io.Serializable;
+
+public class Manager extends User implements Serializable
+{
     private String password;
     private static Manager instance = null;
 

@@ -49,22 +49,22 @@ public class RoomServerImpl implements RoomServer {
     }
 
     @Override
-    public Request reserveRoom(Reservation reservation) {
+    public Request reserveRoom(Reservation reservation) throws RemoteException{
         return roomHandler.reserveRoom(reservation);
     }
 
     @Override
-    public Request cancelReservation(Reservation reservation) {
+    public Request cancelReservation(Reservation reservation) throws RemoteException{
         return roomHandler.cancelReservation(reservation);
     }
 
     @Override
-    public Request getCurrentReservationsByGuest(String username) {
+    public Request getCurrentReservationsByGuest(String username) throws RemoteException{
         return roomHandler.getCurrentReservationsByGuest(username);
     }
 
     @Override
-    public Request getallCurrentReservations() {
+    public Request getallCurrentReservations() throws RemoteException{
         return roomHandler.getallCurrentReservations();
     }
 }

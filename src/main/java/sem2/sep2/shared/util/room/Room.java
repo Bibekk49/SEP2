@@ -2,7 +2,10 @@ package sem2.sep2.shared.util.room;
 
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable
+{
     private String type;
     private double price;
     private RoomState roomState;

@@ -1,8 +1,10 @@
 package sem2.sep2.shared.util.reservation;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Reservation {
+public class Reservation implements Serializable
+{
     private int reservationID;
     private Date startDate;
 

@@ -1,8 +1,10 @@
 package sem2.sep2.shared.util.room;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RoomList {
+public class RoomList implements Serializable
+{
     private ArrayList<Room> roomList;
     public RoomList() {
         this.roomList = new ArrayList<>();

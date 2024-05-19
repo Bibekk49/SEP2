@@ -2,7 +2,10 @@ package sem2.sep2.shared.util.room.roomState;
 
 import sem2.sep2.shared.util.room.Room;
 
-public class Occupied implements RoomState{
+import java.io.Serializable;
+
+public class Occupied implements RoomState, Serializable
+{
 
     @Override
     public void checkIn(Room room) {

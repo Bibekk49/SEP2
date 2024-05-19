@@ -1,6 +1,9 @@
 package sem2.sep2.shared.util.users;
 
-public class Guest extends User {
+import java.io.Serializable;
+
+public class Guest extends User implements Serializable
+{
     private String username;
     private String password;
 
