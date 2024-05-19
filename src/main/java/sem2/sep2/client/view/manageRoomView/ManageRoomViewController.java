@@ -11,6 +11,8 @@ import javafx.scene.layout.Region;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
+import sem2.sep2.shared.util.room.roomState.Available;
+import sem2.sep2.shared.util.room.roomState.RoomState;
 import sem2.sep2.shared.util.users.Guest;
 import sem2.sep2.shared.util.room.Room;
 
@@ -45,7 +47,10 @@ public class ManageRoomViewController implements ViewController
         this.manageRoomViewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
 
-        roomList.addAll(manageRoomViewModel.getAllRooms().getAllRooms());
+//        RoomState roomState = new Available();
+//        manageRoomViewModel.getRoomModel().createRoom(new Room(101,"Single",1000.0,roomState));
+
+        roomList.addAll(manageRoomViewModel.getAllRooms());
 //      userList.addAll(userDao.getAllUsers());
 
         roomListView.setItems(roomList);
@@ -73,10 +78,10 @@ public class ManageRoomViewController implements ViewController
         availability.setValue("Available");
     }
 
-    public void refresh() throws SQLException {
+    public void refresh(){
         roomList.clear();
         userList.clear();
-        roomList.addAll(manageRoomViewModel.getAllRooms().getAllRooms());
+        roomList.addAll(manageRoomViewModel.getAllRooms());
 //        userList.addAll(userDao.getAllUsers());
 
         roomListView.setItems(roomList);
@@ -88,13 +93,13 @@ public class ManageRoomViewController implements ViewController
     }
 
     //button here rg1
-    public void AddingButtonPressed(ActionEvent actionEvent) throws SQLException
+    public void AddingButtonPressed(ActionEvent actionEvent)
     {
         manageRoomViewModel.addRoom();
 
     }
 
-    public void EditingButtonPressed(ActionEvent actionEvent)throws SQLException
+    public void EditingButtonPressed(ActionEvent actionEvent)
     {
 //        String id = room_id.getText();
 //        String Price = price.getText();
@@ -109,7 +114,7 @@ public class ManageRoomViewController implements ViewController
 
 
     //button pg 2/3
-    public void DeleteButtonPressed(ActionEvent actionEvent)throws SQLException
+    public void DeleteButtonPressed(ActionEvent actionEvent)
     {
         manageRoomViewModel.deleteRoom();
     }

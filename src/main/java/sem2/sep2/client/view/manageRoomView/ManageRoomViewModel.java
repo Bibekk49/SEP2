@@ -10,6 +10,7 @@ import sem2.sep2.shared.util.room.roomState.Available;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManageRoomViewModel
@@ -58,6 +59,9 @@ public class ManageRoomViewModel
           throw new RuntimeException(e);
         }
     }
+    public RoomModel getRoomModel(){
+        return roomModel;
+    }
     public void deleteRoom(){
         RoomState roomState = new Available();
         try{
@@ -69,9 +73,10 @@ public class ManageRoomViewModel
           throw new RuntimeException(e);
         }
     }
-    public RoomList getAllRooms(){
+    public ArrayList<Room> getAllRooms(){
         try{
-            return (RoomList) roomModel.getAllRooms().getObject();
+           RoomList roomList = (RoomList) roomModel.getAllRooms().getObject();
+           return roomList.getAllRooms();
         }
         catch (Exception e)
         {
