@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class ManageRoomViewController implements ViewController
 {
     private ViewHandler viewHandler;
-    private ManageRoomViewModel viewModel;
+    private ManageRoomViewModel manageRoomViewModel;
     private Region root;
     @FXML
     private TextField room_id;
@@ -42,19 +42,19 @@ public class ManageRoomViewController implements ViewController
     ObservableList<Guest> userList = FXCollections.observableArrayList();
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException{
         this.viewHandler = viewHandler;
-        this.viewModel = viewModelFactory.getManageRoomViewModel();
+        this.manageRoomViewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
 
-//
-//        roomList.addAll(roomDao.getAllRooms());
-//        userList.addAll(userDao.getAllUsers());
+//      roomList.addAll();
+//      userList.addAll(userDao.getAllUsers());
+
         roomListView.setItems(roomList);
         userListView.setItems(userList);
 
 
 
-        room_id.setText("");
-        price.setText("");
+        room_id.textProperty().bindBidirectional(manageRoomViewModel.getRoom_id());
+        price.textProperty().bindBidirectional(manageRoomViewModel.getPrice());
         idnumber.setText("");
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
@@ -90,43 +90,43 @@ public class ManageRoomViewController implements ViewController
     //button here rg1
     public void AddingButtonPressed(ActionEvent actionEvent) throws SQLException
     {
-        String id = room_id.getText();
-        String Price = price.getText();
-        String type = (String) roomType.getValue();
-        String available = (String) availability.getValue();
-        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-            int roomId = Integer.parseInt(id);
-        }else{
-
-        }
-        refresh();
-        reset();
+//        String id = room_id.getText();
+//        String Price = price.getText();
+//        String type = (String) roomType.getValue();
+//        String available = (String) availability.getValue();
+//        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
+//            int roomId = Integer.parseInt(id);
+//        }else{
+//
+//        }
+//        refresh();
+//        reset();
     }
 
     public void EditingButtonPressed(ActionEvent actionEvent)throws SQLException
     {
-        String id = room_id.getText();
-        String Price = price.getText();
-        String type = (String) roomType.getValue();
-        String available = (String) availability.getValue();
-        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-            int roomId = Integer.parseInt(id);
-        }
-        refresh();
-        reset();
+//        String id = room_id.getText();
+//        String Price = price.getText();
+//        String type = (String) roomType.getValue();
+//        String available = (String) availability.getValue();
+//        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
+//            int roomId = Integer.parseInt(id);
+//        }
+//        refresh();
+//        reset();
     }
 
 
     //button pg 2/3
     public void DeleteButtonPressed(ActionEvent actionEvent)throws SQLException
     {
-        String id = idnumber.getText();
-        if(viewModel.isIntDouble(id))
-        {
-            int roomId = Integer.parseInt(id);
-        }
-        refresh();
-        reset();
+//        String id = idnumber.getText();
+//        if(viewModel.isIntDouble(id))
+//        {
+//            int roomId = Integer.parseInt(id);
+//        }
+//        refresh();
+//        reset();
     }
     public void refreshButtonPressed(ActionEvent actionEvent)
         throws SQLException
