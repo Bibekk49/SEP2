@@ -45,7 +45,7 @@ public class ManageRoomViewController implements ViewController
         this.manageRoomViewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
 
-//      roomList.addAll();
+        roomList.addAll(manageRoomViewModel.getAllRooms().getAllRooms());
 //      userList.addAll(userDao.getAllUsers());
 
         roomListView.setItems(roomList);
@@ -55,7 +55,8 @@ public class ManageRoomViewController implements ViewController
 
         room_id.textProperty().bindBidirectional(manageRoomViewModel.getRoom_id());
         price.textProperty().bindBidirectional(manageRoomViewModel.getPrice());
-        idnumber.setText("");
+        idnumber.textProperty().bindBidirectional(manageRoomViewModel.getIdnumber());
+        roomType.accessibleTextProperty().bindBidirectional(manageRoomViewModel.getRoomType());
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
@@ -75,8 +76,7 @@ public class ManageRoomViewController implements ViewController
     public void refresh() throws SQLException {
         roomList.clear();
         userList.clear();
-
-//        roomList.addAll(roomDao.getAllRooms());
+        roomList.addAll(manageRoomViewModel.getAllRooms().getAllRooms());
 //        userList.addAll(userDao.getAllUsers());
 
         roomListView.setItems(roomList);
@@ -90,17 +90,8 @@ public class ManageRoomViewController implements ViewController
     //button here rg1
     public void AddingButtonPressed(ActionEvent actionEvent) throws SQLException
     {
-//        String id = room_id.getText();
-//        String Price = price.getText();
-//        String type = (String) roomType.getValue();
-//        String available = (String) availability.getValue();
-//        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-//            int roomId = Integer.parseInt(id);
-//        }else{
-//
-//        }
-//        refresh();
-//        reset();
+        manageRoomViewModel.addRoom();
+
     }
 
     public void EditingButtonPressed(ActionEvent actionEvent)throws SQLException
@@ -120,13 +111,7 @@ public class ManageRoomViewController implements ViewController
     //button pg 2/3
     public void DeleteButtonPressed(ActionEvent actionEvent)throws SQLException
     {
-//        String id = idnumber.getText();
-//        if(viewModel.isIntDouble(id))
-//        {
-//            int roomId = Integer.parseInt(id);
-//        }
-//        refresh();
-//        reset();
+        manageRoomViewModel.deleteRoom();
     }
     public void refreshButtonPressed(ActionEvent actionEvent)
         throws SQLException

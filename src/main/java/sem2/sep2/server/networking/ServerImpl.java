@@ -13,10 +13,11 @@ public class ServerImpl implements Server {
     private RegisterUserServer registerUserServer;
     private ContactManagerServer contactManagerServer;
     private RoomServer roomServer;
-    public ServerImpl(LoginServer loginServer, RegisterUserServer registerUserServer,ContactManagerServer contactManagerServer) throws RemoteException {
+    public ServerImpl(LoginServer loginServer, RegisterUserServer registerUserServer,ContactManagerServer contactManagerServer,RoomServer roomServer) throws RemoteException {
         this.loginServer = loginServer;
         this.registerUserServer = registerUserServer;
         this.contactManagerServer = contactManagerServer;
+        this.roomServer = roomServer;
         UnicastRemoteObject.exportObject(this, 0);
     }
 

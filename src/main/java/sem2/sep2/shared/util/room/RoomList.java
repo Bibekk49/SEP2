@@ -33,12 +33,4 @@ public class RoomList {
         }
         throw new IllegalArgumentException("Room not found");
     }
-    public ArrayList<Room> getAvailableRooms() {
-        ArrayList<Room> availableRooms = new ArrayList<>();
-        for (Room r : roomList) {
-            if (r.getRoomState().equals("Available"))
-                availableRooms.add(r);
-        }
-        return availableRooms;
-    }
 }
