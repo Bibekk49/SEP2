@@ -18,7 +18,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 
 public class ReserveViewController implements ViewController {
-
     @FXML
     private DatePicker checkInDatePicker;
     @FXML
