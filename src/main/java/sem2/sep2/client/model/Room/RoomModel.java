@@ -5,9 +5,10 @@ import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public interface RoomModel {
-  Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType);
+  Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType);
   Request getAllRooms();
   Request createRoom(Room room);
   Request updateRoom(Room room);

@@ -13,6 +13,7 @@ import sem2.sep2.shared.util.room.RoomList;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class RoomHandlerImpl implements RoomHandler {
     private RoomDAO roomDAO;
@@ -26,9 +27,9 @@ public class RoomHandlerImpl implements RoomHandler {
     }
 
     @Override
-    public Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType) {
+    public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) {
         try{
-        RoomList allAvailableRoomsByType = roomDAO.getAllAvailableRoomsByType(roomType, dateFrom, dateTo);
+        RoomList allAvailableRoomsByType = roomDAO.getAllAvailableRoomsByType(roomType,dateFrom, dateTo);
         support.firePropertyChange("Available rooms", null, allAvailableRoomsByType);
         return new Request("Available rooms", allAvailableRoomsByType);
         } catch (Exception e) {

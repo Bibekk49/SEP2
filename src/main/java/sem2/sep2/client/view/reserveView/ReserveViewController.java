@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,6 +31,8 @@ public class ReserveViewController implements ViewController {
     private TableColumn<Room, String> typeColumn;
     @FXML
     private TableColumn<Room, Double> pricePerDayColumn;
+    @FXML
+    private ChoiceBox roomType;
     private ObservableList<Room> roomData;
     private ViewHandler viewHandler;
     private ReserveViewModel reserveViewModel;
@@ -46,22 +49,33 @@ public class ReserveViewController implements ViewController {
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
+        roomType.setValue("Single");
+
+
+        this.roomType.valueProperty().bindBidirectional(reserveViewModel.getRoomType());
+        this.checkInDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckInDatePicker());
+        this.checkOutDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckOutDatePicker());
+
+
+
         roomData = FXCollections.observableArrayList();
         tableView.setItems(roomData);
+
+        checkInDatePicker.setValue(LocalDate.now());
+        checkOutDatePicker.setValue(LocalDate.now().plusDays(1));
+
     }
     @Override
     public void reset(){
         roomData.clear();
+        checkInDatePicker.setValue(LocalDate.now());
+        checkOutDatePicker.setValue(LocalDate.now().plusDays(1));//default date
     }
     public void SearchButtonPressed(ActionEvent actionEvent) throws Exception
     {
-        LocalDate checkInDate = checkInDatePicker.getValue();
-        LocalDate checkOutDate = checkOutDatePicker.getValue();
-        if (checkInDate == null || checkOutDate == null || checkInDate.isAfter(checkOutDate)) {
-            System.out.println("ERROR");
-            return;
-        }
-        reset();
+//       roomData = reserveViewModel.searchRooms();
+//        reset();
 //        roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
     }
     public void ContactUsPressed(ActionEvent event)throws Exception{

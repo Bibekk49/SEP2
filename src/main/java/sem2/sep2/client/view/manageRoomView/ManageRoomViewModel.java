@@ -24,20 +24,6 @@ public class ManageRoomViewModel
         idnumber = new SimpleStringProperty();
         roomType = new SimpleStringProperty();
     }
-
-    public boolean isIntDouble(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e1) {
-            try {
-                Double.parseDouble(input);
-                return true;
-            } catch (NumberFormatException e2) {
-                return false;
-            }
-        }
-    }
     public StringProperty getRoom_id(){
         return room_id;
     }
@@ -75,12 +61,15 @@ public class ManageRoomViewModel
     }
     public ArrayList<Room> getAllRooms(){
         try{
-           RoomList roomList = (RoomList) roomModel.getAllRooms().getObject();
-           return roomList.getAllRooms();
-        }
-        catch (Exception e)
-        {
-          throw new RuntimeException(e);
+            Request request = roomModel.getAllRooms();
+            if(request != null && request.getObject() != null) {
+                RoomList roomList = (RoomList) request.getObject();
+                return roomList.getAllRooms();
+            } else {
+                return new ArrayList<>();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

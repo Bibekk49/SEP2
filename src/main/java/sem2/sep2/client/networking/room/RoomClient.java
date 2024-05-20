@@ -6,10 +6,11 @@ import sem2.sep2.shared.util.room.Room;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public interface RoomClient
 {
-    Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType);
+    Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType);
 
     Request getAllRooms();
 

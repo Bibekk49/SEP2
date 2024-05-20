@@ -17,9 +17,6 @@ import sem2.sep2.shared.util.users.Guest;
 import sem2.sep2.shared.util.room.Room;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ManageRoomViewController implements ViewController
 {
@@ -40,20 +37,20 @@ public class ManageRoomViewController implements ViewController
     private ListView<Room> roomListView = new ListView<>();
     @FXML
     private ListView<Guest> userListView = new ListView<>();
-    ObservableList<Room> roomList = FXCollections.observableArrayList();
+    ObservableList<Room> roomView = FXCollections.observableArrayList();
     ObservableList<Guest> userList = FXCollections.observableArrayList();
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException{
         this.viewHandler = viewHandler;
         this.manageRoomViewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
 
-//        RoomState roomState = new Available();
-//        manageRoomViewModel.getRoomModel().createRoom(new Room(101,"Single",1000.0,roomState));
+        RoomState roomState = new Available();
+        manageRoomViewModel.getRoomModel().createRoom(new Room(101,"Single",1000.0,roomState));
 
-        roomList.addAll(manageRoomViewModel.getAllRooms());
+        roomView.addAll(manageRoomViewModel.getAllRooms());
 //      userList.addAll(userDao.getAllUsers());
 
-        roomListView.setItems(roomList);
+        roomListView.setItems(roomView);
         userListView.setItems(userList);
 
 
@@ -79,12 +76,12 @@ public class ManageRoomViewController implements ViewController
     }
 
     public void refresh(){
-        roomList.clear();
+        roomView.clear();
         userList.clear();
-        roomList.addAll(manageRoomViewModel.getAllRooms());
+        roomView.addAll(manageRoomViewModel.getAllRooms());
 //        userList.addAll(userDao.getAllUsers());
 
-        roomListView.setItems(roomList);
+        roomListView.setItems(roomView);
         userListView.setItems(userList);
     }
 
@@ -96,7 +93,7 @@ public class ManageRoomViewController implements ViewController
     public void AddingButtonPressed(ActionEvent actionEvent)
     {
         manageRoomViewModel.addRoom();
-
+        refresh();
     }
 
     public void EditingButtonPressed(ActionEvent actionEvent)
@@ -119,7 +116,6 @@ public class ManageRoomViewController implements ViewController
         manageRoomViewModel.deleteRoom();
     }
     public void refreshButtonPressed(ActionEvent actionEvent)
-        throws SQLException
     {
         this.refresh();
     }

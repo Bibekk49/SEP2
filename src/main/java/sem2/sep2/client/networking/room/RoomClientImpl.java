@@ -8,6 +8,7 @@ import sem2.sep2.shared.util.room.Room;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class RoomClientImpl implements RoomClient {
     private Server server;
@@ -21,9 +22,9 @@ public class RoomClientImpl implements RoomClient {
     }
 
     @Override
-    public Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType) {
+    public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) {
         try {
-            return server.getRoomServer().searchAvailableRoom(dateFrom, dateTo, roomType);
+            return server.getRoomServer().searchAvailableRoom(dateFrom, dateTo,roomType);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new Request("Cannot connect to server", null);

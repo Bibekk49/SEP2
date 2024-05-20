@@ -4,6 +4,7 @@ import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public interface RoomDAO {
     String  addRoom(Room room);
@@ -12,6 +13,6 @@ public interface RoomDAO {
     RoomList getAllRooms();
     RoomList getAvailableRooms(Date dateFrom, Date dateTo);
     RoomList getAllRoomsByType(String category);
-    RoomList getAllAvailableRoomsByType(String roomType, Date dateFrom, Date dateTo);
+    RoomList getAllAvailableRoomsByType(String roomType, LocalDate dateFrom, LocalDate dateTo);
 
 }

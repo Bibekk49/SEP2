@@ -6,6 +6,7 @@ import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class RoomModelImpl implements RoomModel
 {
@@ -15,8 +16,8 @@ public class RoomModelImpl implements RoomModel
   }
 
   @Override
-  public Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType) {
-    return roomClient.searchAvailableRoom(dateFrom, dateTo, roomType);
+  public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) {
+    return roomClient.searchAvailableRoom(dateFrom, dateTo,roomType);
   }
 
   @Override

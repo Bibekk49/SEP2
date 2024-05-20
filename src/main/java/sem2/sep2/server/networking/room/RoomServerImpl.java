@@ -10,6 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class RoomServerImpl implements RoomServer {
     private RoomHandler roomHandler;
@@ -24,8 +25,8 @@ public class RoomServerImpl implements RoomServer {
     }
 
     @Override
-    public Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType) throws RemoteException {
-        return roomHandler.searchAvailableRoom(dateFrom, dateTo, roomType);
+    public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) throws RemoteException {
+        return roomHandler.searchAvailableRoom(dateFrom, dateTo,roomType);
     }
 
     @Override

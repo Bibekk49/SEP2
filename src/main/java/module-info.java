@@ -8,6 +8,8 @@ module sem2.sep2 {
     requires java.desktop;
 
     opens sem2.sep2.client.view.reserveView to javafx.fxml;
+    opens sem2.sep2.client.view.contactView to javafx.fxml;
+
 
     opens sem2.sep2 to javafx.fxml;
     opens sem2.sep2.server.view to javafx.fxml;

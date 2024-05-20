@@ -7,9 +7,10 @@ import sem2.sep2.shared.util.room.Room;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public interface RoomServer extends Remote {
-    Request searchAvailableRoom(Date dateFrom, Date dateTo, String roomType) throws RemoteException;
+    Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) throws RemoteException;
 
     Request getAllRooms() throws RemoteException;
 

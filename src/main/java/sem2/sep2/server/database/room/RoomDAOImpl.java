@@ -9,6 +9,7 @@ import sem2.sep2.shared.util.room.roomState.Reserved;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class RoomDAOImpl implements RoomDAO {
 
@@ -184,15 +185,15 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomList getAllAvailableRoomsByType(String roomType, Date dateFrom, Date dateTo) {
+    public RoomList getAllAvailableRoomsByType(String roomType, LocalDate dateFrom,LocalDate dateTo) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=? AND room_number NOT IN (SELECT room_number FROM SEP2.reservations WHERE start_date <= ? AND end_date >= ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, roomType);
-            statement.setDate(2, dateFrom);
-            statement.setDate(3, dateTo);
+            statement.setDate(2, Date.valueOf(dateFrom));
+            statement.setDate(3, Date.valueOf(dateTo));
 
             ResultSet resultSet = statement.executeQuery();
             RoomList roomList = new RoomList();

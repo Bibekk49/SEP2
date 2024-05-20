@@ -47,16 +47,16 @@
                   <TableColumn fx:id="pricePerDayColumn" prefWidth="165.33331298828125" text="Price per day" />
               </columns>
             </TableView>
-            <DatePicker layoutX="73.0" layoutY="51.0" prefHeight="23.0" prefWidth="149.0" />
-            <DatePicker layoutX="74.0" layoutY="120.0" prefHeight="23.0" prefWidth="148.0" />
+            <DatePicker fx:id="checkInDatePicker" layoutX="73.0" layoutY="51.0" prefHeight="23.0" prefWidth="149.0" />
+            <DatePicker fx:id="checkOutDatePicker" layoutX="74.0" layoutY="120.0" prefHeight="23.0" prefWidth="148.0" />
             <Label layoutX="14.0" layoutY="55.0" text="Check in" />
             <Label layoutX="10.0" layoutY="124.0" text="Check out" />
-            <Button layoutX="74.0" layoutY="285.0" mnemonicParsing="false" text="Search">
+            <Button layoutX="74.0" layoutY="285.0" mnemonicParsing="false" onAction="#SearchButtonPressed" text="Search">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <ChoiceBox layoutX="73.0" layoutY="187.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="roomType" layoutX="73.0" layoutY="187.0" prefWidth="150.0" />
             <Label layoutX="25.0" layoutY="191.0" text="Type" />
          </children>
       </AnchorPane>
