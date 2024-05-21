@@ -65,45 +65,35 @@ public class ViewHandler {
         stage.show();
     }
     public void openContactView() {
-        if(contactScene == null){
-            Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
-            contactScene = new Scene(root);
-            Stage contactStage = new Stage();
-            contactStage.setTitle("Contact");
-            contactStage.setScene(contactScene);
-            contactStage.show();
-        }
-
+        Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
+        contactScene = new Scene(root);
+        Stage contactStage = new Stage();
+        contactStage.setTitle("Contact");
+        contactStage.setScene(contactScene);
+        contactStage.show();
     }
     public void openManagerView()
     {
         Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
         Scene = new Scene(root);
         stage.setTitle("Manager");
-
         stage.setScene(Scene);
         stage.show();
     }
     public void openProfileView(){
-        if(profileScene == null){
-            Region root = loadFXMLFile("/sem2.sep2.client.view/Profile.fxml");
-            profileScene = new Scene(root);
-            Stage profileStage = new Stage();
-            profileStage.setTitle("Profile");
-            profileStage.setScene(profileScene);
-            profileStage.show();
-        }
-
+        Region root = loadFXMLFile("/sem2.sep2.client.view/Profile.fxml");
+        profileScene = new Scene(root);
+        Stage profileStage = new Stage();
+        profileStage.setTitle("Profile");
+        profileStage.setScene(profileScene);
+        profileStage.show();
     }
     public void openHistoryView(){
-        if(historyScene == null){
-            Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
-            historyScene = new Scene(root);
-            Stage historyStage = new Stage();
-            historyStage.setTitle("History");
-            historyStage.setScene(historyScene);
-            historyStage.show();
-        }
-
+        Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
+        historyScene = new Scene(root);
+        Stage historyStage = new Stage();
+        historyStage.setTitle("History");
+        historyStage.setScene(historyScene);
+        historyStage.show();
     }
 }

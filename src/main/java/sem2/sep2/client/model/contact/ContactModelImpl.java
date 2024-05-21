@@ -10,7 +10,7 @@ public class ContactModelImpl implements ContactModel
   }
   @Override
   public void sendMessage(String message){
-    contactClient.sendMessage(message);
+//    contactClient.sendMessage(message);
   }
   @Override
   public String receiveMessage(){
