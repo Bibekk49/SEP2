@@ -38,6 +38,7 @@ public class ProfileViewModel
     if(!newPassword.get().equals(again.get())){
       return false;
     }
+
     return createModel.changePassword(userNameChangePassword.get(), newPassword.get()).equals("Password changed successfully");
   }
   public void reset(){

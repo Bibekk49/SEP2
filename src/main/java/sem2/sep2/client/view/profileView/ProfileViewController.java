@@ -39,9 +39,15 @@ public class ProfileViewController implements ViewController
     profileViewModel.reset();
   }
   public void changeUserNamePressed(ActionEvent actionEvent){
-    profileViewModel.changeUserName();
+    if(profileViewModel.changeUserName()){
+      System.out.println("Change failed");
+    }
+    System.out.println("Change successfully");
   }
   public void changeNewPasswordPressed(ActionEvent actionEvent){
-    profileViewModel.changePassword();
+    if(profileViewModel.changePassword()){
+      System.out.println("Change failed");
+    }
+    System.out.println("Change successfully");
   }
 }
