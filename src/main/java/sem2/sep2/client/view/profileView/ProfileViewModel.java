@@ -2,13 +2,13 @@ package sem2.sep2.client.view.profileView;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import sem2.sep2.client.model.register.CreateModel;
+import sem2.sep2.client.model.register.RegisterModel;
 
 public class ProfileViewModel
 {
-  private CreateModel createModel;
+  private RegisterModel createModel;
   private StringProperty UserName,newUserName,userNameChangePassword,newPassword,again;
-  public ProfileViewModel(CreateModel createModel){
+  public ProfileViewModel(RegisterModel createModel){
     this.createModel = createModel;
     UserName = new SimpleStringProperty();
     newUserName = new SimpleStringProperty();

@@ -42,6 +42,10 @@ public class LoginViewController implements ViewController
 
     if (success)
       System.out.println("User registered" );
+    else {
+      errorText.setText("Username already exists!");
+      errorText.setVisible(true);
+    }
   }
 
   @FXML public void onLogin()
@@ -71,6 +75,7 @@ public class LoginViewController implements ViewController
     errorText.textProperty().bind(loginViewModel.errorLogin());
     guestNameField.textProperty().bindBidirectional(loginViewModel.usernameLogin());
     passwordField.textProperty().bindBidirectional(loginViewModel.passwordLogin());
+
   }
 
 }

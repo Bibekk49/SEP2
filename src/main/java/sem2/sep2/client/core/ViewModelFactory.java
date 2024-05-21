@@ -3,7 +3,6 @@ package sem2.sep2.client.core;
 import sem2.sep2.client.view.contactView.ContactViewModel;
 import sem2.sep2.client.view.historyView.HistoryViewModel;
 import sem2.sep2.client.view.loginView.LoginViewModel;
-import sem2.sep2.client.view.loginView.ViewState;
 import sem2.sep2.client.view.manageRoomView.ManageRoomViewModel;
 import sem2.sep2.client.view.profileView.ProfileViewModel;
 import sem2.sep2.client.view.reserveView.ReserveViewModel;

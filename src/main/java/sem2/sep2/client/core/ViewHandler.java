@@ -42,7 +42,7 @@ public class ViewHandler {
         }
         catch (Exception e)
         {
-          throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return root;
     }
@@ -81,7 +81,7 @@ public class ViewHandler {
         Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
         Scene = new Scene(root);
         stage.setTitle("Manager");
-        
+
         stage.setScene(Scene);
         stage.show();
     }
