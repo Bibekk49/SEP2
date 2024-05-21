@@ -14,7 +14,8 @@ public class ViewHandler {
     private Stage stage;
     private final ViewModelFactory viewModelFactory;
     private Scene Scene;
-
+    private Scene profileScene;
+    private Scene contactScene;
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
@@ -37,8 +38,10 @@ public class ViewHandler {
         ViewController ctrl = loader.getController();
         try {
             ctrl.init(this, viewModelFactory,root);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
+        }
+        catch (Exception e)
+        {
+          throw new RuntimeException(e);
         }
         return root;
     }
@@ -61,12 +64,15 @@ public class ViewHandler {
         stage.show();
     }
     public void openContactView() {
-        Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
-        Scene scene = new Scene(root);
-        Stage contactStage = new Stage();
-        contactStage.setTitle("Contact");
-        contactStage.setScene(scene);
-        contactStage.show();
+        if(contactScene == null){
+            Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
+            contactScene = new Scene(root);
+            Stage contactStage = new Stage();
+            contactStage.setTitle("Contact");
+            contactStage.setScene(contactScene);
+            contactStage.show();
+        }
+
     }
 
     public void openManagerView()
@@ -77,5 +83,16 @@ public class ViewHandler {
         
         stage.setScene(Scene);
         stage.show();
+    }
+    public void openProfileView(){
+        if(profileScene == null){
+            Region root = loadFXMLFile("/sem2.sep2.client.view/Profile.fxml");
+            profileScene = new Scene(root);
+            Stage profileStage = new Stage();
+            profileStage.setTitle("Profile");
+            profileStage.setScene(profileScene);
+            profileStage.show();
+        }
+
     }
 }

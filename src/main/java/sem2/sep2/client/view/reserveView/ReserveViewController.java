@@ -92,5 +92,8 @@ public class ReserveViewController implements ViewController {
             e.printStackTrace();
         }
     }
+    public void ChangeProfilePressed(ActionEvent actionEvent){
+        viewHandler.openProfileView();
+    }
 
 }

@@ -19,8 +19,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Profile">
             <items>
-              <MenuItem mnemonicParsing="false" text="Change username" />
-                  <MenuItem mnemonicParsing="false" text="Change password" />
+              <MenuItem mnemonicParsing="false" onAction="#ChangeProfilePressed" text="Change username" />
+                  <MenuItem mnemonicParsing="false" onAction="#ChangeProfilePressed" text="Change password" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ohters">
