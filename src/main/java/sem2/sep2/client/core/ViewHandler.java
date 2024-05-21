@@ -53,6 +53,7 @@ public class ViewHandler {
             Scene = new Scene(root);
             stage.setTitle("Login");
         }
+
         stage.setScene(Scene);
         stage.show();
     }
