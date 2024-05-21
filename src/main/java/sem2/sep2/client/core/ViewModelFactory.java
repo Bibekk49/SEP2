@@ -1,6 +1,7 @@
 package sem2.sep2.client.core;
 
 import sem2.sep2.client.view.contactView.ContactViewModel;
+import sem2.sep2.client.view.historyView.HistoryViewModel;
 import sem2.sep2.client.view.loginView.LoginViewModel;
 import sem2.sep2.client.view.loginView.ViewState;
 import sem2.sep2.client.view.manageRoomView.ManageRoomViewModel;
@@ -14,6 +15,7 @@ public class ViewModelFactory {
     private ContactViewModel contactViewModel;
     private ManageRoomViewModel manageRoomViewModel;
     private ProfileViewModel profileViewModel;
+    private HistoryViewModel historyViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -53,5 +55,11 @@ public class ViewModelFactory {
       profileViewModel = new ProfileViewModel(modelFactory.getCreateModel());
     }
     return profileViewModel;
+  }
+  public HistoryViewModel getHistoryViewModel(){
+      if(historyViewModel == null){
+        historyViewModel = new HistoryViewModel(modelFactory.getRoomModel());
+      }
+      return historyViewModel;
   }
 }

@@ -24,6 +24,7 @@ public class ProfileViewController implements ViewController
   private TextField newPassword;
   @FXML
   private TextField again;
+  @Override
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
     this.viewHandler = viewHandler;
     this.profileViewModel = viewModelFactory.getProfileViewModel();
@@ -35,6 +36,7 @@ public class ProfileViewController implements ViewController
     this.newPassword.textProperty().bindBidirectional(profileViewModel.getNewPassword());
     this.again.textProperty().bindBidirectional(profileViewModel.getAgain());
   }
+  @Override
   public void reset(){
     profileViewModel.reset();
   }
@@ -43,11 +45,13 @@ public class ProfileViewController implements ViewController
       System.out.println("Change failed");
     }
     System.out.println("Change successfully");
+    reset();
   }
   public void changeNewPasswordPressed(ActionEvent actionEvent){
     if(profileViewModel.changePassword()){
       System.out.println("Change failed");
     }
     System.out.println("Change successfully");
+    reset();
   }
 }

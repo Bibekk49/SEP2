@@ -25,7 +25,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Ohters">
             <items>
-              <MenuItem mnemonicParsing="false" text="Booking history" />
+              <MenuItem mnemonicParsing="false" onAction="#BookingHistory" text="Booking history" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

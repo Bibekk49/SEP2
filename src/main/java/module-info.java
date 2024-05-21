@@ -12,6 +12,7 @@ module sem2.sep2 {
     opens sem2.sep2.client.view.profileView to javafx.fxml;
     opens sem2.sep2.client.view.loginView to javafx.fxml;
     opens sem2.sep2.client.view.manageRoomView to javafx.fxml;
+    opens sem2.sep2.client.view.historyView to javafx.fxml;
 
     opens sem2.sep2 to javafx.fxml;
     opens sem2.sep2.server.view to javafx.fxml;

@@ -16,6 +16,7 @@ public class ViewHandler {
     private Scene Scene;
     private Scene profileScene;
     private Scene contactScene;
+    private Scene historyScene;
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
@@ -92,6 +93,17 @@ public class ViewHandler {
             profileStage.setTitle("Profile");
             profileStage.setScene(profileScene);
             profileStage.show();
+        }
+
+    }
+    public void openHistoryView(){
+        if(historyScene == null){
+            Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
+            historyScene = new Scene(root);
+            Stage historyStage = new Stage();
+            historyStage.setTitle("Profile");
+            historyStage.setScene(historyScene);
+            historyStage.show();
         }
 
     }

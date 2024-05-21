@@ -95,5 +95,8 @@ public class ReserveViewController implements ViewController {
     public void ChangeProfilePressed(ActionEvent actionEvent){
         viewHandler.openProfileView();
     }
+    public void BookingHistory(ActionEvent actionEvent){
+        viewHandler.openHistoryView();
+    }
 
 }
