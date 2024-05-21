@@ -10,6 +10,7 @@ import sem2.sep2.shared.util.room.roomState.RoomState;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.sql.Date;
 
 public class RoomDAOImpl implements RoomDAO {
 
