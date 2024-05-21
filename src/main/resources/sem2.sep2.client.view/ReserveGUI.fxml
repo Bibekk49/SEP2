@@ -47,17 +47,17 @@
                   <TableColumn fx:id="pricePerDayColumn" prefWidth="165.33331298828125" text="Price per day" />
               </columns>
             </TableView>
-            <DatePicker fx:id="checkInDatePicker" layoutX="73.0" layoutY="51.0" prefHeight="23.0" prefWidth="149.0" />
-            <DatePicker fx:id="checkOutDatePicker" layoutX="74.0" layoutY="120.0" prefHeight="23.0" prefWidth="148.0" />
-            <Label layoutX="14.0" layoutY="55.0" text="Check in" />
-            <Label layoutX="10.0" layoutY="124.0" text="Check out" />
-            <Button layoutX="74.0" layoutY="285.0" mnemonicParsing="false" onAction="#SearchButtonPressed" text="Search">
+            <DatePicker fx:id="checkInDatePicker" layoutX="72.0" layoutY="58.0" prefHeight="23.0" prefWidth="149.0" />
+            <DatePicker fx:id="checkOutDatePicker" layoutX="73.0" layoutY="131.0" prefHeight="23.0" prefWidth="148.0" />
+            <Label layoutX="14.0" layoutY="62.0" text="Check in" />
+            <Label layoutX="10.0" layoutY="135.0" text="Check out" />
+            <Button layoutX="92.0" layoutY="287.0" mnemonicParsing="false" onAction="#SearchButtonPressed" text="Search">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="roomType" layoutX="73.0" layoutY="187.0" prefWidth="150.0" />
-            <Label layoutX="25.0" layoutY="191.0" text="Type" />
+            <ChoiceBox fx:id="roomType" layoutX="72.0" layoutY="206.0" prefWidth="150.0" />
+            <Label layoutX="25.0" layoutY="210.0" text="Type" />
          </children>
       </AnchorPane>
    </center>

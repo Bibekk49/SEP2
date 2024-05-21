@@ -22,7 +22,7 @@ public class ContactViewController implements ViewController
   @FXML
   private TextArea showField;
   @Override
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root)throws RemoteException
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root)
   {
     this.viewHandler = viewHandler;
     this.root = root;

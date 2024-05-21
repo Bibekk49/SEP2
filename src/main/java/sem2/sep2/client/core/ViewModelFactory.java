@@ -4,6 +4,7 @@ import sem2.sep2.client.view.contactView.ContactViewModel;
 import sem2.sep2.client.view.loginView.LoginViewModel;
 import sem2.sep2.client.view.loginView.ViewState;
 import sem2.sep2.client.view.manageRoomView.ManageRoomViewModel;
+import sem2.sep2.client.view.profileView.ProfileViewModel;
 import sem2.sep2.client.view.reserveView.ReserveViewModel;
 
 public class ViewModelFactory {
@@ -12,6 +13,7 @@ public class ViewModelFactory {
     private ReserveViewModel clientReserveViewModel;
     private ContactViewModel contactViewModel;
     private ManageRoomViewModel manageRoomViewModel;
+    private ProfileViewModel profileViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -45,5 +47,11 @@ public class ViewModelFactory {
       manageRoomViewModel = new ManageRoomViewModel(modelFactory.getRoomModel());
     }
     return manageRoomViewModel;
+  }
+  public ProfileViewModel getProfileViewModel(){
+    if(profileViewModel == null){
+      profileViewModel = new ProfileViewModel(modelFactory.getCreateModel());
+    }
+    return profileViewModel;
   }
 }

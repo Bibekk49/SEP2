@@ -20,15 +20,13 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="131.0" layoutY="84.0" text="Room Number" />
-                        <Label layoutX="131.0" layoutY="123.0" text="RoomType" />
-                        <Label layoutX="131.0" layoutY="156.0" text="Price" />
-                        <Label layoutX="131.0" layoutY="192.0" prefHeight="23.0" prefWidth="85.0" text="Availability" />
+                        <Label layoutX="129.0" layoutY="141.0" text="RoomType" />
+                        <Label layoutX="129.0" layoutY="196.0" text="Price" />
                         <TextField fx:id="room_id" layoutX="266.0" layoutY="80.0" />
-                        <TextField fx:id="price" layoutX="266.0" layoutY="152.0" />
-                        <ChoiceBox fx:id="roomType" layoutX="266.0" layoutY="119.0" prefWidth="150.0" />
-                        <ChoiceBox fx:id="availability" layoutX="266.0" layoutY="192.0" prefWidth="150.0" />
-                        <Button layoutX="146.0" layoutY="255.0" mnemonicParsing="false" onAction="#AddingButtonPressed" text="Adding" />
-                        <Button layoutX="359.0" layoutY="255.0" mnemonicParsing="false" onAction="#EditingButtonPressed" text="Editing" />
+                        <TextField fx:id="price" layoutX="266.0" layoutY="199.0" />
+                        <ChoiceBox fx:id="roomType" layoutX="266.0" layoutY="144.0" prefHeight="23.0" prefWidth="160.0" />
+                        <Button layoutX="162.0" layoutY="266.0" mnemonicParsing="false" onAction="#AddingButtonPressed" text="Adding" />
+                        <Button layoutX="346.0" layoutY="266.0" mnemonicParsing="false" onAction="#EditingButtonPressed" text="Editing" />
                      </children>
                   </AnchorPane>
                </content>
@@ -37,11 +35,11 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="62.0" layoutY="175.0" mnemonicParsing="false" onAction="#DeleteButtonPressed" text="Deleting" />
-                        <TextField fx:id="idnumber" layoutX="14.0" layoutY="116.0" />
-                        <Label layoutX="52.0" layoutY="67.0" text="Room Number" />
+                        <Button layoutX="54.0" layoutY="203.0" mnemonicParsing="false" onAction="#DeleteButtonPressed" prefHeight="42.0" prefWidth="81.0" text="Deleting" />
+                        <TextField fx:id="idnumber" layoutX="32.0" layoutY="150.0" prefHeight="23.0" prefWidth="126.0" />
+                        <Label layoutX="52.0" layoutY="80.0" prefHeight="36.0" prefWidth="86.0" text="Room Number" />
                         <ListView fx:id="roomListView" layoutX="187.0" prefHeight="373.0" prefWidth="413.0" />
-                        <Button layoutX="62.0" layoutY="226.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
+                        <Button layoutY="347.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
                      </children>
                   </AnchorPane>
                </content>
@@ -51,7 +49,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ListView fx:id="userListView" prefHeight="297.0" prefWidth="600.0" />
-                        <Button layoutX="273.0" layoutY="317.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
+                        <Button layoutY="345.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
                      </children>
                   </AnchorPane>
                </content>

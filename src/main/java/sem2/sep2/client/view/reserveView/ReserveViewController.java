@@ -41,8 +41,7 @@ public class ReserveViewController implements ViewController {
     private Region root;
 
     @Override
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,
-                     Region root) throws RemoteException{
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
         this.viewHandler = viewHandler;
         this.reserveViewModel = viewModelFactory.getReserveViewModel();
         this.root = root;
@@ -86,13 +85,8 @@ public class ReserveViewController implements ViewController {
     public void AboutPressed(ActionEvent event)throws  Exception{
         String url = "http://royalhotel2.durablesites.com";
         try {
-            // 创建一个URI对象
             URI uri = new URI(url);
-
-            // 获取默认的桌面实例
             Desktop desktop = Desktop.getDesktop();
-
-            // 调用默认浏览器打开外部网页
             desktop.browse(uri);
         } catch (Exception e) {
             e.printStackTrace();

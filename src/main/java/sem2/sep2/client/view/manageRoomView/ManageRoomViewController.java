@@ -16,7 +16,6 @@ import sem2.sep2.shared.util.room.roomState.RoomState;
 import sem2.sep2.shared.util.users.Guest;
 import sem2.sep2.shared.util.room.Room;
 
-import java.rmi.RemoteException;
 
 public class ManageRoomViewController implements ViewController
 {
@@ -32,14 +31,12 @@ public class ManageRoomViewController implements ViewController
     @FXML
     private ChoiceBox roomType;
     @FXML
-    private ChoiceBox availability;
-    @FXML
     private ListView<Room> roomListView = new ListView<>();
     @FXML
     private ListView<Guest> userListView = new ListView<>();
     ObservableList<Room> roomView = FXCollections.observableArrayList();
     ObservableList<Guest> userList = FXCollections.observableArrayList();
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root) throws RemoteException{
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root){
         this.viewHandler = viewHandler;
         this.manageRoomViewModel = viewModelFactory.getManageRoomViewModel();
         this.root = root;
@@ -62,8 +59,6 @@ public class ManageRoomViewController implements ViewController
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
-        availability.setItems(FXCollections.observableArrayList("Available", "Occupied", "Reserved"));
-        availability.setValue("Available");
 
     }
 
@@ -72,7 +67,6 @@ public class ManageRoomViewController implements ViewController
         price.clear();
         idnumber.clear();
         roomType.setValue("Single");
-        availability.setValue("Available");
     }
 
     public void refresh(){

@@ -8,10 +8,7 @@ import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 import sem2.sep2.shared.util.room.roomState.Available;
 import sem2.sep2.shared.util.room.roomState.RoomState;
-
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ManageRoomViewModel
 {

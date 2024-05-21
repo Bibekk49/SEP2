@@ -63,7 +63,7 @@ public class LoginViewController implements ViewController
   }
 
   @Override
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root) throws RemoteException {
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
     this.viewHandler = viewHandler;
     this.loginViewModel = viewModelFactory.getLoginViewModel();
     this.root = root;
