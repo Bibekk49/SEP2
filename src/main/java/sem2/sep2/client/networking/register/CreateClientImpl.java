@@ -3,7 +3,7 @@ package sem2.sep2.client.networking.register;
 import sem2.sep2.client.networking.GetServer;
 import sem2.sep2.shared.networking.serverInterfaces.Server;
 
-public class CreateClientImpl implements CreateClient{
+public class CreateClientImpl implements RegisterClient {
     private Server server;
     public CreateClientImpl() {
         try {

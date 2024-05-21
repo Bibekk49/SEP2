@@ -1,10 +1,10 @@
 package sem2.sep2.client.model.register;
 
-import sem2.sep2.client.networking.register.CreateClient;
+import sem2.sep2.client.networking.register.RegisterClient;
 
-public class CreateImpl implements CreateModel{
-    private CreateClient client;
-    public CreateImpl(CreateClient client) {
+public class RegisterModelImpl implements RegisterModel {
+    private RegisterClient client;
+    public RegisterModelImpl(RegisterClient client) {
         this.client = client;
     }
     @Override

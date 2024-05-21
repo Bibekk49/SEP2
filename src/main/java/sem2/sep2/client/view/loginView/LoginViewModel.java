@@ -2,69 +2,65 @@ package sem2.sep2.client.view.loginView;
 
 import javafx.beans.property.*;
 import sem2.sep2.client.model.login.LoginModel;
-import sem2.sep2.client.model.register.CreateModel;
+import sem2.sep2.client.model.register.RegisterModel;
 
 public class LoginViewModel {
-    private StringProperty errorLogin, usernameLogin, passwordLogin, userType;
+    private StringProperty errorTextProperty, usernameProperty, passwordProperty;
     private BooleanProperty signInScene;
     private LoginModel loginModel;
-    private CreateModel createModel;
+    private RegisterModel registerModel;
 
-    public LoginViewModel(LoginModel loginModel, CreateModel createModel) {
+    public LoginViewModel(LoginModel loginModel, RegisterModel registerModel) {
         this.loginModel = loginModel;
-        this.createModel = createModel;
-        errorLogin = new SimpleStringProperty();
-        usernameLogin = new SimpleStringProperty();
-        passwordLogin = new SimpleStringProperty();
+        this.registerModel = registerModel;
+        errorTextProperty = new SimpleStringProperty();
+        usernameProperty = new SimpleStringProperty();
+        passwordProperty = new SimpleStringProperty();
         signInScene = new SimpleBooleanProperty();
-        userType = new SimpleStringProperty();
     }
 
     public void reset() {
-        usernameLogin.set(null);
-        passwordLogin.set(null);
-        errorLogin.set(null);
+        usernameProperty.set(null);
+        passwordProperty.set(null);
+        errorTextProperty.set(null);
     }
 
     public StringProperty errorLogin() {
-        return errorLogin;
+        return errorTextProperty;
     }
 
     public StringProperty usernameLogin() {
-        return usernameLogin;
+        return usernameProperty;
     }
 
     public StringProperty passwordLogin() {
-        return passwordLogin;
+        return passwordProperty;
     }
 
-    public StringProperty userType() {
-        return userType;
-    }
 
     public boolean register() {
-        errorLogin.set(null);
+        errorTextProperty.set(null);
 
         try {
-            createModel.addUser(usernameLogin.get(), passwordLogin.get());
+            registerModel.addUser(usernameProperty.get(), passwordProperty.get());
             //viewState.setGuestName(userNameProperty.get());
             return true;
         } catch (IllegalArgumentException | IllegalStateException e) {
-            errorLogin.set(e.getMessage());
+            errorTextProperty.set(e.getMessage());
         }
 
         return false;
     }
 
     public boolean login() {
-        errorLogin.set(null);
+        errorTextProperty.set(null);
 
         try {
-            loginModel.login(usernameLogin.get(), passwordLogin.get());
+            loginModel.login(usernameProperty.get(), passwordProperty.get());
             //viewState.setGuestName(userNameProperty.get());
             return true;
         } catch (IllegalArgumentException | IllegalStateException e) {
-            errorLogin.set(e.getMessage());
+            errorTextProperty.set(e.getMessage());
         }
 
         return false;
