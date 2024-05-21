@@ -1,6 +1,7 @@
 package sem2.sep2.server.database.create;
 
 import sem2.sep2.server.database.DataBaseConnection;
+import sem2.sep2.shared.util.Request;
 
 import java.sql.*;
 
@@ -15,7 +16,7 @@ public class CreateDAOImpl implements CreateDAO {
     }
 
     @Override
-    public String changePassword(String username, String password) {
+    public Request changePassword(String username, String password) {
         validatePassword(password);
         try (Connection connection = DataBaseConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM SEP2.users WHERE username=?;");
@@ -26,9 +27,9 @@ public class CreateDAOImpl implements CreateDAO {
                 updatePasswordStatement.setString(1, password);
                 updatePasswordStatement.setString(2, username);
                 updatePasswordStatement.executeUpdate();
-                return "Password changed successfully";
+                return new Request("Password changed successfully", null);
             } else {
-                return "Username does not exist";
+                return new Request("Username does not exist", null);
             }
         } catch (SQLException throwables) {
             throw new RuntimeException("Failed to change password: " + throwables.getMessage());
@@ -36,7 +37,7 @@ public class CreateDAOImpl implements CreateDAO {
     }
 
     @Override
-    public String changeUsername(String username, String newUsername) {
+    public Request changeUsername(String username, String newUsername) {
         validateUsername(newUsername);
         try (Connection connection = DataBaseConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM SEP2.users WHERE username=?;");
@@ -47,9 +48,9 @@ public class CreateDAOImpl implements CreateDAO {
                 updateUsernameStatement.setString(1, newUsername);
                 updateUsernameStatement.setString(2, username);
                 updateUsernameStatement.executeUpdate();
-                return "Username changed successfully";
+                return new Request("Username changed successfully", null);
             } else {
-                return "Username does not exist";
+                return new Request("Username does not exist", null);
             }
         } catch (SQLException throwables) {
             throw new RuntimeException("Failed to change username: " + throwables.getMessage());
@@ -58,7 +59,7 @@ public class CreateDAOImpl implements CreateDAO {
 
 
     @Override
-    public String addUser(String username, String password) {
+    public Request addUser(String username, String password) {
         validateUsername(username);
         validatePassword(password);
         try (Connection connection = DataBaseConnection.getConnection()) {
@@ -66,7 +67,7 @@ public class CreateDAOImpl implements CreateDAO {
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return "Username is already taken";
+                return new Request("Username already exists", null);
             } else {
                 String userType = username.equals("admin") ? "Manager" : "Guest";
                 PreparedStatement insertUserStatement = connection.prepareStatement("INSERT INTO SEP2.users(username, password, user_type) VALUES (?, ?, ?);");
@@ -74,10 +75,10 @@ public class CreateDAOImpl implements CreateDAO {
                 insertUserStatement.setString(2, password);
                 insertUserStatement.setString(3, userType);
                 insertUserStatement.executeUpdate();
-                return "User created successfully";
+                return new Request("User created successfully", null);
             }
         } catch (SQLException throwables) {
-            return throwables.getMessage();
+            return new Request("Failed to create user: " + throwables.getMessage(), null);
         }
     }
 

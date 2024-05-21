@@ -5,7 +5,7 @@ import sem2.sep2.client.networking.contact.ContactClientImpl;
 import sem2.sep2.client.networking.login.LoginClient;
 import sem2.sep2.client.networking.login.LoginClientImpl;
 import sem2.sep2.client.networking.register.RegisterClient;
-import sem2.sep2.client.networking.register.CreateClientImpl;
+import sem2.sep2.client.networking.register.RegisterClientImpl;
 import sem2.sep2.client.networking.room.RoomClient;
 import sem2.sep2.client.networking.room.RoomClientImpl;
 
@@ -23,7 +23,7 @@ public class ClientFactory {
 
     public RegisterClient getCreateClient() {
         if (createCLient == null) {
-            createCLient = new CreateClientImpl();
+            createCLient = new RegisterClientImpl();
         }
         return createCLient;
     }

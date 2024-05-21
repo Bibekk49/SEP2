@@ -3,10 +3,10 @@ package sem2.sep2.client.view.loginView;
 import javafx.beans.property.*;
 import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.register.RegisterModel;
+import sem2.sep2.shared.util.Request;
 
 public class LoginViewModel {
     private StringProperty errorTextProperty, usernameProperty, passwordProperty;
-    private BooleanProperty signInScene;
     private LoginModel loginModel;
     private RegisterModel registerModel;
 
@@ -16,7 +16,6 @@ public class LoginViewModel {
         errorTextProperty = new SimpleStringProperty();
         usernameProperty = new SimpleStringProperty();
         passwordProperty = new SimpleStringProperty();
-        signInScene = new SimpleBooleanProperty();
     }
 
     public void reset() {
@@ -25,44 +24,35 @@ public class LoginViewModel {
         errorTextProperty.set(null);
     }
 
-    public StringProperty errorLogin() {
+    public StringProperty errorTextProperty() {
         return errorTextProperty;
     }
 
-    public StringProperty usernameLogin() {
+    public StringProperty usernameProperty() {
         return usernameProperty;
     }
 
-    public StringProperty passwordLogin() {
+    public StringProperty passwordPorperty() {
         return passwordProperty;
     }
 
 
-    public boolean register() {
-        errorTextProperty.set(null);
-
+    public Request register() {
         try {
-            registerModel.addUser(usernameProperty.get(), passwordProperty.get());
-            //viewState.setGuestName(userNameProperty.get());
-            return true;
+            return registerModel.addUser(usernameProperty.get(), passwordProperty.get());
         } catch (IllegalArgumentException | IllegalStateException e) {
             errorTextProperty.set(e.getMessage());
+            return null;
         }
-
-        return false;
     }
 
-    public boolean login() {
-        errorTextProperty.set(null);
-
+    public Request login() {
         try {
-            loginModel.login(usernameProperty.get(), passwordProperty.get());
-            //viewState.setGuestName(userNameProperty.get());
-            return true;
+            return loginModel.login(usernameProperty.get(), passwordProperty.get());
         } catch (IllegalArgumentException | IllegalStateException e) {
             errorTextProperty.set(e.getMessage());
+            return null;
         }
 
-        return false;
     }
 }

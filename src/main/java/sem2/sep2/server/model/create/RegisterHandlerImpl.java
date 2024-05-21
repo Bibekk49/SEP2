@@ -2,26 +2,27 @@ package sem2.sep2.server.model.create;
 
 import sem2.sep2.server.database.create.CreateDAO;
 import sem2.sep2.server.database.create.CreateDAOImpl;
+import sem2.sep2.shared.util.Request;
 
-public class CreateHandlerImpl implements CreateHandler {
+public class RegisterHandlerImpl implements RegisterHandler {
     private CreateDAO createDAO;
 
-    public CreateHandlerImpl() {
+    public RegisterHandlerImpl() {
         createDAO = new CreateDAOImpl();
     }
 
     @Override
-    public String addUser(String username, String password) {
+    public Request addUser(String username, String password) {
         return createDAO.addUser(username, password);
     }
 
     @Override
-    public String changePassword(String username, String password) {
+    public Request changePassword(String username, String password) {
         return createDAO.changePassword(username, password);
     }
 
     @Override
-    public String changeUsername(String username, String newUsername) {
+    public Request changeUsername(String username, String newUsername) {
         return createDAO.changeUsername(username, newUsername);
     }
 }
