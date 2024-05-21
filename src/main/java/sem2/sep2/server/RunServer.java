@@ -1,14 +1,9 @@
 package sem2.sep2.server;
 
-<<<<<<< Updated upstream
 import sem2.sep2.server.model.contactManager.ContactManagerHandler;
 import sem2.sep2.server.model.contactManager.ContactManagerHandlerImpl;
-import sem2.sep2.server.model.create.CreateHandler;
-import sem2.sep2.server.model.create.CreateHandlerImpl;
-=======
 import sem2.sep2.server.model.create.RegisterHandler;
 import sem2.sep2.server.model.create.RegisterHandlerImpl;
->>>>>>> Stashed changes
 import sem2.sep2.server.model.login.LoginHandler;
 import sem2.sep2.server.model.login.LoginHandlerImpl;
 import sem2.sep2.server.model.room.RoomHandler;
