@@ -10,7 +10,6 @@ public class CreateHandlerImpl implements CreateHandler {
         createDAO = new CreateDAOImpl();
     }
 
-
     @Override
     public String addUser(String username, String password) {
         return createDAO.addUser(username, password);

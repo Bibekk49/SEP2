@@ -1,5 +1,7 @@
 package sem2.sep2.server;
 
+import sem2.sep2.server.model.contactManager.ContactManagerHandler;
+import sem2.sep2.server.model.contactManager.ContactManagerHandlerImpl;
 import sem2.sep2.server.model.create.CreateHandler;
 import sem2.sep2.server.model.create.CreateHandlerImpl;
 import sem2.sep2.server.model.login.LoginHandler;
@@ -25,7 +27,8 @@ public class RunServer {
         RoomHandler roomHandler = new RoomHandlerImpl();
         RoomServer roomServer = new RoomServerImpl(roomHandler);
 
-        ContactManagerServer contactManagerServer = new ContactManagerServerImpl();
+        ContactManagerHandler contactManagerHandler = new ContactManagerHandlerImpl();
+        ContactManagerServer contactManagerServer = new ContactManagerServerImpl(contactManagerHandler);
 
         CreateHandler createHandler = new CreateHandlerImpl();
         RegisterUserServer registerUserServer = new RegisterUserServerImpl(createHandler);

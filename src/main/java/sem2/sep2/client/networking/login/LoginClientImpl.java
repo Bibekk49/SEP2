@@ -4,6 +4,8 @@ import sem2.sep2.client.networking.GetServer;
 import sem2.sep2.shared.networking.serverInterfaces.Server;
 import sem2.sep2.shared.util.Request;
 
+import java.rmi.RemoteException;
+
 public class LoginClientImpl implements LoginClient{
     private Server server;
     public LoginClientImpl(){
@@ -17,7 +19,7 @@ public class LoginClientImpl implements LoginClient{
     public Request login(String username, String password) {
         try {
             return server.getLoginServer().isLoginPossible(username,password);
-        } catch (Exception e){
+        } catch (RemoteException e){
             e.printStackTrace();
             return new Request("Cannot connect to server",null);
         }
