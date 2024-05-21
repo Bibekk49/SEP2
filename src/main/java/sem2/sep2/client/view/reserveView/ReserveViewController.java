@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
@@ -35,6 +36,8 @@ public class ReserveViewController implements ViewController {
     private TableColumn<Room, Double> pricePerDayColumn;
     @FXML
     private ChoiceBox roomType;
+    @FXML
+    private TextField roomNumber;
     private ObservableList<Room> roomData;
     private ViewHandler viewHandler;
     private ReserveViewModel reserveViewModel;
@@ -53,7 +56,7 @@ public class ReserveViewController implements ViewController {
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
 
-
+        roomNumber.textProperty().bindBidirectional(reserveViewModel.getRoomNumber());
         this.roomType.valueProperty().bindBidirectional(reserveViewModel.getRoomType());
         this.checkInDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckInDatePicker());
         this.checkOutDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckOutDatePicker());
@@ -75,9 +78,9 @@ public class ReserveViewController implements ViewController {
     }
     public void SearchButtonPressed(ActionEvent actionEvent) throws Exception
     {
-//       roomData = reserveViewModel.searchRooms();
-//        reset();
-//        roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
+        roomData = (ObservableList<Room>) reserveViewModel.searchRooms();
+//       roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
+        tableView.setItems(roomData);
     }
     public void ContactUsPressed(ActionEvent event)throws Exception{
         viewHandler.openContactView();
@@ -98,5 +101,10 @@ public class ReserveViewController implements ViewController {
     public void BookingHistory(ActionEvent actionEvent){
         viewHandler.openHistoryView();
     }
-
+    public void Reserve(ActionEvent actionEvent){
+        reserveViewModel.Reserve();
+    }
+    public void Cancel(ActionEvent actionEvent){
+        reserveViewModel.Cancel();
+    }
 }

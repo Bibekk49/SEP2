@@ -113,6 +113,9 @@ public class ManageRoomViewController implements ViewController
     {
         this.refresh();
     }
+    public void BookingHistory(ActionEvent actionEvent){
+        viewHandler.openHistoryView();
+    }
 }
 
 

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class ReserveViewModel {
   private RoomModel reserveModel;
-  private StringProperty roomType;
+  private StringProperty roomType,roomNumber;
   private ObjectProperty<LocalDate> checkInDatePicker,checkOutDatePicker;
 //  private SearchModel searchModel;
   public ReserveViewModel(RoomModel reserveModel)
@@ -17,12 +17,16 @@ public class ReserveViewModel {
     checkInDatePicker = new SimpleObjectProperty<>();
     checkOutDatePicker = new SimpleObjectProperty<>();
     roomType = new SimpleStringProperty();
+    roomNumber = new SimpleStringProperty();
   }
   public Property<LocalDate> getCheckInDatePicker(){
     return checkInDatePicker;
   }
   public Property<LocalDate> getCheckOutDatePicker(){
     return checkOutDatePicker;
+  }
+  public StringProperty getRoomNumber(){
+    return roomNumber;
   }
   public StringProperty getRoomType(){
     return roomType;
@@ -40,5 +44,11 @@ public class ReserveViewModel {
     }else{
       return null;
     }
+  }
+  public void Reserve(){
+
+  }
+  public void Cancel(){
+
   }
 }

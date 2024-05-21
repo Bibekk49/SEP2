@@ -25,8 +25,8 @@
                         <TextField fx:id="room_id" layoutX="266.0" layoutY="80.0" />
                         <TextField fx:id="price" layoutX="266.0" layoutY="199.0" />
                         <ChoiceBox fx:id="roomType" layoutX="266.0" layoutY="144.0" prefHeight="23.0" prefWidth="160.0" />
-                        <Button layoutX="162.0" layoutY="266.0" mnemonicParsing="false" onAction="#AddingButtonPressed" text="Adding" />
-                        <Button layoutX="346.0" layoutY="266.0" mnemonicParsing="false" onAction="#EditingButtonPressed" text="Editing" />
+                        <Button layoutX="128.0" layoutY="276.0" mnemonicParsing="false" onAction="#AddingButtonPressed" prefHeight="36.0" prefWidth="79.0" text="Adding" />
+                        <Button layoutX="377.0" layoutY="273.0" mnemonicParsing="false" onAction="#EditingButtonPressed" prefHeight="39.0" prefWidth="79.0" text="Editing" />
                      </children>
                   </AnchorPane>
                </content>
@@ -44,12 +44,13 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="All The Guest">
+            <Tab text="BookingHistory">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ListView fx:id="userListView" prefHeight="297.0" prefWidth="600.0" />
                         <Button layoutY="345.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="Refresh" />
+                        <Button layoutX="235.0" layoutY="315.0" mnemonicParsing="false" onAction="#BookingHistory" prefHeight="41.0" prefWidth="130.0" text="Booking History" />
                      </children>
                   </AnchorPane>
                </content>

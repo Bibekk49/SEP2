@@ -9,11 +9,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.reserveView.ReserveViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.reserveView.ReserveViewController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -38,26 +39,30 @@
       </MenuBar>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="375.0" prefWidth="665.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" layoutX="250.0" layoutY="3.0" prefHeight="367.0" prefWidth="343.0">
+            <TableView fx:id="tableView" layoutX="250.0" layoutY="3.0" prefHeight="367.0" prefWidth="357.0">
               <columns>
                 <TableColumn fx:id="roomNumberColumn" prefWidth="119.3333740234375" text="Room number" />
-                <TableColumn fx:id="typeColumn" prefWidth="87.3333740234375" text="Type" />
-                  <TableColumn fx:id="pricePerDayColumn" prefWidth="165.33331298828125" text="Price per day" />
+                <TableColumn fx:id="typeColumn" prefWidth="111.33331298828125" text="Type" />
+                  <TableColumn fx:id="pricePerDayColumn" prefWidth="141.99996948242188" text="Price per day" />
               </columns>
             </TableView>
             <DatePicker fx:id="checkInDatePicker" layoutX="72.0" layoutY="58.0" prefHeight="23.0" prefWidth="149.0" />
             <DatePicker fx:id="checkOutDatePicker" layoutX="73.0" layoutY="131.0" prefHeight="23.0" prefWidth="148.0" />
             <Label layoutX="14.0" layoutY="62.0" text="Check in" />
             <Label layoutX="10.0" layoutY="135.0" text="Check out" />
-            <Button layoutX="92.0" layoutY="287.0" mnemonicParsing="false" onAction="#SearchButtonPressed" text="Search">
+            <Button layoutX="68.0" layoutY="289.0" mnemonicParsing="false" onAction="#SearchButtonPressed" prefHeight="43.0" prefWidth="125.0" text="Search">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
             <ChoiceBox fx:id="roomType" layoutX="72.0" layoutY="206.0" prefWidth="150.0" />
             <Label layoutX="25.0" layoutY="210.0" text="Type" />
+            <Label layoutX="662.0" layoutY="91.0" prefHeight="15.0" prefWidth="133.0" text="Room Number" />
+            <Button layoutX="622.0" layoutY="247.0" mnemonicParsing="false" onAction="#Reserve" prefHeight="42.0" prefWidth="79.0" text="Reserve" />
+            <Button layoutX="729.0" layoutY="247.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="42.0" prefWidth="79.0" text="Cancel" />
+            <TextField fx:id="roomNumber" layoutX="649.0" layoutY="163.0" prefHeight="23.0" prefWidth="119.0" />
          </children>
       </AnchorPane>
    </center>

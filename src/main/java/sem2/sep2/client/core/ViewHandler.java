@@ -75,7 +75,6 @@ public class ViewHandler {
         }
 
     }
-
     public void openManagerView()
     {
         Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
@@ -101,7 +100,7 @@ public class ViewHandler {
             Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
             historyScene = new Scene(root);
             Stage historyStage = new Stage();
-            historyStage.setTitle("Profile");
+            historyStage.setTitle("History");
             historyStage.setScene(historyScene);
             historyStage.show();
         }
