@@ -1,6 +1,7 @@
 package sem2.sep2.server.database.reservation;
 
 import sem2.sep2.server.database.DataBaseConnection;
+import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.reservation.ReservationList;
 
@@ -17,9 +18,9 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public String addReservation(Reservation reservation) {
+    public Request addReservation(Reservation reservation) {
         if (!checkRoomAvailability(reservation)) {
-            return "Room is not available for the selected date range.";
+            return new Request("Room is not available for the selected date range.", null);
         }
         String query = "INSERT INTO SEP2.reservations(room_number, username, start_date, end_date) VALUES (?, ?, ?, ?);";
 
@@ -34,30 +35,33 @@ public class ReservationDAOImpl implements ReservationDAO {
             int rowsInserted = statement.executeUpdate();
 
             if (rowsInserted > 0) {
-                return "Reservation created successfully";
+                return new Request("Reservation created successfully", reservation);
             } else {
-                return "Failed to create reservation";
+                return new Request("Failed to create reservation", null);
             }
         } catch (SQLException throwables) {
-            return throwables.getMessage();
+            throwables.printStackTrace();
+            return new Request("Database error", null);
         }
     }
 
 
     @Override
-    public void cancelReservation(Reservation reservation) {
+    public Request cancelReservation(Reservation reservation) {
         try (Connection connection = DataBaseConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM SEP2.reservations WHERE reservation_id=?;");
             statement.setInt(1, reservation.getReservationID());
             statement.executeQuery();
+            return new Request("Reservation cancelled successfully", null);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return new Request("Failed to cancel reservation", null);
         }
     }
 
 
     @Override
-    public ReservationList getCurrentReservationsByGuest(String username) {
+    public Request getCurrentReservationsByGuest(String username) {
         try (Connection connection = DataBaseConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM SEP2.reservations WHERE username=?;");
             statement.setString(1, username);
@@ -73,15 +77,15 @@ public class ReservationDAOImpl implements ReservationDAO {
                 );
                 reservationList.addReservation(reservation);
             }
-            return reservationList;
+            return new Request("Current reservations", reservationList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return null;
+            return new Request("Failed to get current reservations", null);
         }
     }
 
     @Override
-    public ReservationList getAllCurrentReservations() {
+        public Request getAllCurrentReservations() {
         String query = "SELECT * FROM SEP2.reservations WHERE ? BETWEEN start_date AND end_date;";
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -102,10 +106,10 @@ public class ReservationDAOImpl implements ReservationDAO {
                 );
                 reservationList.addReservation(reservation);
             }
-            return reservationList;
+            return new Request("All current reservations", reservationList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return null;
+            return new Request("Failed to get all current reservations", null);
         }
 
     }

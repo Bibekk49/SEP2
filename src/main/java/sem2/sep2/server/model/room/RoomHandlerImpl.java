@@ -6,13 +6,10 @@ import sem2.sep2.server.database.room.RoomDAO;
 import sem2.sep2.server.database.room.RoomDAOImpl;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
-import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
-import sem2.sep2.shared.util.room.RoomList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class RoomHandlerImpl implements RoomHandler {
@@ -27,94 +24,50 @@ public class RoomHandlerImpl implements RoomHandler {
     }
 
     @Override
-    public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) {
-        try{
-        RoomList allAvailableRoomsByType = roomDAO.getAllAvailableRoomsByType(roomType,dateFrom, dateTo);
-        support.firePropertyChange("Available rooms", null, allAvailableRoomsByType);
-        return new Request("Available rooms", allAvailableRoomsByType);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+    public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo, String roomType) {
+        Request request = roomDAO.getAllAvailableRoomsByType(roomType, dateFrom, dateTo);
+        support.firePropertyChange("Available rooms", null, request.getObject());
+        return request;
     }
 
     @Override
     public Request getAllRooms() {
-        try {
-            RoomList roomList = roomDAO.getAllRooms();
-            return new Request("All rooms", roomList);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return roomDAO.getAllRooms();
     }
 
     @Override
     public Request createRoom(Room room) {
-        try {
-            roomDAO.addRoom(room);
-            return new Request("Room created", null);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return roomDAO.addRoom(room);
     }
 
     @Override
     public Request updateRoom(Room room) {
-        try {
-            roomDAO.updateRoom(room);
-            return new Request("Room updated", null);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return roomDAO.updateRoom(room);
     }
 
     @Override
     public Request deleteRoom(Room room) {
-        try {
-            roomDAO.removeRoom(room);
-            return new Request("Room deleted", null);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return roomDAO.removeRoom(room);
     }
 
     @Override
     public Request reserveRoom(Reservation reservation) {
-        try {
-            reservationDAO.addReservation(reservation);
-            return new Request("Room reserved", null);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return reservationDAO.addReservation(reservation);
     }
 
     @Override
     public Request cancelReservation(Reservation reservation) {
-        try {
-            reservationDAO.cancelReservation(reservation);
-            return new Request("Reservation cancelled", null);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return reservationDAO.cancelReservation(reservation);
     }
 
     @Override
     public Request getCurrentReservationsByGuest(String username) {
-        try {
-            ReservationList currentReservationsByGuest = reservationDAO.getCurrentReservationsByGuest(username);
-            return new Request("Current reservations", currentReservationsByGuest);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return reservationDAO.getCurrentReservationsByGuest(username);
     }
 
     @Override
     public Request getallCurrentReservations() {
-        try {
-            ReservationList allCurrentReservations = reservationDAO.getAllCurrentReservations();
-            return new Request("All current reservations", allCurrentReservations);
-        } catch (Exception e) {
-            return new Request(e.getMessage(), null);
-        }
+        return reservationDAO.getAllCurrentReservations();
     }
 
     @Override
