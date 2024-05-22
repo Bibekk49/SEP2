@@ -29,7 +29,7 @@ public class ContactViewModel
   }
   public void sendMessage(Guest guest) {
     try {
-      contactModel.sendMessage(guest,chatField.get());
+      contactModel.contactManager(guest, chatField.get());
       chatField.set("");
     } catch (Exception e) {
       e.printStackTrace();

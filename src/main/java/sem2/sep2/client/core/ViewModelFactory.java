@@ -45,7 +45,7 @@ public class ViewModelFactory {
   public ManageRoomViewModel getManageRoomViewModel()
   {
     if(manageRoomViewModel == null){
-      manageRoomViewModel = new ManageRoomViewModel(modelFactory.getRoomModel());
+      manageRoomViewModel = new ManageRoomViewModel(modelFactory.getRoomModel(),modelFactory.getContactModel());
     }
     return manageRoomViewModel;
   }

@@ -10,11 +10,11 @@ public class ContactModelImpl implements ContactModel
     this.contactClient = contactClient;
   }
   @Override
-  public void sendMessage(Guest guest,String message){
-    contactClient.contactManager(guest,message);
+  public String contactManager(Guest guest,String message){
+    return contactClient.contactManager(guest,message);
   }
   @Override
-  public String receiveMessage(){
-    return "";
+  public String managerResponse(Guest guest,String message){
+    return contactClient.managerResponse(guest,message);
   }
 }

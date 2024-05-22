@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import sem2.sep2.client.core.ViewHandler;
@@ -28,6 +29,12 @@ public class ManageRoomViewController implements ViewController
     private TextField price;
     @FXML
     private TextField idnumber;
+    @FXML
+    private TextArea showField;
+    @FXML
+    private TextArea chatField;
+    @FXML
+    private TextArea Recipient;
     @FXML
     private ChoiceBox roomType;
     @FXML
@@ -56,10 +63,12 @@ public class ManageRoomViewController implements ViewController
         price.textProperty().bindBidirectional(manageRoomViewModel.getPrice());
         idnumber.textProperty().bindBidirectional(manageRoomViewModel.getIdnumber());
         roomType.accessibleTextProperty().bindBidirectional(manageRoomViewModel.getRoomType());
+        chatField.textProperty().bindBidirectional(manageRoomViewModel.getChatField());
+        showField.textProperty().bindBidirectional(manageRoomViewModel.getShowField());
+        Recipient.textProperty().bindBidirectional(manageRoomViewModel.getRecipient());
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
-
     }
 
     public void reset() {
@@ -92,14 +101,8 @@ public class ManageRoomViewController implements ViewController
 
     public void EditingButtonPressed(ActionEvent actionEvent)
     {
-//        String id = room_id.getText();
-//        String Price = price.getText();
-//        String type = (String) roomType.getValue();
-//        String available = (String) availability.getValue();
-//        if(viewModel.isIntDouble(id)&&viewModel.isIntDouble(Price)){
-//            int roomId = Integer.parseInt(id);
-//        }
-//        refresh();
+        manageRoomViewModel.editRoom();
+        refresh();
 //        reset();
     }
 
@@ -115,6 +118,9 @@ public class ManageRoomViewController implements ViewController
     }
     public void BookingHistory(ActionEvent actionEvent){
         viewHandler.openHistoryView();
+    }
+    public void sendButtonPressed(ActionEvent actionEvent){
+        manageRoomViewModel.managerResponse();
     }
 }
 
