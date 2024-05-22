@@ -8,6 +8,7 @@ import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
 
 import javafx.event.ActionEvent;
+import sem2.sep2.shared.util.users.Guest;
 
 public class ProfileViewController implements ViewController
 {
@@ -45,6 +46,7 @@ public class ProfileViewController implements ViewController
       System.out.println("Change failed");
     }
     System.out.println("Change successfully");
+    viewHandler.uploadUserName(newUserName.getText());
     reset();
   }
   public void changeNewPasswordPressed(ActionEvent actionEvent){
@@ -52,6 +54,7 @@ public class ProfileViewController implements ViewController
       System.out.println("Change failed");
     }
     System.out.println("Change successfully");
+    viewHandler.uploadPassword(newPassword.getText());
     reset();
   }
 }

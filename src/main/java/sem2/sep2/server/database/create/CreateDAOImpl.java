@@ -2,6 +2,7 @@ package sem2.sep2.server.database.create;
 
 import sem2.sep2.server.database.DataBaseConnection;
 import sem2.sep2.shared.util.Request;
+import sem2.sep2.shared.util.users.Guest;
 
 import java.sql.*;
 

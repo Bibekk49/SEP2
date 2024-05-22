@@ -108,4 +108,10 @@ public class ViewHandler {
     {
         this.guest = guest;
     }
+    public void uploadPassword(String password){
+        this.guest.setPassword(password);
+    }
+    public void uploadUserName(String username){
+        this.guest.setUsername(username);
+    }
 }
