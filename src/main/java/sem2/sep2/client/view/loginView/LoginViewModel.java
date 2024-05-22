@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.register.RegisterModel;
 import sem2.sep2.shared.util.Request;
+import sem2.sep2.shared.util.users.Guest;
+import sem2.sep2.shared.util.users.Manager;
+import sem2.sep2.shared.util.users.User;
 
 public class LoginViewModel {
     private StringProperty errorTextProperty, usernameProperty, passwordProperty;
@@ -55,4 +58,5 @@ public class LoginViewModel {
         }
 
     }
+
 }

@@ -6,7 +6,6 @@ public class Guest extends User implements Serializable
 {
     private String username;
     private String password;
-
     public Guest(String username, String password) {
         super(username, password);
     }
@@ -26,5 +25,6 @@ public class Guest extends User implements Serializable
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 }

@@ -1,6 +1,7 @@
 package sem2.sep2.client.model.contact;
 
 import sem2.sep2.client.networking.contact.ContactClient;
+import sem2.sep2.shared.util.users.Guest;
 
 public class ContactModelImpl implements ContactModel
 {
@@ -9,8 +10,8 @@ public class ContactModelImpl implements ContactModel
     this.contactClient = contactClient;
   }
   @Override
-  public void sendMessage(String message){
-//    contactClient.sendMessage(message);
+  public void sendMessage(Guest guest,String message){
+    contactClient.contactManager(guest,message);
   }
   @Override
   public String receiveMessage(){

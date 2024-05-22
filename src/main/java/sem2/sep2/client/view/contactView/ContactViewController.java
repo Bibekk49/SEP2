@@ -36,7 +36,7 @@ public class ContactViewController implements ViewController
     chatField.setText("");
   }
   public void SendButtonPressed(ActionEvent event){
-    contactViewModel.sendMessage();
+    contactViewModel.sendMessage(viewHandler.getGuest());
     reset();
   }
 }

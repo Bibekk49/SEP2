@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import sem2.sep2.client.view.ViewController;
+import sem2.sep2.shared.util.users.Guest;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -17,6 +18,7 @@ public class ViewHandler {
     private Scene profileScene;
     private Scene contactScene;
     private Scene historyScene;
+    private Guest guest;
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
@@ -26,7 +28,6 @@ public class ViewHandler {
         stage = new Stage();
         openLoginView();
     }
-
     private Region loadFXMLFile(String path) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
@@ -96,5 +97,15 @@ public class ViewHandler {
         historyStage.setTitle("History");
         historyStage.setScene(historyScene);
         historyStage.show();
+    }
+
+    public Guest getGuest()
+    {
+        return guest;
+    }
+
+    public void setGuest(Guest guest)
+    {
+        this.guest = guest;
     }
 }

@@ -3,6 +3,7 @@ package sem2.sep2.client.view.contactView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import sem2.sep2.client.model.contact.ContactModel;
+import sem2.sep2.shared.util.users.Guest;
 
 public class ContactViewModel
 {
@@ -26,9 +27,9 @@ public class ContactViewModel
   public StringProperty getChatField(){
     return chatField;
   }
-  public void sendMessage() {
+  public void sendMessage(Guest guest) {
     try {
-      contactModel.sendMessage(chatField.get());
+      contactModel.sendMessage(guest,chatField.get());
       chatField.set("");
     } catch (Exception e) {
       e.printStackTrace();

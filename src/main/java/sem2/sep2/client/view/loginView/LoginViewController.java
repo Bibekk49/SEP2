@@ -9,6 +9,7 @@ import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
 import sem2.sep2.shared.util.Request;
+import sem2.sep2.shared.util.users.Guest;
 
 public class LoginViewController implements ViewController {
     @FXML
@@ -59,6 +60,7 @@ public class LoginViewController implements ViewController {
                 viewHandler.openManagerView();
                 System.out.println(result.getType());
             } else if (result.getType().equals("Login successful as Guest")) {
+                viewHandler.setGuest((Guest) result.getObject());
                 viewHandler.openReserveView();
                 System.out.println(result.getType());
             } else {
