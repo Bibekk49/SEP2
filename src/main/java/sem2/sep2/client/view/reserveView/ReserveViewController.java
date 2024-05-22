@@ -102,9 +102,9 @@ public class ReserveViewController implements ViewController {
         viewHandler.openHistoryView();
     }
     public void Reserve(ActionEvent actionEvent){
-        reserveViewModel.Reserve();
+        reserveViewModel.Reserve(viewHandler.getGuest());
     }
     public void Cancel(ActionEvent actionEvent){
-        reserveViewModel.Cancel();
+        reserveViewModel.Cancel(viewHandler.getGuest());
     }
 }
