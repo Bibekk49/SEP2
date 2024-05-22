@@ -1,6 +1,6 @@
 package sem2.sep2.server.networking.login;
 
-import sem2.sep2.server.model.create.RegisterHandler;
+import sem2.sep2.server.model.register.RegisterHandler;
 import sem2.sep2.shared.networking.serverInterfaces.RegisterUserServer;
 import sem2.sep2.shared.util.Request;
 

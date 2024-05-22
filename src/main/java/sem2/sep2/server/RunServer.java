@@ -2,8 +2,8 @@ package sem2.sep2.server;
 
 import sem2.sep2.server.model.contactManager.ContactManagerHandler;
 import sem2.sep2.server.model.contactManager.ContactManagerHandlerImpl;
-import sem2.sep2.server.model.create.RegisterHandler;
-import sem2.sep2.server.model.create.RegisterHandlerImpl;
+import sem2.sep2.server.model.register.RegisterHandler;
+import sem2.sep2.server.model.register.RegisterHandlerImpl;
 import sem2.sep2.server.model.login.LoginHandler;
 import sem2.sep2.server.model.login.LoginHandlerImpl;
 import sem2.sep2.server.model.room.RoomHandler;

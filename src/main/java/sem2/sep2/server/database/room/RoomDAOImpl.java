@@ -1,6 +1,7 @@
 package sem2.sep2.server.database.room;
 
 import sem2.sep2.server.database.DataBaseConnection;
+import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 import sem2.sep2.shared.util.room.roomState.Available;
@@ -10,12 +11,11 @@ import sem2.sep2.shared.util.room.roomState.RoomState;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.sql.Date;
 
 public class RoomDAOImpl implements RoomDAO {
 
     @Override
-    public String addRoom(Room room) {
+    public Request addRoom(Room room) {
         String query = "INSERT INTO SEP2.rooms(room_number, room_type, rate, room_state) VALUES (?, ?, ?, ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -29,18 +29,18 @@ public class RoomDAOImpl implements RoomDAO {
             int rowsInserted = statement.executeUpdate();
 
             if (rowsInserted > 0) {
-                return "Room added successfully";
+                return new Request("Room added successfully", room);
             } else {
-                return "Failed to add room";
+                return new Request("Failed to add room", null);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return "Database error: " + throwables.getMessage();
+            return new Request("Database error", null);
         }
     }
 
     @Override
-    public void removeRoom(Room room) {
+    public Request removeRoom(Room room) {
         String query = "DELETE FROM SEP2.rooms WHERE room_number=?;";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -49,13 +49,15 @@ public class RoomDAOImpl implements RoomDAO {
             statement.setInt(1, room.getRoomNumber());
 
             statement.executeUpdate();
+            return new Request("Room removed successfully", null);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return new Request("Failed to remove room", null);
         }
     }
 
     @Override
-    public void updateRoom(Room room) {
+    public Request updateRoom(Room room) {
         String query = "UPDATE SEP2.rooms SET room_type=?, rate=?, room_state=? WHERE room_number=?;";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -67,14 +69,16 @@ public class RoomDAOImpl implements RoomDAO {
             statement.setInt(4, room.getRoomNumber());
 
             statement.executeUpdate();
+            return new Request("Room updated successfully", room);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return new Request("Failed to update room", null);
         }
     }
 
 
     @Override
-    public RoomList getAllRooms() {
+    public Request getAllRooms() {
         String query = "SELECT * FROM SEP2.rooms;";
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -93,7 +97,7 @@ public class RoomDAOImpl implements RoomDAO {
                         roomState = new Occupied();
                         break;
                     default:
-                        throw new IllegalArgumentException("Unknown room state: " + resultSet.getString("room_state"));
+                        return new Request("Unknown room state", null);
                 }
                 Room room = new Room(
                         resultSet.getInt("room_number"),
@@ -103,16 +107,16 @@ public class RoomDAOImpl implements RoomDAO {
                 );
                 roomList.addRoom(room);
             }
-            return roomList;
+            return new Request("Rooms fetched successfully", roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException("Failed to get rooms", throwables);
+            return new Request("Failed to get rooms", null);
         }
     }
 
 
     @Override
-    public RoomList getAvailableRooms(Date dateFrom, Date dateTo) {
+    public Request getAvailableRooms(Date dateFrom, Date dateTo) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_number NOT IN (SELECT room_number FROM SEP2.reservations WHERE start_date <= ? AND end_date >= ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -135,16 +139,16 @@ public class RoomDAOImpl implements RoomDAO {
                     roomList.addRoom(room);
                 }
             }
-            return roomList;
+            return new Request("Available rooms fetched successfully", roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException("Failed to get available rooms", throwables);
+            return new Request("Failed to get available rooms", null);
         }
     }
 
 
     @Override
-    public RoomList getAllRoomsByType(String category) {
+    public Request getAllRoomsByType(String category) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=?;";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -168,7 +172,7 @@ public class RoomDAOImpl implements RoomDAO {
                         roomState = new Occupied();
                         break;
                     default:
-                        throw new IllegalArgumentException("Unknown room state: " + resultSet.getString("room_state"));
+                        return new Request("Unknown room state", null);
                 }
                 Room room = new Room(
                         resultSet.getInt("room_number"),
@@ -178,15 +182,15 @@ public class RoomDAOImpl implements RoomDAO {
                 );
                 roomList.addRoom(room);
             }
-            return roomList;
+            return new Request("Rooms fetched successfully", roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException("Failed to get rooms by type", throwables);
+            return new Request("Failed to get rooms by type", null);
         }
     }
 
     @Override
-    public RoomList getAllAvailableRoomsByType(String roomType, LocalDate dateFrom,LocalDate dateTo) {
+    public Request getAllAvailableRoomsByType(String roomType, LocalDate dateFrom, LocalDate dateTo) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=? AND room_number NOT IN (SELECT room_number FROM SEP2.reservations WHERE start_date <= ? AND end_date >= ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -210,10 +214,10 @@ public class RoomDAOImpl implements RoomDAO {
                     roomList.addRoom(room);
                 }
             }
-            return roomList;
+            return new Request("Available rooms fetched successfully", roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException("Failed to get available rooms by type", throwables);
+            return new Request("Failed to get available rooms by type", null);
         }
     }
 }

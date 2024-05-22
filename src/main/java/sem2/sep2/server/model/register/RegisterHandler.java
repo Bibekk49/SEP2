@@ -1,4 +1,4 @@
-package sem2.sep2.server.model.create;
+package sem2.sep2.server.model.register;
 
 import sem2.sep2.shared.util.Request;
 
