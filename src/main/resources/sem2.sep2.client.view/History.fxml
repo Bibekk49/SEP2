@@ -4,15 +4,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.historyView.HistoryViewController">
    <children>
-      <TableView prefHeight="400.0" prefWidth="509.0">
+      <TableView fx:id="history" prefHeight="400.0" prefWidth="509.0">
         <columns>
-          <TableColumn prefWidth="120.0" text="RoomNumber" />
-          <TableColumn prefWidth="129.33331298828125" text="UserName" />
-            <TableColumn prefWidth="129.33331298828125" text="Check-In-Date" />
-            <TableColumn prefWidth="129.33331298828125" text="Check-Out-Date" />
+          <TableColumn fx:id="roomNumber" prefWidth="120.0" text="RoomNumber" />
+            <TableColumn fx:id="checkInDate" prefWidth="191.99993133544922" text="Check-In-Date" />
+            <TableColumn fx:id="checkOutDate" prefWidth="196.00006103515625" text="Check-Out-Date" />
         </columns>
       </TableView>
    </children>

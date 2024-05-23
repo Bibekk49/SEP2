@@ -9,6 +9,6 @@ public class HistoryViewModel
     this.roomModel = roomModel;
   }
   public void getHistory(){
-    //todo:to add the history(search first who he is and then show in the tableview)
+
   }
 }
