@@ -4,10 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
@@ -28,17 +26,29 @@ public class ManageRoomViewController implements ViewController
     @FXML
     private TextField price;
     @FXML
-    private ChoiceBox roomType;
-    @FXML
-    private TextArea showField;
-    @FXML
-    private TextArea chatField;
-    @FXML
-    private TextArea Recipient;
+    private ChoiceBox<String> roomType;
     @FXML
     private ListView<Room> roomListView = new ListView<>();
     @FXML
     private ListView<Guest> userListView = new ListView<>();
+
+    @FXML
+    private TableView<Room> roomList;
+
+    @FXML
+    private TableColumn<Room, Integer> roomNumberColumn;
+
+    @FXML
+    private TableColumn<Room, String> roomTypeColumn;
+
+    @FXML
+    private TableColumn<Room, Double> roomPriceColumn;
+
+    @FXML
+    private TableColumn<Room, String> roomAvailabilityColumn;
+
+    @FXML
+    private TableColumn<Room, String> roomGuestColumn;
     ObservableList<Room> roomView = FXCollections.observableArrayList();
     ObservableList<Guest> userList = FXCollections.observableArrayList();
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,Region root){
@@ -54,12 +64,13 @@ public class ManageRoomViewController implements ViewController
 
         roomListView.setItems(roomView);
         userListView.setItems(userList);
+        bindProperties();
 
 
 
         roomNumber.textProperty().bindBidirectional(manageRoomViewModel.getRoom_id());
         price.textProperty().bindBidirectional(manageRoomViewModel.getPrice());
-        roomType.accessibleTextProperty().bindBidirectional(manageRoomViewModel.getRoomType());
+        roomType.valueProperty().bindBidirectional(manageRoomViewModel.getRoomType());
 //        chatField.textProperty().bindBidirectional(manageRoomViewModel.getChatField());
 //        showField.textProperty().bindBidirectional(manageRoomViewModel.getShowField());
 //        Recipient.textProperty().bindBidirectional(manageRoomViewModel.getRecipient());
@@ -72,6 +83,13 @@ public class ManageRoomViewController implements ViewController
         roomNumber.clear();
         price.clear();
         roomType.setValue("Single");
+    }
+    private void bindProperties() {
+        roomList.setItems(roomView);
+        roomNumberColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomNumber"));
+        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("type"));
+        roomPriceColumn.setCellValueFactory(new PropertyValueFactory<Room, Double>("price"));
+        roomAvailabilityColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("roomAvailability"));
     }
 
     public void refresh(){

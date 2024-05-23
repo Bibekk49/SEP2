@@ -20,6 +20,7 @@ module sem2.sep2 {
     opens sem2.sep2.client.core to javafx.fxml;
     opens sem2.sep2.server.database to javafx.fxml;
 
+    opens sem2.sep2.shared.util.room to javafx.base;
 
     exports sem2.sep2.server.database;
     exports sem2.sep2;

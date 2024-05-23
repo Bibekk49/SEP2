@@ -10,12 +10,22 @@ public class Room implements Serializable
     private double price;
     private RoomState roomState;
     private int roomNumber;
+    private String roomAvailability;
 
     public Room(int roomNumber, String type, Double price, RoomState roomState) {
         this.roomNumber = roomNumber;
         this.type = type;
         this.price = price;
         this.roomState = roomState;
+        if (roomState.getClass().getSimpleName().equals("Available")) {
+            this.roomAvailability = "Available";
+        } else if (roomState.getClass().getSimpleName().equals("Reserved")) {
+            this.roomAvailability = "Reserved";
+        } else if (roomState.getClass().getSimpleName().equals("Occupied")) {
+            this.roomAvailability = "Occupied";
+        } else {
+            this.roomAvailability = "Unknown";
+        }
     }
 
     public String getType() {
@@ -41,6 +51,10 @@ public class Room implements Serializable
             default:
                 return "Unknown";
         }
+    }
+
+    public String getRoomAvailability() {
+        return roomAvailability;
     }
 
     public void setRoomState(RoomState roomState) {

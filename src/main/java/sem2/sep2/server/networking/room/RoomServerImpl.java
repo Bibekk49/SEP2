@@ -22,6 +22,7 @@ public class RoomServerImpl implements RoomServer {
     }
 
     private void fireAvailableRooms(PropertyChangeEvent propertyChangeEvent) {
+
     }
 
     @Override
