@@ -18,4 +18,5 @@ public interface ReservationDAO {
     Request getCurrentReservationsByGuest(String username);
 
     Request getAllCurrentReservations();
+    boolean checkRoomAvailability(Reservation newReservation);
 }

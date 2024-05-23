@@ -5,6 +5,7 @@ import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
 
+import java.beans.PropertyChangeListener;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +21,6 @@ public interface RoomHandler extends Observer
     Request getCurrentReservationsByGuest(String username);
     Request getallCurrentReservations();
     List<Reservation> getHistory();
-
+    
 
 }
