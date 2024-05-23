@@ -4,12 +4,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.users.Guest;
+import sem2.sep2.shared.util.users.User;
 
 public class LoginViewController implements ViewController {
     @FXML
@@ -38,7 +40,8 @@ public class LoginViewController implements ViewController {
         if (result != null) {
             if (result.getType().equals("User created successfully")) {
                 errorText.setVisible(true);
-                errorText.setText(result.getType());
+                errorText.setFill(Color.GREEN);
+                errorText.setText("Registration successful. You can login now");
                 reset();
             } else {
                 errorText.setVisible(true);

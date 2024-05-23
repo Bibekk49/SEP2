@@ -24,19 +24,17 @@ public class ManageRoomViewController implements ViewController
     private ManageRoomViewModel manageRoomViewModel;
     private Region root;
     @FXML
-    private TextField room_id;
+    private TextField roomNumber;
     @FXML
     private TextField price;
     @FXML
-    private TextField idnumber;
+    private ChoiceBox roomType;
     @FXML
     private TextArea showField;
     @FXML
     private TextArea chatField;
     @FXML
     private TextArea Recipient;
-    @FXML
-    private ChoiceBox roomType;
     @FXML
     private ListView<Room> roomListView = new ListView<>();
     @FXML
@@ -59,22 +57,20 @@ public class ManageRoomViewController implements ViewController
 
 
 
-        room_id.textProperty().bindBidirectional(manageRoomViewModel.getRoom_id());
+        roomNumber.textProperty().bindBidirectional(manageRoomViewModel.getRoom_id());
         price.textProperty().bindBidirectional(manageRoomViewModel.getPrice());
-        idnumber.textProperty().bindBidirectional(manageRoomViewModel.getIdnumber());
         roomType.accessibleTextProperty().bindBidirectional(manageRoomViewModel.getRoomType());
-        chatField.textProperty().bindBidirectional(manageRoomViewModel.getChatField());
-        showField.textProperty().bindBidirectional(manageRoomViewModel.getShowField());
-        Recipient.textProperty().bindBidirectional(manageRoomViewModel.getRecipient());
+//        chatField.textProperty().bindBidirectional(manageRoomViewModel.getChatField());
+//        showField.textProperty().bindBidirectional(manageRoomViewModel.getShowField());
+//        Recipient.textProperty().bindBidirectional(manageRoomViewModel.getRecipient());
 
         roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
         roomType.setValue("Single");
     }
 
     public void reset() {
-        room_id.clear();
+        roomNumber.clear();
         price.clear();
-        idnumber.clear();
         roomType.setValue("Single");
     }
 
@@ -93,13 +89,13 @@ public class ManageRoomViewController implements ViewController
     }
 
     //button here rg1
-    public void AddingButtonPressed(ActionEvent actionEvent)
+    public void addButtonClicked(ActionEvent actionEvent)
     {
         manageRoomViewModel.addRoom();
         refresh();
     }
 
-    public void EditingButtonPressed(ActionEvent actionEvent)
+    public void editButtonClicked(ActionEvent actionEvent)
     {
         manageRoomViewModel.editRoom();
         refresh();
@@ -121,6 +117,9 @@ public class ManageRoomViewController implements ViewController
     }
     public void sendButtonPressed(ActionEvent actionEvent){
         manageRoomViewModel.managerResponse();
+    }
+
+    public void deleteButtonClicked(ActionEvent actionEvent) {
     }
 }
 

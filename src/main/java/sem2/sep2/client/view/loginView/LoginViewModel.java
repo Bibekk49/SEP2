@@ -58,5 +58,8 @@ public class LoginViewModel {
         }
 
     }
+    public User getUSer (String username){
+        return (User) registerModel.GetUser(username).getObject();
+    }
 
 }

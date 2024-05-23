@@ -25,4 +25,9 @@ public class RegisterHandlerImpl implements RegisterHandler {
     public Request changeUsername(String username, String newUsername) {
         return createDAO.changeUsername(username, newUsername);
     }
+
+    @Override
+    public Request GetUser(String username) {
+        return createDAO.GetUser(username);
+    }
 }

@@ -22,4 +22,8 @@ public class RegisterModelImpl implements RegisterModel {
     public Request changeUsername(String username, String newUsername) {
         return client.changeUsername(username, newUsername);
     }
+    @Override
+    public Request GetUser(String username) {
+        return client.GetUser(username);
+    }
 }

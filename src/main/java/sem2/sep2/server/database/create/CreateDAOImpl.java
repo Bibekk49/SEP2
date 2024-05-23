@@ -3,6 +3,8 @@ package sem2.sep2.server.database.create;
 import sem2.sep2.server.database.DataBaseConnection;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.users.Guest;
+import sem2.sep2.shared.util.users.Manager;
+import sem2.sep2.shared.util.users.User;
 
 import java.sql.*;
 
@@ -55,6 +57,24 @@ public class CreateDAOImpl implements CreateDAO {
             }
         } catch (SQLException throwables) {
             throw new RuntimeException("Failed to change username: " + throwables.getMessage());
+        }
+    }
+
+    @Override
+    public Request GetUser(String username) {
+        try (Connection connection = DataBaseConnection.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM SEP2.users WHERE username=?;");
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String userType = resultSet.getString("user_type");
+                User user = userType.equals("Manager") ? Manager.getInstance() : new Guest(username, resultSet.getString("password"));
+                return new Request("User found", user);
+            } else {
+                return new Request("User not found", null);
+            }
+        } catch (SQLException throwables) {
+            throw new RuntimeException("Failed to get user: " + throwables.getMessage());
         }
     }
 

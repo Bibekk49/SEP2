@@ -18,6 +18,9 @@ public class LoginClientImpl implements LoginClient{
     @Override
     public Request login(String username, String password) {
         try {
+            if (server == null) {
+                return new Request("Cannot connect to server",null);
+            }
             return server.getLoginServer().isLoginPossible(username,password);
         } catch (RemoteException e){
             e.printStackTrace();

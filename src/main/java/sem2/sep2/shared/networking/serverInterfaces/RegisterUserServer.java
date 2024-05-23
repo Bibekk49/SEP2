@@ -9,4 +9,5 @@ public interface RegisterUserServer extends Remote {
     Request addUser(String username, String password) throws RemoteException;
     Request changePassword(String username, String password) throws RemoteException;
     Request changeUsername(String username, String newUsername) throws RemoteException;
+    Request GetUser(String username) throws RemoteException;
 }

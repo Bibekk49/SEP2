@@ -27,5 +27,9 @@ public class RegisterUserServerImpl implements RegisterUserServer{
     public Request changeUsername(String username, String newUsername) throws RemoteException {
         return createHandler.changeUsername(username,newUsername);
     }
+    @Override
+    public Request GetUser(String username) throws RemoteException {
+        return createHandler.GetUser(username);
+    }
 
 }

@@ -8,4 +8,5 @@ public interface RegisterHandler {
     Request changePassword(String username, String password);
 
     Request changeUsername(String username, String newUsername);
+    Request GetUser(String username);
 }

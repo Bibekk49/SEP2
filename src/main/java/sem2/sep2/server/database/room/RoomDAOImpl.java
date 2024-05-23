@@ -11,6 +11,7 @@ import sem2.sep2.shared.util.room.roomState.RoomState;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.sql.Date;
 
 public class RoomDAOImpl implements RoomDAO {
 
@@ -29,13 +30,13 @@ public class RoomDAOImpl implements RoomDAO {
             int rowsInserted = statement.executeUpdate();
 
             if (rowsInserted > 0) {
-                return new Request("Room added successfully", room);
+                return new Request("Room added successfully",room);
             } else {
-                return new Request("Failed to add room", null);
+                return new Request("Failed to add room",null);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Database error", null);
+            return new Request("Database error",null);
         }
     }
 
@@ -49,10 +50,10 @@ public class RoomDAOImpl implements RoomDAO {
             statement.setInt(1, room.getRoomNumber());
 
             statement.executeUpdate();
-            return new Request("Room removed successfully", null);
+            return new Request("Room removed successfully",null);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to remove room", null);
+            return new Request("Failed to remove room",null);
         }
     }
 
@@ -69,10 +70,10 @@ public class RoomDAOImpl implements RoomDAO {
             statement.setInt(4, room.getRoomNumber());
 
             statement.executeUpdate();
-            return new Request("Room updated successfully", room);
+            return new Request("Room updated successfully",room);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to update room", null);
+            return new Request("Failed to update room",null);
         }
     }
 
@@ -97,7 +98,7 @@ public class RoomDAOImpl implements RoomDAO {
                         roomState = new Occupied();
                         break;
                     default:
-                        return new Request("Unknown room state", null);
+                        return new Request("Unknown room state",null);
                 }
                 Room room = new Room(
                         resultSet.getInt("room_number"),
@@ -107,10 +108,10 @@ public class RoomDAOImpl implements RoomDAO {
                 );
                 roomList.addRoom(room);
             }
-            return new Request("Rooms fetched successfully", roomList);
+            return new Request("Rooms fetched successfully",roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get rooms", null);
+            return new Request("Failed to get rooms",null);
         }
     }
 
@@ -139,10 +140,10 @@ public class RoomDAOImpl implements RoomDAO {
                     roomList.addRoom(room);
                 }
             }
-            return new Request("Available rooms fetched successfully", roomList);
+            return new Request("Available rooms fetched successfully",roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get available rooms", null);
+            return new Request("Failed to get available rooms",null);
         }
     }
 
@@ -172,7 +173,7 @@ public class RoomDAOImpl implements RoomDAO {
                         roomState = new Occupied();
                         break;
                     default:
-                        return new Request("Unknown room state", null);
+                        return new Request("Unknown room state",null);
                 }
                 Room room = new Room(
                         resultSet.getInt("room_number"),
@@ -182,15 +183,15 @@ public class RoomDAOImpl implements RoomDAO {
                 );
                 roomList.addRoom(room);
             }
-            return new Request("Rooms fetched successfully", roomList);
+            return new Request("Rooms fetched successfully",roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get rooms by type", null);
+            return new Request("Failed to get rooms by type",null);
         }
     }
 
     @Override
-    public Request getAllAvailableRoomsByType(String roomType, LocalDate dateFrom, LocalDate dateTo) {
+    public Request getAllAvailableRoomsByType(String roomType, LocalDate dateFrom,LocalDate dateTo) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=? AND room_number NOT IN (SELECT room_number FROM SEP2.reservations WHERE start_date <= ? AND end_date >= ?);";
 
         try (Connection connection = DataBaseConnection.getConnection();
@@ -214,10 +215,10 @@ public class RoomDAOImpl implements RoomDAO {
                     roomList.addRoom(room);
                 }
             }
-            return new Request("Available rooms fetched successfully", roomList);
+            return new Request("Available rooms fetched successfully",roomList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get available rooms by type", null);
+            return new Request("Failed to get available rooms by type",null);
         }
     }
 }

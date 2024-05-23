@@ -39,4 +39,12 @@ public class RegisterClientImpl implements RegisterClient {
             return new Request("Cannot connect to server",null);
         }
     }
+    @Override
+    public Request GetUser(String username) {
+        try {
+            return server.getRegisterUserServer().GetUser(username);
+        } catch (Exception e) {
+            return new Request("Cannot connect to server",null);
+        }
+    }
 }
