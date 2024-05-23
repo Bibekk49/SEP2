@@ -1,5 +1,7 @@
 package sem2.sep2.client.view.historyView;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,20 +28,26 @@ public class HistoryViewController implements ViewController
   @FXML
   private TableColumn<Reservation, Date> checkOutDate;
 
+
   @Override
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
     this.viewHandler = viewHandler;
     this.historyViewModel = viewModelFactory.getHistoryViewModel();
     this.root = root;
+    bindProperty();
   }
   private void bindProperty(){
-    roomNumber.setCellFactory(new PropertyValueFactory<>("roomNumber"));
-    history.setItems();
-
+    roomNumber.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("roomNumber"));
+    checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkInDate"));
+    checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkOutDate"));
+    history.setItems(historyViewModel.getReserveHistory());
   }
   @Override
   public void reset(){
-
+    historyViewModel.getHistory();
+  }
+  public Region getRoot() {
+    return root;
   }
 
 }
