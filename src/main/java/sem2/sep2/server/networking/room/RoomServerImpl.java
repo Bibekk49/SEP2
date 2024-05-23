@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class RoomServerImpl implements RoomServer {
     private RoomHandler roomHandler;
@@ -68,5 +69,9 @@ public class RoomServerImpl implements RoomServer {
     @Override
     public Request getallCurrentReservations() throws RemoteException{
         return roomHandler.getallCurrentReservations();
+    }
+    @Override
+    public List<Reservation> getHistory() throws RemoteException{
+        return roomHandler.getHistory();
     }
 }

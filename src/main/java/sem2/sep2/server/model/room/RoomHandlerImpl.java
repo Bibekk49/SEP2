@@ -11,6 +11,7 @@ import sem2.sep2.shared.util.room.Room;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.time.LocalDate;
+import java.util.List;
 
 public class RoomHandlerImpl implements RoomHandler {
     private RoomDAO roomDAO;
@@ -78,5 +79,9 @@ public class RoomHandlerImpl implements RoomHandler {
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.removePropertyChangeListener(eventName, listener);
+    }
+    @Override
+    public List<Reservation> getHistory(){
+        return reservationDAO.getHistory();
     }
 }

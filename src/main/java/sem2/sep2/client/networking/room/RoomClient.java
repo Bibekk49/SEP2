@@ -7,6 +7,7 @@ import sem2.sep2.shared.util.room.Room;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public interface RoomClient
 {
@@ -23,4 +24,5 @@ public interface RoomClient
     Request cancelReservation(Reservation reservation);
     Request getCurrentReservationsByGuest(String username);
     Request getallCurrentReservations();
+    List<Reservation> getHistory();
 }

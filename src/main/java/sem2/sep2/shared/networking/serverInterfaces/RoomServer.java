@@ -8,6 +8,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public interface RoomServer extends Remote {
     Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) throws RemoteException;
@@ -23,4 +24,5 @@ public interface RoomServer extends Remote {
     Request cancelReservation(Reservation reservation) throws RemoteException;
     Request getCurrentReservationsByGuest(String username) throws RemoteException;
     Request getallCurrentReservations() throws RemoteException;
+    List<Reservation> getHistory() throws RemoteException;
 }

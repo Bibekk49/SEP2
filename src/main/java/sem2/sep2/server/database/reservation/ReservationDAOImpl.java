@@ -7,6 +7,7 @@ import sem2.sep2.shared.util.reservation.ReservationList;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
     public ReservationDAOImpl() {
@@ -113,7 +114,7 @@ public class ReservationDAOImpl implements ReservationDAO {
         }
 
     }
-
+    @Override
     public boolean checkRoomAvailability(Reservation newReservation) {
         String query = "SELECT COUNT(*) FROM SEP2.reservations WHERE room_number = ? AND start_date <= ? AND end_date >= ?;";
         try (Connection connection = DataBaseConnection.getConnection();
@@ -134,5 +135,10 @@ public class ReservationDAOImpl implements ReservationDAO {
             return false;
         }
     }
+    @Override
+    public List<Reservation> getHistory(){
+        return null;
+    }
+
 
 }

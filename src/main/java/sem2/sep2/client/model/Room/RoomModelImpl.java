@@ -64,8 +64,7 @@ public class RoomModelImpl implements RoomModel
   }
   @Override
   public List<Reservation> getHistory() {
-    // todo:gethistory form fk in database
-    return null;
+    return roomClient.getHistory();
   }
 
 //  public void updateHistory(List<Reservation> newHistory) {

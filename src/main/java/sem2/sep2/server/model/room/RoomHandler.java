@@ -6,6 +6,7 @@ import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface RoomHandler extends Observer
 {
@@ -18,6 +19,7 @@ public interface RoomHandler extends Observer
     Request cancelReservation(Reservation reservation);
     Request getCurrentReservationsByGuest(String username);
     Request getallCurrentReservations();
+    List<Reservation> getHistory();
 
 
 }

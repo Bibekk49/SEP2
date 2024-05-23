@@ -9,6 +9,7 @@ import sem2.sep2.shared.util.room.Room;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class RoomClientImpl implements RoomClient {
     private Server server;
@@ -108,6 +109,15 @@ public class RoomClientImpl implements RoomClient {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new Request("Cannot connect to server", null);
+        }
+    }
+    @Override
+    public List<Reservation> getHistory(){
+        try {
+            return server.getRoomServer().getHistory();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
