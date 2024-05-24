@@ -1,16 +1,15 @@
 package sem2.sep2.client.view.reserveView;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
@@ -18,74 +17,67 @@ import sem2.sep2.shared.util.room.Room;
 
 import java.awt.*;
 import java.net.URI;
-import java.rmi.RemoteException;
 import java.time.LocalDate;
 
 public class ReserveViewController implements ViewController {
     @FXML
-    private DatePicker checkInDatePicker;
+    private DatePicker startDatePicker;
     @FXML
-    private DatePicker checkOutDatePicker;
+    private DatePicker endDatePicker;
     @FXML
     private TableView<Room> tableView;
     @FXML
-    private TableColumn<Room, String> roomNumberColumn;
-    @FXML
-    private TableColumn<Room, String> typeColumn;
+    private TableColumn<Room, Integer> roomNumberColumn;
     @FXML
     private TableColumn<Room, Double> pricePerDayColumn;
     @FXML
     private ChoiceBox roomType;
     @FXML
-    private TextField roomNumber;
-    private ObservableList<Room> roomData;
+    private Text errorText;
+
+
     private ViewHandler viewHandler;
     private ReserveViewModel reserveViewModel;
     private Region root;
 
     @Override
-    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root){
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root) {
         this.viewHandler = viewHandler;
         this.reserveViewModel = viewModelFactory.getReserveViewModel();
         this.root = root;
+        bindProperties();
+    }
 
+    private void bindProperties() {
+        startDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckInDatePicker());
+        endDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckOutDatePicker());
+        startDatePicker.setValue(LocalDate.now());
+        endDatePicker.setValue(LocalDate.now().plusDays(1));
+        tableView.setItems(reserveViewModel.getAvailableRooms());
         roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-        roomType.setItems(FXCollections.observableArrayList("Single", "Double", "Suite"));
-        roomType.setValue("Single");
-
-        roomNumber.textProperty().bindBidirectional(reserveViewModel.getRoomNumber());
-        this.roomType.valueProperty().bindBidirectional(reserveViewModel.getRoomType());
-        this.checkInDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckInDatePicker());
-        this.checkOutDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckOutDatePicker());
-
-
-
-        roomData = FXCollections.observableArrayList();
-        tableView.setItems(roomData);
-
-        checkInDatePicker.setValue(LocalDate.now());
-        checkOutDatePicker.setValue(LocalDate.now().plusDays(1));
-
+        roomType.setItems(reserveViewModel.getRoomTypes());
+        roomType.valueProperty().bindBidirectional(reserveViewModel.getRoomType());
+        errorText.textProperty().bind(reserveViewModel.getErrorText());
     }
+
     @Override
-    public void reset(){
-        roomData.clear();
-        checkInDatePicker.setValue(LocalDate.now());
-        checkOutDatePicker.setValue(LocalDate.now().plusDays(1));//default date
+    public void reset() {
+
     }
-    public void SearchButtonPressed(ActionEvent actionEvent) throws Exception
-    {
-        roomData = (ObservableList<Room>) reserveViewModel.searchRooms();
-//       roomData.addAll(loginService.findAvailableRooms(checkInDate,checkOutDate));
-        tableView.setItems(roomData);
+
+    public void searchButtonPressed() {
+        boolean success = reserveViewModel.searchAvailableRooms();
+        if (!success) {
+            errorText.setFill(Color.RED);
+        }
     }
-    public void ContactUsPressed(ActionEvent event)throws Exception{
+
+    public void contactUsPressed(ActionEvent event) throws Exception {
         viewHandler.openContactView();
     }
-    public void AboutPressed(ActionEvent event)throws  Exception{
+
+    public void aboutPressed(ActionEvent event) throws Exception {
         String url = "http://royalhotel2.durablesites.com";
         try {
             URI uri = new URI(url);
@@ -95,16 +87,16 @@ public class ReserveViewController implements ViewController {
             e.printStackTrace();
         }
     }
-    public void ChangeProfilePressed(ActionEvent actionEvent){
+
+    public void changeProfilePressed(ActionEvent actionEvent) {
         viewHandler.openProfileView();
     }
-    public void BookingHistory(ActionEvent actionEvent){
+
+    public void bookingHistoryPressed(ActionEvent actionEvent) {
         viewHandler.openHistoryView();
     }
-    public void Reserve(ActionEvent actionEvent){
+
+    public void reserve(ActionEvent actionEvent) {
         reserveViewModel.Reserve(viewHandler.getGuest());
-    }
-    public void Cancel(ActionEvent actionEvent){
-        reserveViewModel.Cancel(viewHandler.getGuest());
     }
 }
