@@ -23,6 +23,7 @@ public class ViewHandler {
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
+        guest = new Guest(null,null);
     }
 
     public void start() {

@@ -58,12 +58,13 @@ public class LoginViewController implements ViewController {
     @FXML
     public void onLogin() {
         Request result = loginViewModel.login();
+        System.out.println(viewHandler.getGuest().getUsername());
         if (result != null) {
             if (result.getType().equals("Login successful as Manager")) {
                 viewHandler.openManagerView();
                 System.out.println(result.getType());
             } else if (result.getType().equals("Login successful as Guest")) {
-                viewHandler.setGuest((Guest) result.getObject());
+                viewHandler.setGuest(new Guest(username.getText(),password.getText()));
                 viewHandler.openReserveView();
                 System.out.println(result.getType());
             } else {

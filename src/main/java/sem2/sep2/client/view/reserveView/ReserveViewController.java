@@ -98,6 +98,6 @@ public class ReserveViewController implements ViewController {
     }
 
     public void reserve() {
-        reserveViewModel.Reserve(viewHandler.getUsername());
+        reserveViewModel.Reserve(viewHandler.getGuest().getUsername());
     }
 }
