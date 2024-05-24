@@ -48,7 +48,7 @@ public class HistoryViewController implements ViewController
   }
   @Override
   public void reset(){
-    historyViewModel.getHistory();
+    history.setItems(historyViewModel.getReserveHistory(viewHandler.getGuest()));
   }
   public Region getRoot() {
     return root;

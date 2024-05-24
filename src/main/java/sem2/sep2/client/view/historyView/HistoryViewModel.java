@@ -15,24 +15,14 @@ public class HistoryViewModel
 {
   private RoomModel roomModel;
   private ObservableList<Reservation> reserveHistory;
-  private PropertyChangeSupport support;
   public HistoryViewModel(RoomModel roomModel){
     this.roomModel = roomModel;
     this.reserveHistory = FXCollections.observableArrayList();
-    this.support = new PropertyChangeSupport(this);
-    roomModel.addPropertyChangeListener("ReservationHistoryUpdated", this::updateHistory);
-  }
-  public void getHistory(){
-    ObservableList<Reservation> history = FXCollections.observableArrayList(roomModel.getHistory());
-    reserveHistory.setAll(history);
   }
   public ObservableList<Reservation> getReserveHistory(Guest guest){
     ReservationList reservationList = (ReservationList) roomModel.getCurrentReservationsByGuest(guest.getUsername()).getObject();
     reserveHistory.addAll(reservationList.getAllReservations());
     return reserveHistory;
-  }
-  private void updateHistory(PropertyChangeEvent event) {
-    reserveHistory.setAll((ObservableList<Reservation>) event.getNewValue());
   }
   public void cancel(){
 
