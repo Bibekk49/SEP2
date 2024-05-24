@@ -131,9 +131,6 @@ public class ManageRoomViewModel {
 
     public boolean editRoom() {
         try {
-//            roomNumberEdit.set(String.valueOf(selectedRoom.get().getRoomNumber()));
-//            priceEdit.set(String.valueOf(selectedRoom.get().getPrice()));
-//            roomTypeEdit.set(selectedRoom.get().getType());
             selectedRoom.get().getRoomNumber();
             resetEdit();
             this.deleteRoom();
@@ -165,6 +162,8 @@ public class ManageRoomViewModel {
     public void refresh() {
         allrooms.clear();
         allrooms = getAllrooms();
+        allReservations.clear();
+        allReservations = getAllReservations();
     }
 
     public Property<String> getRoomType() {

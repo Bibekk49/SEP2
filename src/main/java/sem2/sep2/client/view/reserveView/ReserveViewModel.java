@@ -49,6 +49,9 @@ public class ReserveViewModel {
 
     public void Reserve(String username) {
         reserveModel.reserveRoom(new Reservation(0,selectedRoom.get().getRoomNumber(),username, Date.valueOf(checkInDatePicker.get()),Date.valueOf(checkOutDatePicker.get())));
+        Room room= selectedRoom.get();
+        room.reserve();
+        reserveModel.updateRoom(room);
     }
 
     public boolean searchAvailableRooms() {
