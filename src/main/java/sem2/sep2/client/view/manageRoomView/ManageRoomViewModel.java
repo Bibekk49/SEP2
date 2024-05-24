@@ -5,21 +5,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sem2.sep2.client.model.Room.RoomModel;
 import sem2.sep2.client.model.contact.ContactModel;
-import sem2.sep2.client.view.loginView.LoginViewModel;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 import sem2.sep2.shared.util.room.roomState.Available;
+import sem2.sep2.shared.util.room.roomState.Occupied;
+import sem2.sep2.shared.util.room.roomState.Reserved;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
 
 public class ManageRoomViewModel {
     private RoomModel roomModel;
     private ContactModel contactModel;
-    private LoginViewModel loginViewModel;
-    private StringProperty roomNumber, price, roomType, idnumber, error;
+    private StringProperty roomNumber, price, roomType, error;
     private StringProperty roomNumberEdit, priceEdit, roomTypeEdit, errorEdit;
 
     private ObservableList<String> roomTypes = FXCollections.observableArrayList("Single", "Double", "Suite");
@@ -30,12 +30,13 @@ public class ManageRoomViewModel {
     public ManageRoomViewModel(RoomModel roomModel, ContactModel contactModel) {
         this.roomModel = roomModel;
         this.contactModel = contactModel;
+
         roomNumber = new SimpleStringProperty();
         price = new SimpleStringProperty();
-        idnumber = new SimpleStringProperty();
         roomType = new SimpleStringProperty();
         error = new SimpleStringProperty();
         selectedRoom = new SimpleObjectProperty<>();
+
         roomNumberEdit = new SimpleStringProperty();
         priceEdit = new SimpleStringProperty();
         roomTypeEdit = new SimpleStringProperty();
@@ -46,10 +47,10 @@ public class ManageRoomViewModel {
     public void reset() {
         roomNumber.set("");
         price.set("");
-        idnumber.set("");
         roomType.set("Single");
         error.set("");
     }
+
     public void resetEdit() {
         roomNumberEdit.set(String.valueOf(selectedRoom.get().getRoomNumber()));
         priceEdit.set(String.valueOf(selectedRoom.get().getPrice()));
@@ -63,10 +64,6 @@ public class ManageRoomViewModel {
 
     public StringProperty getPrice() {
         return price;
-    }
-
-    public StringProperty getIdnumber() {
-        return idnumber;
     }
 
     public ObservableList<String> getRoomTypes() {
@@ -131,10 +128,18 @@ public class ManageRoomViewModel {
 
     public boolean editRoom() {
         try {
-            selectedRoom.get().getRoomNumber();
-            resetEdit();
+            RoomState roomState;
+            switch (selectedRoom.get().getRoomState()){
+                case "Available":
+                    roomState = new Available();
+                    break;
+                case "Occupied":
+                    roomState = new Occupied();
+                    break;
+                default:
+                    roomState=new Reserved();
+            }
             this.deleteRoom();
-            RoomState roomState = new Available();
             Request<Room> request = roomModel.createRoom(new Room(Integer.parseInt(roomNumberEdit.get()), roomTypeEdit.get(),
                     Double.parseDouble(priceEdit.get()), roomState));
             roomNumberEdit.set("");
