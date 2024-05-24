@@ -35,14 +35,14 @@ public class ManageRoomViewController implements ViewController {
     private Text errorTextAdd;
 
 
-    @FXML
-    private TextField roomNumberEdit;
-    @FXML
-    private TextField priceEdit;
-    @FXML
-    private ChoiceBox<String> roomTypeEdit;
-    @FXML
-    private Text errorTextEdit;
+//    @FXML
+//    private TextField roomNumberEdit;
+//    @FXML
+//    private TextField priceEdit;
+//    @FXML
+//    private ChoiceBox<String> roomTypeEdit;
+//    @FXML
+//    private Text errorTextEdit;
 
 
     @FXML
@@ -129,19 +129,14 @@ public class ManageRoomViewController implements ViewController {
 
         viewHandler.openEditRoomView();
 
-        roomNumberEdit.textProperty().bindBidirectional(manageRoomViewModel.getRoomNumberEdit());
-        priceEdit.textProperty().bindBidirectional(manageRoomViewModel.getPriceEdit());
-        roomTypeEdit.setItems(manageRoomViewModel.getRoomTypes());
-        roomTypeEdit.valueProperty().bindBidirectional(manageRoomViewModel.getRoomTypeEdit());
-        errorTextEdit.textProperty().bind(manageRoomViewModel.getErrorEdit());
 
-        boolean success = manageRoomViewModel.editRoom();
-        manageRoomViewModel.refresh();
-        if (success) {
-            errorTextEdit.setFill(Color.GREEN);
-        } else {
-            errorTextEdit.setFill(Color.RED);
-        }
+//        boolean success = manageRoomViewModel.editRoom();
+//        manageRoomViewModel.refresh();
+//        if (success) {
+//            errorTextEdit.setFill(Color.GREEN);
+//        } else {
+//            errorTextEdit.setFill(Color.RED);
+//        }
     }
 
 
@@ -159,11 +154,6 @@ public class ManageRoomViewController implements ViewController {
         manageRoomViewModel.deleteRoom();
     }
 
-    public void saveButtonClicked() {
-    }
-
-    public void backButtonClicked() {
-    }
 }
 
 

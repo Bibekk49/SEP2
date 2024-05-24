@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="345.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.manageRoomView.ManageRoomViewController">
+<AnchorPane prefHeight="345.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.manageRoomView.editRoomViewController">
    <children>
       <AnchorPane layoutX="3.0" prefHeight="332.0" prefWidth="605.0">
          <children>
