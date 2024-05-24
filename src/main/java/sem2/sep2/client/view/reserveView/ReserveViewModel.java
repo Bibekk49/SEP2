@@ -63,7 +63,6 @@ public class ReserveViewModel {
     }
 
     public ObservableList<Room> getAvailableRooms() {
-
         RoomList roomList = (RoomList) reserveModel.searchAvailableRoom(checkInDatePicker.get(), checkOutDatePicker.get(), roomType.get()).getObject();
         availableRooms.addAll(roomList.getAllRooms());
         return availableRooms;

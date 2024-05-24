@@ -2,6 +2,7 @@ package sem2.sep2.client.view.historyView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,7 +41,7 @@ public class HistoryViewController implements ViewController
     roomNumber.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("roomNumber"));
     checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkInDate"));
     checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkOutDate"));
-    history.setItems(historyViewModel.getReserveHistory());
+    history.setItems(historyViewModel.getReserveHistory(viewHandler.getGuest()));
 //    roomNumber.setCellFactory(new PropertyValueFactory<>("roomNumber"));
 //    history.setItems();
 
@@ -51,6 +52,10 @@ public class HistoryViewController implements ViewController
   }
   public Region getRoot() {
     return root;
+  }
+  @FXML
+  private void CancelButtonPressed(ActionEvent actionEvent){
+    historyViewModel.cancel();
   }
 
 }
