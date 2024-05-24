@@ -50,6 +50,12 @@ public class ManageRoomViewModel {
         roomType.set("Single");
         error.set("");
     }
+    public void resetEdit() {
+        roomNumberEdit.set(String.valueOf(selectedRoom.get().getRoomNumber()));
+        priceEdit.set(String.valueOf(selectedRoom.get().getPrice()));
+        roomTypeEdit.set(selectedRoom.get().getType());
+        errorEdit.set("");
+    }
 
     public StringProperty getRoomNumber() {
         return roomNumber;
@@ -125,6 +131,11 @@ public class ManageRoomViewModel {
 
     public boolean editRoom() {
         try {
+//            roomNumberEdit.set(String.valueOf(selectedRoom.get().getRoomNumber()));
+//            priceEdit.set(String.valueOf(selectedRoom.get().getPrice()));
+//            roomTypeEdit.set(selectedRoom.get().getType());
+            selectedRoom.get().getRoomNumber();
+            resetEdit();
             this.deleteRoom();
             RoomState roomState = new Available();
             Request<Room> request = roomModel.createRoom(new Room(Integer.parseInt(roomNumberEdit.get()), roomTypeEdit.get(),
