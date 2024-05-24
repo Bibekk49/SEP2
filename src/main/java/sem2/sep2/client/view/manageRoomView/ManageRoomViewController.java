@@ -123,6 +123,10 @@ public class ManageRoomViewController implements ViewController {
             errorTextAdd.setFill(Color.RED);
         }
     }
+    @FXML
+    private void refreshButtonClicked(ActionEvent actionEvent){
+        manageRoomViewModel.refresh();
+    }
 
     @FXML
     private void editButtonClicked(ActionEvent actionEvent) {
