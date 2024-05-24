@@ -1,6 +1,5 @@
 package sem2.sep2.server.model.contactManager;
 
-import sem2.sep2.shared.Observer;
 import sem2.sep2.shared.util.users.Guest;
 
 public interface ContactManagerHandler{

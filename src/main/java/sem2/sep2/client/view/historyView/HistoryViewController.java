@@ -41,6 +41,9 @@ public class HistoryViewController implements ViewController
     checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkInDate"));
     checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkOutDate"));
     history.setItems(historyViewModel.getReserveHistory());
+//    roomNumber.setCellFactory(new PropertyValueFactory<>("roomNumber"));
+//    history.setItems();
+
   }
   @Override
   public void reset(){

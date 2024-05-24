@@ -8,6 +8,6 @@ import sem2.sep2.client.core.ViewModelFactory;
 public interface ViewController {
 
     void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory,
-        Region root);
+              Region root);
     void reset();
 }

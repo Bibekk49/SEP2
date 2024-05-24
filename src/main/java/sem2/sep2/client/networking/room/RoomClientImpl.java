@@ -5,7 +5,9 @@ import sem2.sep2.shared.networking.serverInterfaces.Server;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
+import sem2.sep2.shared.util.room.RoomList;
 
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -13,6 +15,7 @@ import java.util.List;
 
 public class RoomClientImpl implements RoomClient {
     private Server server;
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public RoomClientImpl() {
         try {
@@ -31,6 +34,8 @@ public class RoomClientImpl implements RoomClient {
             return new Request("Cannot connect to server", null);
         }
     }
+
+
 
     @Override
     public Request getAllRooms() {

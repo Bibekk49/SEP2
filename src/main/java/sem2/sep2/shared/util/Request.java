@@ -2,11 +2,11 @@ package sem2.sep2.shared.util;
 
 import java.io.Serializable;
 
-public class Request implements Serializable {
+public class Request<T> implements Serializable {
     private String type;
-    private Object object;
+    private T object;
 
-    public Request(String type, Object object) {
+    public Request(String type, T object) {
         this.type = type;
         this.object = object;
     }
@@ -15,7 +15,7 @@ public class Request implements Serializable {
         return type;
     }
 
-    public Object getObject() {
+    public T getObject() {
         return object;
     }
 }

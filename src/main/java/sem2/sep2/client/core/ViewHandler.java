@@ -114,4 +114,12 @@ public class ViewHandler {
     public void uploadUserName(String username){
         this.guest.setUsername(username);
     }
+
+    public void openEditRoomView() {
+        Region root = loadFXMLFile("/sem2.sep2.server.view/editRoomView.fxml");
+        Scene scene = new Scene(root);
+        stage.setTitle("Edit Room");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

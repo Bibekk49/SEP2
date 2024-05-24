@@ -1,5 +1,6 @@
 package sem2.sep2.client.model.Room;
 
+import sem2.sep2.shared.Subject;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
@@ -9,7 +10,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface RoomModel {
+public interface RoomModel extends Subject {
   Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType);
   Request getAllRooms();
   Request createRoom(Room room);

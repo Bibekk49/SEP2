@@ -20,10 +20,10 @@ public class RoomServerImpl implements RoomServer {
     public RoomServerImpl(RoomHandler roomHandler) throws RemoteException {
         this.roomHandler = roomHandler;
         UnicastRemoteObject.exportObject(this, 0);
-        roomHandler.addListener("Available Rooms", this::fireAvailableRooms);
     }
 
     private void fireAvailableRooms(PropertyChangeEvent propertyChangeEvent) {
+        System.out.println("Available rooms: " + propertyChangeEvent.getNewValue());
 
     }
 

@@ -1,110 +1,168 @@
 package sem2.sep2.client.view.manageRoomView;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sem2.sep2.client.model.Room.RoomModel;
 import sem2.sep2.client.model.contact.ContactModel;
+import sem2.sep2.client.view.loginView.LoginViewModel;
 import sem2.sep2.shared.util.Request;
+import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 import sem2.sep2.shared.util.room.roomState.Available;
 import sem2.sep2.shared.util.room.roomState.RoomState;
-import sem2.sep2.shared.util.users.Guest;
 
-import java.util.ArrayList;
 
-public class ManageRoomViewModel
-{
+public class ManageRoomViewModel {
     private RoomModel roomModel;
     private ContactModel contactModel;
-    private StringProperty room_id,price,idnumber,roomType;//room_id in page 1 and idnumber in page 2
-    private StringProperty showField,chatField,Recipient;
-    public ManageRoomViewModel(RoomModel roomModel,ContactModel contactModel) {
+    private LoginViewModel loginViewModel;
+    private StringProperty roomNumber, price, roomType, idnumber, error;
+    private StringProperty roomNumberEdit, priceEdit, roomTypeEdit, errorEdit;
+
+    private ObservableList<String> roomTypes = FXCollections.observableArrayList("Single", "Double", "Suite");
+    private ObservableList<Room> allrooms = FXCollections.observableArrayList();
+    private ObservableList<Reservation> allReservations = FXCollections.observableArrayList();
+    private ObjectProperty<Room> selectedRoom;
+
+    public ManageRoomViewModel(RoomModel roomModel, ContactModel contactModel) {
         this.roomModel = roomModel;
         this.contactModel = contactModel;
-        room_id = new SimpleStringProperty();
+        roomNumber = new SimpleStringProperty();
         price = new SimpleStringProperty();
         idnumber = new SimpleStringProperty();
         roomType = new SimpleStringProperty();
-        showField = new SimpleStringProperty();
-        chatField = new SimpleStringProperty();
-        Recipient = new SimpleStringProperty();
+        error = new SimpleStringProperty();
+        selectedRoom = new SimpleObjectProperty<>();
+        roomNumberEdit = new SimpleStringProperty();
+        priceEdit = new SimpleStringProperty();
+        roomTypeEdit = new SimpleStringProperty();
+        errorEdit = new SimpleStringProperty();
+        reset();
     }
-    public StringProperty getShowField(){
-        return showField;
+
+    public void reset() {
+        roomNumber.set("");
+        price.set("");
+        idnumber.set("");
+        roomType.set("Single");
+        error.set("");
     }
-    public StringProperty getChatField(){
-        return chatField;
+
+    public StringProperty getRoomNumber() {
+        return roomNumber;
     }
-    public StringProperty getRecipient(){
-        return Recipient;
-    }
-    public StringProperty getRoom_id(){
-        return room_id;
-    }
-    public StringProperty getPrice(){
+
+    public StringProperty getPrice() {
         return price;
     }
-    public StringProperty getIdnumber(){
+
+    public StringProperty getIdnumber() {
         return idnumber;
     }
-    public StringProperty getRoomType(){
+
+    public ObservableList<String> getRoomTypes() {
+        return roomTypes;
+    }
+
+    public Room getSelectedRoom() {
+        return selectedRoom.get();
+    }
+
+    public ObjectProperty<Room> selectedRoomProperty() {
+        return selectedRoom;
+    }
+
+
+    public StringProperty getRoomNumberEdit() {
+        return roomNumberEdit;
+    }
+
+
+    public StringProperty getPriceEdit() {
+        return priceEdit;
+    }
+
+    public StringProperty getRoomTypeEdit() {
+        return roomTypeEdit;
+    }
+
+
+    public StringProperty getErrorEdit() {
+        return errorEdit;
+    }
+
+    public boolean addRoom() {
+        try {
+            RoomState roomState = new Available();
+            Request<Room> request = roomModel.createRoom(new Room(Integer.parseInt(roomNumber.get()), roomType.get(),
+                    Double.parseDouble(price.get()), roomState));
+            roomNumber.set("");
+            price.set("");
+            roomType.set("Single");
+            error.set(request.getType());
+            return true;
+        } catch (NumberFormatException e) {
+            error.set("Some fields are empty or invalid");
+        }
+        return false;
+    }
+
+    public void deleteRoom() {
+        try {
+            if (selectedRoom.get() == null) {
+                throw new RuntimeException("Please select a room");
+            }
+            System.out.println(selectedRoom.get());
+            roomModel.deleteRoom(selectedRoom.get());
+            refresh();
+        } catch (Exception e) {
+            error.set(e.getMessage());
+        }
+    }
+
+    public boolean editRoom() {
+        try {
+            this.deleteRoom();
+            RoomState roomState = new Available();
+            Request<Room> request = roomModel.createRoom(new Room(Integer.parseInt(roomNumberEdit.get()), roomTypeEdit.get(),
+                    Double.parseDouble(priceEdit.get()), roomState));
+            roomNumberEdit.set("");
+            priceEdit.set("");
+            roomTypeEdit.set("Single");
+            errorEdit.set(request.getType());
+            return true;
+        } catch (NumberFormatException e) {
+            error.set("Some fields are empty or invalid");
+        }
+        return false;
+    }
+
+
+    public ObservableList<Room> getAllrooms() {
+        Request request = roomModel.getAllRooms();
+        allrooms.addAll(((RoomList) request.getObject()).getAllRooms());
+        return allrooms;
+    }
+
+    public StringProperty getError() {
+        return error;
+    }
+
+    public void refresh() {
+        allrooms.clear();
+        allrooms = getAllrooms();
+    }
+
+    public Property<String> getRoomType() {
         return roomType;
     }
-    public void addRoom(){
-        RoomState roomState = new Available();
-        try{
-            roomModel.createRoom(new Room(Integer.parseInt(room_id.get()),roomType.get(),
-                Double.parseDouble(price.get()),roomState));
-        } catch (NumberFormatException e) {
-          throw new RuntimeException(e);
-        }
-    }
-    public RoomModel getRoomModel(){
-        return roomModel;
-    }
-    public void deleteRoom(){
-        RoomState roomState = new Available();
-        try{
-            roomModel.deleteRoom(new Room(Integer.parseInt(room_id.get())," ",
-                0.0,roomState));
-        }
-        catch (NumberFormatException e)
-        {
-          throw new RuntimeException(e);
-        }
-    }
-    public void editRoom(){
-        try{
-            this.deleteRoom();
-            this.addRoom();
-        }
-        catch (Exception e)
-        {
-          throw new RuntimeException(e);
-        }
-    }
-    public ArrayList<Room> getAllRooms(){
-        try{
-            Request request = roomModel.getAllRooms();
-            if(request != null && request.getObject() != null) {
-                RoomList roomList = (RoomList) request.getObject();
-                return roomList.getAllRooms();
-            } else {
-                return new ArrayList<>();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void managerResponse(){
-        try{
-            contactModel.managerResponse(new Guest(Recipient.get(),"1111"),chatField.get());
-        }
-        catch (Exception e)
-        {
-          throw new RuntimeException(e);
-        }
 
+    public ObservableList<Reservation> getAllReservations() {
+        Request request = roomModel.getallCurrentReservations();
+        allReservations.addAll(((ReservationList) request.getObject()).getAllReservations());
+        return allReservations;
     }
 }

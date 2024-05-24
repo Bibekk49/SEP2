@@ -3,6 +3,7 @@ package sem2.sep2.shared.networking.serverInterfaces;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
 import sem2.sep2.shared.util.room.Room;
+import sem2.sep2.shared.util.room.RoomList;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface RoomServer extends Remote {
-    Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo,String roomType) throws RemoteException;
+    Request<RoomList> searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo, String roomType) throws RemoteException;
 
     Request getAllRooms() throws RemoteException;
 

@@ -16,18 +16,15 @@ import java.util.List;
 public class RoomHandlerImpl implements RoomHandler {
     private RoomDAO roomDAO;
     private ReservationDAO reservationDAO;
-    private PropertyChangeSupport support;
 
     public RoomHandlerImpl() {
         roomDAO = new RoomDAOImpl();
         reservationDAO = new ReservationDAOImpl();
-        support = new PropertyChangeSupport(this);
     }
 
     @Override
     public Request searchAvailableRoom(LocalDate dateFrom, LocalDate dateTo, String roomType) {
         Request request = roomDAO.getAllAvailableRoomsByType(roomType, dateFrom, dateTo);
-        support.firePropertyChange("Available rooms", null, request.getObject());
         return request;
     }
 
@@ -72,16 +69,8 @@ public class RoomHandlerImpl implements RoomHandler {
     }
 
     @Override
-    public void addListener(String eventName, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(eventName, listener);
-    }
-
-    @Override
-    public void removeListener(String eventName, PropertyChangeListener listener) {
-        support.removePropertyChangeListener(eventName, listener);
-    }
-    @Override
     public List<Reservation> getHistory(){
         return reservationDAO.getHistory();
     }
+
 }
