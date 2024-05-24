@@ -128,6 +128,7 @@ public class ManageRoomViewController implements ViewController {
     private void editButtonClicked(ActionEvent actionEvent) {
 
         viewHandler.openEditRoomView();
+
         roomNumberEdit.textProperty().bindBidirectional(manageRoomViewModel.getRoomNumberEdit());
         priceEdit.textProperty().bindBidirectional(manageRoomViewModel.getPriceEdit());
         roomTypeEdit.setItems(manageRoomViewModel.getRoomTypes());

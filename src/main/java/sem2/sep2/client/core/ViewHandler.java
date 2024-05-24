@@ -19,6 +19,7 @@ public class ViewHandler {
     private Scene contactScene;
     private Scene historyScene;
     private Guest guest;
+
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
@@ -117,9 +118,10 @@ public class ViewHandler {
 
     public void openEditRoomView() {
         Region root = loadFXMLFile("/sem2.sep2.server.view/editRoomView.fxml");
-        Scene scene = new Scene(root);
-        stage.setTitle("Edit Room");
-        stage.setScene(scene);
-        stage.show();
+        Scene editScene = new Scene(root);
+        Stage editStage = new Stage();
+        editStage.setTitle("Edit Room");
+        editStage.setScene(editScene);
+        editStage.show();
     }
 }
