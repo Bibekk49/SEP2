@@ -12,17 +12,35 @@ import java.sql.SQLException;
 public class ContactManagerImpl implements ContactManagerDao{
     @Override
     public String contactManager(Guest guestSender, String messageBody){
-        return null;
-        //TODO: Implement this method
+        try {
+            Connection connection = DataBaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO SEP2.messages (sender_username, message_body) VALUES (?, ?)");
+            preparedStatement.setString(1, guestSender.getUsername());
+            preparedStatement.setString(2, messageBody);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+            return "Message sent to manager";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Message not sent to manager";
+        }
     }
 
     @Override
     public String managerResponse(Guest guestSender, String messageBody){
-        return null;
-        //TODO: Implement this method
+        try {
+            Connection connection = DataBaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO SEP2.messages (sender_username, message_body) VALUES (?, ?)");
+            preparedStatement.setString(1, "Manager");
+            preparedStatement.setString(2, messageBody);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+            return "Message sent to guest";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Message not sent to guest";
+        }
     }
-//    @Override
-//    public String contactHistory(){
-//
-//    }
 }

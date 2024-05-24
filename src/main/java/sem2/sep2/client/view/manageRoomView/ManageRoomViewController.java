@@ -35,16 +35,6 @@ public class ManageRoomViewController implements ViewController {
     private Text errorTextAdd;
 
 
-//    @FXML
-//    private TextField roomNumberEdit;
-//    @FXML
-//    private TextField priceEdit;
-//    @FXML
-//    private ChoiceBox<String> roomTypeEdit;
-//    @FXML
-//    private Text errorTextEdit;
-
-
     @FXML
     private TableView<Room> roomTableView;
     @FXML
@@ -125,32 +115,20 @@ public class ManageRoomViewController implements ViewController {
     }
 
     @FXML
-    private void editButtonClicked(ActionEvent actionEvent) {
+    private void editButtonClicked() {
 
         viewHandler.openEditRoomView();
-
-
-//        boolean success = manageRoomViewModel.editRoom();
-//        manageRoomViewModel.refresh();
-//        if (success) {
-//            errorTextEdit.setFill(Color.GREEN);
-//        } else {
-//            errorTextEdit.setFill(Color.RED);
-//        }
     }
 
 
-    public void refreshButtonPressed(ActionEvent actionEvent) {
+    public void refreshButtonPressed() {
         manageRoomViewModel.refresh();
-    }
-
-    public void BookingHistory(ActionEvent actionEvent) {
-        viewHandler.openHistoryView();
+        manageRoomViewModel.getAllReservations();
     }
 
 
     @FXML
-    public void deleteButtonClicked(ActionEvent actionEvent) {
+    public void deleteButtonClicked() {
         manageRoomViewModel.deleteRoom();
     }
 
