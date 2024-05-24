@@ -47,6 +47,8 @@ public class editRoomViewController implements ViewController
 
   }
   public void saveButtonClicked() {
+    manageRoomViewModel.editRoom();
+    manageRoomViewModel.refresh();
   }
 
   public void backButtonClicked() {
