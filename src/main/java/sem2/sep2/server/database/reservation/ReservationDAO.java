@@ -17,6 +17,6 @@ public interface ReservationDAO {
     List<Reservation> getHistory();
     Request getCurrentReservationsByGuest(String username);
 
-    Request getAllCurrentReservations();
+    Request<ReservationList> getAllCurrentReservations();
     boolean checkRoomAvailability(Reservation newReservation);
 }

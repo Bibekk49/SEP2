@@ -3,6 +3,7 @@ package sem2.sep2.client.model.Room;
 import sem2.sep2.shared.Subject;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
 
 import java.beans.PropertyChangeListener;
@@ -19,7 +20,7 @@ public interface RoomModel extends Subject {
   Request reserveRoom(Reservation reservation);
   Request cancelReservation(Reservation reservation);
   Request getCurrentReservationsByGuest(String username);
-  Request getallCurrentReservations();
+  Request<ReservationList> getallCurrentReservations();
 
   List<Reservation> getHistory();
   void addPropertyChangeListener(String propertyName, PropertyChangeListener listener);

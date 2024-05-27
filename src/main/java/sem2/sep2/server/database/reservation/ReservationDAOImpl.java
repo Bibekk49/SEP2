@@ -30,8 +30,8 @@ public class ReservationDAOImpl implements ReservationDAO {
 
             statement.setInt(1, reservation.getRoomNumber());
             statement.setString(2, reservation.getGuestUsername());
-            statement.setDate(3, reservation.getStartDate());
-            statement.setDate(4, reservation.getEndDate());
+            statement.setDate(3, Date.valueOf(reservation.getStartDate()));
+            statement.setDate(4, Date.valueOf(reservation.getEndDate()));
 
             int rowsInserted = statement.executeUpdate();
 
@@ -86,8 +86,8 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-        public Request getAllCurrentReservations() {
-        String query = "SELECT * FROM SEP2.reservations WHERE ? BETWEEN start_date AND end_date;";
+    public Request<ReservationList> getAllCurrentReservations() {
+        String query = "SELECT * FROM SEP2.reservations WHERE end_date >= ?";
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -107,12 +107,11 @@ public class ReservationDAOImpl implements ReservationDAO {
                 );
                 reservationList.addReservation(reservation);
             }
-            return new Request("All current reservations", reservationList);
+            return new Request<>("All current reservations", reservationList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get all current reservations", null);
+            return new Request<>(throwables.getLocalizedMessage(), null);
         }
-
     }
     @Override
     public boolean checkRoomAvailability(Reservation newReservation) {
@@ -121,8 +120,8 @@ public class ReservationDAOImpl implements ReservationDAO {
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, newReservation.getRoomNumber());
-            statement.setDate(2, newReservation.getEndDate());
-            statement.setDate(3, newReservation.getStartDate());
+            statement.setDate(2, Date.valueOf(newReservation.getEndDate()));
+            statement.setDate(3, Date.valueOf(newReservation.getStartDate()));
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
