@@ -30,8 +30,8 @@ public class ReservationDAOImpl implements ReservationDAO {
 
             statement.setInt(1, reservation.getRoomNumber());
             statement.setString(2, reservation.getGuestUsername());
-            statement.setDate(3, Date.valueOf(reservation.getStartDate()));
-            statement.setDate(4, Date.valueOf(reservation.getEndDate()));
+            statement.setDate(3, reservation.getStartDate());
+            statement.setDate(4, reservation.getEndDate());
 
             int rowsInserted = statement.executeUpdate();
 
@@ -120,8 +120,8 @@ public class ReservationDAOImpl implements ReservationDAO {
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, newReservation.getRoomNumber());
-            statement.setDate(2, Date.valueOf(newReservation.getEndDate()));
-            statement.setDate(3, Date.valueOf(newReservation.getStartDate()));
+            statement.setDate(2, newReservation.getEndDate());
+            statement.setDate(3, newReservation.getStartDate());
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
