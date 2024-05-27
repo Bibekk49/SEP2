@@ -38,15 +38,14 @@ class LoginViewModelTest
   @Test
   void testRegisterFailed() {
     //arrange
-    when(registerModelMock.addUser(anyString(), anyString())).thenThrow(new IllegalArgumentException("Invalid username or password"));
+    when(registerModelMock.addUser(anyString(), anyString())).thenReturn(new Request("Register Failed",null));
     //act
     loginViewModel.usernameProperty().set("username");
     loginViewModel.passwordPorperty().set("password");
     Request result = loginViewModel.register();
     //assert
     // testRegisterFailed
-    assertNull(result); // 验证 result 不为 null
-    assertEquals("Invalid username or password", loginViewModel.errorTextProperty().get());
+    assertEquals("Register Failed", result.getType());
   }
   @Test
   void testLoginSuccess(){

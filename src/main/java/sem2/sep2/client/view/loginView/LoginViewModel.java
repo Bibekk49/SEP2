@@ -43,7 +43,7 @@ public class LoginViewModel {
     public Request register() {
         try {
             return registerModel.addUser(usernameProperty.get(), passwordProperty.get());
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IllegalStateException e) {
             errorTextProperty.set(e.getMessage());
             return null;
         }
