@@ -86,8 +86,8 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-        public Request getAllCurrentReservations() {
-        String query = "SELECT * FROM SEP2.reservations WHERE ? BETWEEN start_date AND end_date;";
+    public Request<ReservationList> getAllCurrentReservations() {
+        String query = "SELECT * FROM SEP2.reservations WHERE end_date >= ?";
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -107,12 +107,11 @@ public class ReservationDAOImpl implements ReservationDAO {
                 );
                 reservationList.addReservation(reservation);
             }
-            return new Request("All current reservations", reservationList);
+            return new Request<>("All current reservations", reservationList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return new Request("Failed to get all current reservations", null);
+            return new Request<>(throwables.getLocalizedMessage(), null);
         }
-
     }
     @Override
     public boolean checkRoomAvailability(Reservation newReservation) {

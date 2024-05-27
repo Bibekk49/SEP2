@@ -2,6 +2,7 @@ package sem2.sep2.client.networking.room;
 
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
 import sem2.sep2.shared.util.room.RoomList;
 
@@ -24,6 +25,6 @@ public interface RoomClient
     Request reserveRoom(Reservation reservation);
     Request cancelReservation(Reservation reservation);
     Request getCurrentReservationsByGuest(String username);
-    Request getallCurrentReservations();
+    Request<ReservationList> getallCurrentReservations();
     List<Reservation> getHistory();
 }

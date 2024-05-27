@@ -3,6 +3,7 @@ package sem2.sep2.client.model.Room;
 import sem2.sep2.client.networking.room.RoomClient;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
 
 import java.beans.PropertyChangeListener;
@@ -60,7 +61,7 @@ public class RoomModelImpl implements RoomModel {
     }
 
     @Override
-    public Request getallCurrentReservations() {
+    public Request<ReservationList> getallCurrentReservations() {
         return roomClient.getallCurrentReservations();
     }
 

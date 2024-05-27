@@ -4,12 +4,11 @@ import sem2.sep2.client.networking.GetServer;
 import sem2.sep2.shared.networking.serverInterfaces.Server;
 import sem2.sep2.shared.util.Request;
 import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.reservation.ReservationList;
 import sem2.sep2.shared.util.room.Room;
-import sem2.sep2.shared.util.room.RoomList;
 
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -108,7 +107,7 @@ public class RoomClientImpl implements RoomClient {
     }
 
     @Override
-    public Request getallCurrentReservations() {
+    public Request<ReservationList> getallCurrentReservations() {
         try {
             return server.getRoomServer().getallCurrentReservations();
         } catch (RemoteException e) {
