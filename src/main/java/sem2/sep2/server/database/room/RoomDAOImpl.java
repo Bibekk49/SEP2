@@ -34,7 +34,7 @@ public class RoomDAOImpl implements RoomDAO {
             } else {
                 return new Request("Failed to add room",null);
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException throwables) {//todo:how to test it?????????
             throwables.printStackTrace();
             return new Request("Database error",null);
         }
@@ -46,9 +46,7 @@ public class RoomDAOImpl implements RoomDAO {
 
         try (Connection connection = DataBaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setInt(1, room.getRoomNumber());
-
             statement.executeUpdate();
             return new Request("Room removed successfully",null);
         } catch (SQLException throwables) {
@@ -62,7 +60,7 @@ public class RoomDAOImpl implements RoomDAO {
         String query = "UPDATE SEP2.rooms SET room_type=?, rate=?, room_state=? WHERE room_number=?;";
 
         try (Connection connection = DataBaseConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+            PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, room.getType());
             statement.setDouble(2, room.getPrice());
@@ -147,7 +145,8 @@ public class RoomDAOImpl implements RoomDAO {
         }
     }
 
-
+    //we don't only use type to search rooms now
+    //we don't need to test it
     @Override
     public Request getAllRoomsByType(String category) {
         String query = "SELECT * FROM SEP2.rooms WHERE room_type=?;";
