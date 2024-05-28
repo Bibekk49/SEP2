@@ -19,4 +19,5 @@ public interface ReservationDAO {
 
     Request<ReservationList> getAllCurrentReservations();
     boolean checkRoomAvailability(Reservation newReservation);
+    Request getReservationByRoomNumber(int roomNumber);
 }
