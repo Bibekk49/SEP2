@@ -134,6 +134,33 @@ public class ReservationDAOImpl implements ReservationDAO {
             return false;
         }
     }
+
+    @Override
+    public Request getReservationByRoomNumber(int roomNumber) {
+        String query = "SELECT * FROM SEP2.reservations WHERE room_number = ? LIMIT 1;";
+        try (Connection connection = DataBaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, roomNumber);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    Reservation reservation = new Reservation(
+                            resultSet.getInt("reservation_id"),
+                            resultSet.getInt("room_number"),
+                            resultSet.getString("username"),
+                            resultSet.getDate("start_date"),
+                            resultSet.getDate("end_date")
+                    );
+                    return new Request<>("Reservation for room " + roomNumber, reservation);
+                } else {
+                    return new Request<>("No reservation found for room " + roomNumber, null);
+                }
+            }
+        } catch (SQLException e) {
+            return new Request<>(e.getLocalizedMessage(), null);
+        }
+    }
+
     @Override
     public List<Reservation> getHistory(){
         return null;
