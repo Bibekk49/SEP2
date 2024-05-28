@@ -25,5 +25,5 @@ public interface RoomServer extends Remote {
     Request cancelReservation(Reservation reservation) throws RemoteException;
     Request getCurrentReservationsByGuest(String username) throws RemoteException;
     Request getallCurrentReservations() throws RemoteException;
-    List<Reservation> getHistory() throws RemoteException;
+//    List<Reservation> getHistory() throws RemoteException;
 }

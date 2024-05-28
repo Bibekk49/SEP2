@@ -20,7 +20,9 @@ public class ReservationList implements Serializable {
 
     }
 
-
+    public Reservation getReservationById(int id){
+        return reservationList.get(id);
+    }
     public ArrayList<Reservation> getAllReservations() {
         return reservationList;
     }

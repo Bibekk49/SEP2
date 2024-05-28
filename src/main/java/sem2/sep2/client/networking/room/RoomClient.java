@@ -26,5 +26,5 @@ public interface RoomClient
     Request cancelReservation(Reservation reservation);
     Request getCurrentReservationsByGuest(String username);
     Request<ReservationList> getallCurrentReservations();
-    List<Reservation> getHistory();
+//    List<Reservation> getHistory();
 }

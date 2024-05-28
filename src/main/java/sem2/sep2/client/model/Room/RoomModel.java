@@ -22,7 +22,7 @@ public interface RoomModel extends Subject {
   Request getCurrentReservationsByGuest(String username);
   Request<ReservationList> getallCurrentReservations();
 
-  List<Reservation> getHistory();
+//  List<Reservation> getHistory();
   void addPropertyChangeListener(String propertyName, PropertyChangeListener listener);
   void removePropertyChangeListener(String propertyName, PropertyChangeListener listener);
 

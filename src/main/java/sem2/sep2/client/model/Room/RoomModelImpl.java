@@ -65,9 +65,9 @@ public class RoomModelImpl implements RoomModel {
         return roomClient.getallCurrentReservations();
     }
 
-    public List<Reservation> getHistory() {
-        return roomClient.getHistory();
-    }
+//    public List<Reservation> getHistory() {
+//        return roomClient.getHistory();
+//    }
 
 //  public void updateHistory(List<Reservation> newHistory) {
 //    support.firePropertyChange("ReservationHistoryUpdated", null, newHistory);

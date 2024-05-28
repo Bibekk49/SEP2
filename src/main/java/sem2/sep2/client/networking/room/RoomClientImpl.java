@@ -115,13 +115,13 @@ public class RoomClientImpl implements RoomClient {
             return new Request("Cannot connect to server", null);
         }
     }
-    @Override
-    public List<Reservation> getHistory(){
-        try {
-            return server.getRoomServer().getHistory();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    @Override
+//    public List<Reservation> getHistory(){
+//        try {
+//            return server.getRoomServer().getHistory();
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 }
