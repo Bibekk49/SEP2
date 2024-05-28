@@ -42,8 +42,7 @@ public class HistoryViewController implements ViewController
     checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkInDate"));
     checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkOutDate"));
     history.setItems(historyViewModel.getReserveHistory(viewHandler.getGuest()));
-//    roomNumber.setCellFactory(new PropertyValueFactory<>("roomNumber"));
-//    history.setItems();
+    history.getSelectionModel().selectedItemProperty().addListener((obs, oldVal,newVal) -> historyViewModel.selectedRoomProperty().set(newVal));
 
   }
   @Override
@@ -59,11 +58,11 @@ public class HistoryViewController implements ViewController
   }
   @FXML
   private void CheckIn(ActionEvent actionEvent){
-
+    historyViewModel.checkIn();
   }
   @FXML
   private void CheckOut(ActionEvent actionEvent){
-
+    historyViewModel.checkOut();
   }
 
 }

@@ -53,12 +53,17 @@ public class ReserveViewController implements ViewController {
         endDatePicker.valueProperty().bindBidirectional(reserveViewModel.getCheckOutDatePicker());
         startDatePicker.setValue(LocalDate.now());
         endDatePicker.setValue(LocalDate.now().plusDays(1));
+
         tableView.setItems(reserveViewModel.getAvailableRooms());
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> reserveViewModel.selectedRoomProperty().set(newVal));
+
         roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+
         pricePerDayColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         roomType.setItems(reserveViewModel.getRoomTypes());
         roomType.valueProperty().bindBidirectional(reserveViewModel.getRoomType());
+
         errorText.textProperty().bind(reserveViewModel.getErrorText());
     }
 
