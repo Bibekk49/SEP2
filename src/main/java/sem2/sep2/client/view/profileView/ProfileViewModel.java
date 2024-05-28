@@ -32,19 +32,20 @@ public class ProfileViewModel
     return again;
   }
   public boolean changeUserName(){
-    return createModel.changeUsername(UserName.get(),newUserName.get()).equals("Username changed successfully");
+    boolean change = createModel.changeUsername(UserName.get(),newUserName.get()).getType().equals("Username changed successfully");
+    return change;
   }
   public boolean changePassword(){
     if(!newPassword.get().equals(again.get())){
       return false;
     }
-    return createModel.changePassword(userNameChangePassword.get(), newPassword.get()).equals("Password changed successfully");
+    return createModel.changePassword(userNameChangePassword.get(), newPassword.get()).getType().equals("Password changed successfully");
   }
   public void reset(){
-    UserName.set("");
-    newUserName.set("");
-    userNameChangePassword.set("");
-    newPassword.set("");
-    again.set("");
+    UserName.set(null);
+    newUserName.set(null);
+    userNameChangePassword.set(null);
+    newPassword.set(null);
+    again.set(null);
   }
 }

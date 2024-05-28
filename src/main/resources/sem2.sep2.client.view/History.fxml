@@ -13,5 +13,7 @@
         </columns>
       </TableView>
       <Button layoutX="227.0" layoutY="369.0" mnemonicParsing="false" onAction="#CancelButtonPressed" text="Cancel" />
+      <Button layoutX="52.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckIn" text="Check-in" />
+      <Button layoutX="385.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckOut" text="Check-out" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package sem2.sep2.client.view.loginView;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sem2.sep2.client.model.login.LoginModel;
 import sem2.sep2.client.model.register.RegisterModel;
@@ -13,12 +14,12 @@ import static org.mockito.Mockito.when;
 
 class LoginViewModelTest
 {
-  private static LoginModel loginModelMock;
-  private static RegisterModel registerModelMock;
-  private static LoginViewModel loginViewModel;
+  private LoginModel loginModelMock;
+  private RegisterModel registerModelMock;
+  private LoginViewModel loginViewModel;
 
-  @BeforeAll
-  public static void setUp() {
+  @BeforeEach
+  public void setUp() {
     loginModelMock = mock(LoginModel.class);
     registerModelMock = mock(RegisterModel.class);
     loginViewModel = new LoginViewModel(loginModelMock, registerModelMock);
@@ -32,20 +33,20 @@ class LoginViewModelTest
     loginViewModel.passwordPorperty().set("password");
     Request result = loginViewModel.register();
     // Assert
-    //testRegisterSuccess
     assertEquals("User created successfully", result.getType());
   }
   @Test
   void testRegisterFailed() {
     //arrange
-    when(registerModelMock.addUser(anyString(), anyString())).thenReturn(new Request("Register Failed",null));
+    when(registerModelMock.addUser(anyString(), anyString())).thenThrow(new IllegalArgumentException("Invalid username or password"));
     //act
     loginViewModel.usernameProperty().set("username");
     loginViewModel.passwordPorperty().set("password");
     Request result = loginViewModel.register();
     //assert
     // testRegisterFailed
-    assertEquals("Register Failed", result.getType());
+    assertNull(result);
+    assertEquals("Invalid username or password", loginViewModel.errorTextProperty().get());
   }
   @Test
   void testLoginSuccess(){
@@ -61,12 +62,23 @@ class LoginViewModelTest
   @Test
   void testLoginFailed(){
     //arrange
-    when(loginModelMock.login(anyString(),anyString())).thenReturn(new Request("Login Failed",null));
+    when(loginModelMock.login(anyString(),anyString())).thenThrow(new IllegalArgumentException("Invalid username or password"));
     //act
     loginViewModel.usernameProperty().set("username");
     loginViewModel.passwordPorperty().set("password");
     Request result = loginViewModel.login();
     //assert
-    assertEquals("Login Failed",result.getType());
+    assertNull(result);
+    assertEquals("Invalid username or password",loginViewModel.errorTextProperty().get());
+  }
+  @Test
+  void testReset(){
+    //act
+    loginViewModel.usernameProperty().set("username");
+    loginViewModel.passwordPorperty().set("password");
+    loginViewModel.reset();
+    //assert
+    assertNull(loginViewModel.usernameProperty().get());
+    assertNull(loginViewModel.passwordPorperty().get());
   }
 }

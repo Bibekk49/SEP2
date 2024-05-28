@@ -57,5 +57,13 @@ public class HistoryViewController implements ViewController
   private void CancelButtonPressed(ActionEvent actionEvent){
     historyViewModel.cancel();
   }
+  @FXML
+  private void CheckIn(ActionEvent actionEvent){
+
+  }
+  @FXML
+  private void CheckOut(ActionEvent actionEvent){
+
+  }
 
 }

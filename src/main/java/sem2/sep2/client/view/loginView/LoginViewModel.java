@@ -19,12 +19,12 @@ public class LoginViewModel {
         errorTextProperty = new SimpleStringProperty();
         usernameProperty = new SimpleStringProperty();
         passwordProperty = new SimpleStringProperty();
+        reset();
+        errorTextProperty.set(null);
     }
-
     public void reset() {
         usernameProperty.set(null);
         passwordProperty.set(null);
-        errorTextProperty.set(null);
     }
 
     public StringProperty errorTextProperty() {
@@ -45,18 +45,18 @@ public class LoginViewModel {
             return registerModel.addUser(usernameProperty.get(), passwordProperty.get());
         } catch (IllegalArgumentException | IllegalStateException e) {
             errorTextProperty.set(e.getMessage());
+            reset();
             return null;
         }
     }
-
     public Request login() {
         try {
             return loginModel.login(usernameProperty.get(), passwordProperty.get());
         } catch (IllegalArgumentException | IllegalStateException e) {
             errorTextProperty.set(e.getMessage());
+            reset();
             return null;
         }
-
     }
 
 }

@@ -27,4 +27,7 @@ public class HistoryViewModel
   public void cancel(){
 
   }
+  public void reset(){
+
+  }
 }

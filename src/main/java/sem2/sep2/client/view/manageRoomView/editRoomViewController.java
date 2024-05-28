@@ -44,7 +44,7 @@ public class editRoomViewController implements ViewController
   }
   @Override
   public void reset(){
-
+    manageRoomViewModel.reset();
   }
   public void saveButtonClicked() {
 
