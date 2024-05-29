@@ -1,43 +1,35 @@
 package sem2.sep2.client.core;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
-import sem2.sep2.shared.networking.LoginService;
+import sem2.sep2.shared.util.users.Guest;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+
 
 public class ViewHandler {
     private Stage stage;
     private final ViewModelFactory viewModelFactory;
-    private Scene loginScene;
-    private Scene reserveScene;
-    private LoginService loginService;
+    private Scene Scene;
+    private Scene profileScene;
+    private Scene contactScene;
+    private Scene historyScene;
+    private Guest guest;
 
     public ViewHandler(Stage stage, ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
         this.stage = stage;
+        guest = new Guest(null,null);
     }
 
     public void start() {
-        try{
-            Registry registry = LocateRegistry.getRegistry("localhost",1099);
-            loginService = (LoginService) registry.lookup("LoginService");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
         stage = new Stage();
         openLoginView();
     }
-
     private Region loadFXMLFile(String path) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
@@ -49,29 +41,88 @@ public class ViewHandler {
         }
         ViewController ctrl = loader.getController();
         try {
-            ctrl.init(this, viewModelFactory,root,loginService);
-        } catch (RemoteException e) {
+            ctrl.init(this, viewModelFactory,root);
+        }
+        catch (Exception e)
+        {
             throw new RuntimeException(e);
         }
         return root;
     }
 
     public void openLoginView() {
-        if (loginScene == null) {
-            Region root = loadFXMLFile("/sem2.sep2.client.view/GuestLogin.fxml");
-            loginScene = new Scene(root);
+        if (Scene == null) {
+            Region root = loadFXMLFile("/sem2.sep2.client.view/Login.fxml");
+            Scene = new Scene(root);
             stage.setTitle("Login");
         }
-        stage.setScene(loginScene);
+
+        stage.setScene(Scene);
         stage.show();
     }
-    public void openReserveView(){
-        if (reserveScene == null) {
-            Region root = loadFXMLFile("/sem2.sep2.client.view/ReserveGUI.fxml");
-            reserveScene = new Scene(root);
-            stage.setTitle("Reserve");
-        }
-        stage.setScene(reserveScene);
+
+    public void openReserveView() {
+        Region root = loadFXMLFile("/sem2.sep2.client.view/ReserveGUI.fxml");
+        Scene scene = new Scene(root);
+        stage.setTitle("Reserve");
+        stage.setScene(scene);
         stage.show();
+    }
+    public void openContactView() {
+        Region root = loadFXMLFile("/sem2.sep2.client.view/Contact.fxml");
+        contactScene = new Scene(root);
+        Stage contactStage = new Stage();
+        contactStage.setTitle("Contact");
+        contactStage.setScene(contactScene);
+        contactStage.show();
+    }
+    public void openManagerView()
+    {
+        Region root = loadFXMLFile("/sem2.sep2.server.view/ManageRoom.fxml");
+        Scene = new Scene(root);
+        stage.setTitle("Manager");
+        stage.setScene(Scene);
+        stage.show();
+    }
+    public void openProfileView(){
+        Region root = loadFXMLFile("/sem2.sep2.client.view/Profile.fxml");
+        profileScene = new Scene(root);
+        Stage profileStage = new Stage();
+        profileStage.setTitle("Profile");
+        profileStage.setScene(profileScene);
+        profileStage.show();
+    }
+    public void openHistoryView(){
+        Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
+        historyScene = new Scene(root);
+        Stage historyStage = new Stage();
+        historyStage.setTitle("History");
+        historyStage.setScene(historyScene);
+        historyStage.show();
+    }
+
+    public Guest getGuest()
+    {
+        return guest;
+    }
+
+    public void setGuest(Guest guest)
+    {
+        this.guest = guest;
+    }
+    public void uploadPassword(String password){
+        this.guest.setPassword(password);
+    }
+    public void uploadUserName(String username){
+        this.guest.setUsername(username);
+    }
+
+    public void openEditRoomView() {
+        Region root = loadFXMLFile("/sem2.sep2.server.view/editRoomView.fxml");
+        Scene editScene = new Scene(root);
+        Stage editStage = new Stage();
+        editStage.setTitle("Edit Room");
+        editStage.setScene(editScene);
+        editStage.show();
     }
 }

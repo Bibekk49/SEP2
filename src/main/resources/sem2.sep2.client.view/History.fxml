@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.historyView.HistoryViewController">
+   <children>
+      <TableView fx:id="history" prefHeight="357.0" prefWidth="509.0">
+        <columns>
+          <TableColumn fx:id="roomNumber" prefWidth="120.0" text="RoomNumber" />
+            <TableColumn fx:id="checkInDate" prefWidth="191.99993133544922" text="Check-In-Date" />
+            <TableColumn fx:id="checkOutDate" prefWidth="196.00006103515625" text="Check-Out-Date" />
+        </columns>
+      </TableView>
+      <Button layoutX="227.0" layoutY="369.0" mnemonicParsing="false" onAction="#CancelButtonPressed" text="Cancel" />
+      <Button layoutX="52.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckIn" text="Check-in" />
+      <Button layoutX="385.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckOut" text="Check-out" />
+   </children>
+</AnchorPane>
