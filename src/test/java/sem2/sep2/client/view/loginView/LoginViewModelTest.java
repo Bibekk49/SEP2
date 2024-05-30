@@ -1,6 +1,5 @@
 package sem2.sep2.client.view.loginView;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sem2.sep2.client.model.login.LoginModel;
