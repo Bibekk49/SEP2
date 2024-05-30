@@ -29,7 +29,7 @@ class ReservationDAOImplTest
     roomDao.addRoom(room);
     Date dateFrom = Date.valueOf(LocalDate.now());
     Date dateTo = Date.valueOf(LocalDate.now().plusDays(1));
-    Reservation reservation = new Reservation(1,10111,"Yang",dateFrom,dateTo);
+    Reservation reservation = new Reservation(1,10111,"Bibek",dateFrom,dateTo);
     Request request = reservationDao.addReservation(reservation);
     assertEquals("Reservation created successfully",request.getType());
   }

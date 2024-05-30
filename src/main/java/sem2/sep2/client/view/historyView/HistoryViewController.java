@@ -58,11 +58,11 @@ public class HistoryViewController implements ViewController
   }
   @FXML
   private void CheckIn(ActionEvent actionEvent){
-    historyViewModel.checkIn();
+//    historyViewModel.checkIn();
   }
   @FXML
   private void CheckOut(ActionEvent actionEvent){
-    historyViewModel.checkOut();
+//    historyViewModel.checkOut();
   }
 
 }

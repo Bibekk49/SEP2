@@ -72,18 +72,21 @@ public class ReserveViewController implements ViewController {
 
     }
 
-    public void searchButtonPressed() {
+    @FXML
+    private void searchButtonPressed() {
         boolean success = reserveViewModel.searchAvailableRooms();
         if (!success) {
             errorText.setFill(Color.RED);
         }
     }
 
-    public void contactUsPressed(ActionEvent event) throws Exception {
+    @FXML
+    private void contactUsPressed(ActionEvent event) throws Exception {
         viewHandler.openContactView();
     }
 
-    public void aboutPressed(ActionEvent event) throws Exception {
+    @FXML
+    private void aboutPressed(ActionEvent event) throws Exception {
         String url = "http://royalhotel2.durablesites.com";
         try {
             URI uri = new URI(url);
@@ -94,15 +97,18 @@ public class ReserveViewController implements ViewController {
         }
     }
 
-    public void changeProfilePressed(ActionEvent actionEvent) {
+    @FXML
+    private void changeProfilePressed(ActionEvent actionEvent) {
         viewHandler.openProfileView();
     }
 
-    public void bookingHistoryPressed(ActionEvent actionEvent) {
+    @FXML
+    private void bookingHistoryPressed(ActionEvent actionEvent) {
         viewHandler.openHistoryView();
     }
 
-    public void reserve() {
+    @FXML
+    private void reserve() {
         reserveViewModel.Reserve(viewHandler.getGuest().getUsername());
     }
 }

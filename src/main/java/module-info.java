@@ -14,7 +14,7 @@ module sem2.sep2 {
     opens sem2.sep2.client.view.manageRoomView to javafx.fxml;
     opens sem2.sep2.client.view.historyView to javafx.fxml;
 
-    opens sem2.sep2 to javafx.fxml;
+
     opens sem2.sep2.server.view to javafx.fxml;
     opens sem2.sep2.client.view to javafx.fxml;
     opens sem2.sep2.client.core to javafx.fxml;
@@ -23,7 +23,8 @@ module sem2.sep2 {
     opens sem2.sep2.shared.util.room to javafx.base;
 
     exports sem2.sep2.server.database;
-    exports sem2.sep2;
     exports sem2.sep2.shared.networking.serverInterfaces to java.rmi;
+    exports sem2.sep2.client;
+    opens sem2.sep2.client to javafx.fxml;
 
 }

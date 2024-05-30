@@ -1,4 +1,4 @@
-package sem2.sep2;
+package sem2.sep2.client;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -7,7 +7,7 @@ import sem2.sep2.client.core.ModelFactory;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 
-public class testClient extends Application {
+public class RunApp extends Application {
     ClientFactory clientFactory = new ClientFactory();
     @Override
     public void start(Stage stage) throws Exception {
@@ -22,7 +22,7 @@ public class testClient extends Application {
     }
 
     public static void main(String[] args) {
-        Application.launch(testClient.class);
+        Application.launch(RunApp.class);
     }
 
 }

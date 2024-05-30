@@ -34,18 +34,18 @@ public class HistoryViewModel
   public void reset(){
 
   }
-  public void checkIn(){
-    Reservation reservation = selectedRoom.get();
-    Room room = reservation.searchRoomById(reservation.getRoomNumber());
-    room.checkIn();
-    roomModel.updateRoom(room);
-  }
-  public void checkOut(){
-    Reservation reservation = selectedRoom.get();
-    Room room = reservation.searchRoomById(reservation.getRoomNumber());
-    room.checkOut();
-    roomModel.updateRoom(room);
-  }
+//  public void checkIn(){
+//    Reservation reservation = selectedRoom.get();
+//    Room room = reservation.searchRoomById(reservation.getRoomNumber());
+//    room.checkIn();
+//    roomModel.updateRoom(room);
+//  }
+//  public void checkOut(){
+//    Reservation reservation = selectedRoom.get();
+//    Room room = reservation.searchRoomById(reservation.getRoomNumber());
+//    room.checkOut();
+//    roomModel.updateRoom(room);
+//  }
   public ObjectProperty<Reservation> selectedRoomProperty() {
     return selectedRoom;
   }

@@ -71,8 +71,8 @@ public class RoomServerImpl implements RoomServer {
     public Request getallCurrentReservations() throws RemoteException{
         return roomHandler.getallCurrentReservations();
     }
-    @Override
-    public List<Reservation> getHistory() throws RemoteException{
-        return roomHandler.getHistory();
-    }
+//    @Override
+//    public List<Reservation> getHistory() throws RemoteException{
+//        return roomHandler.getHistory();
+//    }
 }
