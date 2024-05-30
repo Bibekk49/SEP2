@@ -65,6 +65,11 @@ public class RoomModelImpl implements RoomModel {
         return roomClient.getallCurrentReservations();
     }
 
+    @Override
+    public Request changeRoomState(int roomNumber, String state) {
+        return roomClient.changeRoomState(roomNumber, state);
+    }
+
 //    public List<Reservation> getHistory() {
 //        return roomClient.getHistory();
 //    }

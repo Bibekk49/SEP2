@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.historyView.HistoryViewController">
+<AnchorPane prefHeight="400.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sem2.sep2.client.view.historyView.HistoryViewController">
    <children>
-      <TableView fx:id="history" prefHeight="357.0" prefWidth="509.0">
+      <TableView fx:id="history" prefHeight="338.0" prefWidth="509.0">
         <columns>
-          <TableColumn fx:id="roomNumber" prefWidth="120.0" text="RoomNumber" />
-            <TableColumn fx:id="checkInDate" prefWidth="191.99993133544922" text="Check-In-Date" />
-            <TableColumn fx:id="checkOutDate" prefWidth="196.00006103515625" text="Check-Out-Date" />
+          <TableColumn fx:id="roomNumber" prefWidth="150.0" text="RoomNumber" />
+            <TableColumn fx:id="checkInDate" prefWidth="163.0" text="Start Date" />
+            <TableColumn fx:id="checkOutDate" prefWidth="195.0" text="End Date" />
         </columns>
       </TableView>
-      <Button layoutX="227.0" layoutY="369.0" mnemonicParsing="false" onAction="#CancelButtonPressed" text="Cancel" />
+      <Button layoutX="206.0" layoutY="369.0" mnemonicParsing="false" onAction="#CancelButtonPressed" text="Cancel Reservation" />
       <Button layoutX="52.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckIn" text="Check-in" />
       <Button layoutX="385.0" layoutY="369.0" mnemonicParsing="false" onAction="#CheckOut" text="Check-out" />
+      <Text fx:id="errorText" fill="red" layoutX="53.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="421.13671875" />
    </children>
 </AnchorPane>

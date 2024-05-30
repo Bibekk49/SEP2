@@ -71,6 +71,11 @@ public class RoomServerImpl implements RoomServer {
     public Request getallCurrentReservations() throws RemoteException{
         return roomHandler.getallCurrentReservations();
     }
+
+    @Override
+    public Request changeRoomState(int roomNumber, String state) throws RemoteException {
+        return roomHandler.changeRoomState(roomNumber, state);
+    }
 //    @Override
 //    public List<Reservation> getHistory() throws RemoteException{
 //        return roomHandler.getHistory();

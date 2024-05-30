@@ -26,7 +26,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Others">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#bookingHistoryPressed" text="Booking history" />
+              <MenuItem mnemonicParsing="false" onAction="#bookingHistoryPressed" text="Reservation history" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -60,6 +60,11 @@
             <Label layoutX="25.0" layoutY="210.0" text="Type" />
             <Button layoutX="406.0" layoutY="319.0" mnemonicParsing="false" onAction="#reserve" prefHeight="42.0" prefWidth="79.0" text="Reserve" />
             <Text fx:id="errorText" fill="red" layoutX="252.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="373.13671875" />
+            <Label layoutX="14.0" layoutY="14.0" text="Search for available rooms" textFill="#252424">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </bottom>

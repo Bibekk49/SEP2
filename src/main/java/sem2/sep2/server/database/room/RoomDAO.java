@@ -15,5 +15,6 @@ public interface RoomDAO {
     Request getAvailableRooms(Date dateFrom, Date dateTo);
     Request getAllRoomsByType(String category);
     Request getAllAvailableRoomsByType(String roomType, LocalDate dateFrom, LocalDate dateTo);
+    Request changeRoomState(int roomNumber, String state);
 
 }

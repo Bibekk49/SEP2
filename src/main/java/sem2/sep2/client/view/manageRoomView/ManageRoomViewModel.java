@@ -15,6 +15,8 @@ import sem2.sep2.shared.util.room.roomState.Occupied;
 import sem2.sep2.shared.util.room.roomState.Reserved;
 import sem2.sep2.shared.util.room.roomState.RoomState;
 
+import java.util.List;
+
 
 public class ManageRoomViewModel {
     private RoomModel roomModel;
@@ -155,6 +157,7 @@ public class ManageRoomViewModel {
 
 
     public ObservableList<Room> getAllrooms() {
+        allrooms.clear();
         Request request = roomModel.getAllRooms();
         allrooms.addAll(((RoomList) request.getObject()).getAllRooms());
         return allrooms;
@@ -176,8 +179,11 @@ public class ManageRoomViewModel {
     }
 
     public ObservableList<Reservation> getAllReservations() {
+        allReservations.clear();
         Request request = roomModel.getallCurrentReservations();
         allReservations.addAll(((ReservationList) request.getObject()).getAllReservations());
         return allReservations;
     }
+
+
 }

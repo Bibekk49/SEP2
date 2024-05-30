@@ -73,4 +73,9 @@ public class RoomHandlerImpl implements RoomHandler {
         return reservationDAO.getHistory();
     }
 
+    @Override
+    public Request changeRoomState(int roomNumber, String state) {
+        return roomDAO.changeRoomState(roomNumber, state);
+    }
+
 }

@@ -115,6 +115,17 @@ public class RoomClientImpl implements RoomClient {
             return new Request("Cannot connect to server", null);
         }
     }
+
+    @Override
+    public Request changeRoomState(int roomNumber, String state) {
+        try {
+            return server.getRoomServer().changeRoomState(roomNumber, state);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new Request("Cannot connect to server", null);
+        }
+    }
+
 //    @Override
 //    public List<Reservation> getHistory(){
 //        try {

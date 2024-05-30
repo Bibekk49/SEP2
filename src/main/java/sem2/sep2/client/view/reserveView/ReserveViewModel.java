@@ -21,7 +21,6 @@ public class ReserveViewModel {
     private ObjectProperty<LocalDate> checkInDatePicker, checkOutDatePicker;
     private ObservableList<Room> availableRooms = FXCollections.observableArrayList();
     private ObjectProperty<Room> selectedRoom = new SimpleObjectProperty<>();
-    private LoginViewModel loginViewModel;
 
     public ReserveViewModel(RoomModel reserveModel) {
         this.reserveModel = reserveModel;
@@ -47,17 +46,31 @@ public class ReserveViewModel {
         return roomTypes;
     }
 
-    public void Reserve(String username) {
-        reserveModel.reserveRoom(new Reservation(0,selectedRoom.get().getRoomNumber(),username, Date.valueOf(checkInDatePicker.get()),Date.valueOf(checkOutDatePicker.get())));
-        Room room= selectedRoom.get();
-        room.reserve();
-        reserveModel.updateRoom(room);
+    public boolean Reserve(String username) {
+        try{
+            reserveModel.reserveRoom(new Reservation(0,selectedRoom.get().getRoomNumber(),username, Date.valueOf(checkInDatePicker.get()),Date.valueOf(checkOutDatePicker.get())));
+            Room room= selectedRoom.get();
+            if (room==null) {
+                errorText.set("Please select a room.");
+                return false;
+            }
+            room.reserve();
+            reserveModel.updateRoom(room);
+            availableRooms.clear();
+            searchAvailableRooms();
+            errorText.set("Room reserved successfully.");
+            return true;
+        } catch (Exception e) {
+            errorText.set("Please select a room.");
+        }
+        return false;
     }
 
     public boolean searchAvailableRooms() {
         try {
             RoomList roomList = (RoomList) reserveModel.searchAvailableRoom(checkInDatePicker.get(), checkOutDatePicker.get(), roomType.get()).getObject();
             availableRooms.addAll(roomList.getAllRooms());
+            errorText.set("");
             return true;
         } catch (Exception e) {
             errorText.set(e.getMessage());
@@ -77,4 +90,5 @@ public class ReserveViewModel {
     public ObjectProperty<Room> selectedRoomProperty() {
         return selectedRoom;
     }
+
 }

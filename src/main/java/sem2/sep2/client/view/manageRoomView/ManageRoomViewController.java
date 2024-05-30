@@ -126,6 +126,7 @@ public class ManageRoomViewController implements ViewController {
 
 
     public void refreshButtonPressed() {
+        reservationTableView.refresh();
         manageRoomViewModel.refresh();
         manageRoomViewModel.getAllReservations();
     }

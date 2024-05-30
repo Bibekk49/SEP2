@@ -220,4 +220,22 @@ public class RoomDAOImpl implements RoomDAO {
             return new Request("Failed to get available rooms by type",null);
         }
     }
+
+    @Override
+    public Request changeRoomState(int roomNumber, String state) {
+        String query = "UPDATE SEP2.rooms SET room_state=? WHERE room_number=?;";
+
+        try (Connection connection = DataBaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, state);
+            statement.setInt(2, roomNumber);
+
+            statement.executeUpdate();
+            return new Request("Room state changed successfully",null);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return new Request("Failed to change room state",null);
+        }
+    }
 }

@@ -20,6 +20,7 @@ public interface RoomHandler
     Request getCurrentReservationsByGuest(String username);
     Request getallCurrentReservations();
     List<Reservation> getHistory();
+    Request changeRoomState(int roomNumber, String state);
     
 
 }

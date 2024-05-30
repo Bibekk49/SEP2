@@ -96,7 +96,7 @@ public class ViewHandler {
         Region root = loadFXMLFile("/sem2.sep2.client.view/History.fxml");
         historyScene = new Scene(root);
         Stage historyStage = new Stage();
-        historyStage.setTitle("History");
+        historyStage.setTitle("Reservation History");
         historyStage.setScene(historyScene);
         historyStage.show();
     }

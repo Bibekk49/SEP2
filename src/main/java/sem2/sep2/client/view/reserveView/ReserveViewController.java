@@ -109,6 +109,8 @@ public class ReserveViewController implements ViewController {
 
     @FXML
     private void reserve() {
-        reserveViewModel.Reserve(viewHandler.getGuest().getUsername());
+        boolean a = reserveViewModel.Reserve(viewHandler.getGuest().getUsername());
+        if (a)
+            errorText.setFill(Color.GREEN);
     }
 }

@@ -1,5 +1,6 @@
 package sem2.sep2.client.view.historyView;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,10 +9,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import sem2.sep2.client.core.ViewHandler;
 import sem2.sep2.client.core.ViewModelFactory;
 import sem2.sep2.client.view.ViewController;
 import sem2.sep2.shared.util.reservation.Reservation;
+import sem2.sep2.shared.util.users.Guest;
 
 import java.sql.Date;
 
@@ -20,6 +23,7 @@ public class HistoryViewController implements ViewController
   private ViewHandler viewHandler;
   private HistoryViewModel historyViewModel;
   private Region root;
+
   @FXML
   private TableView<Reservation> history;
   @FXML
@@ -28,6 +32,8 @@ public class HistoryViewController implements ViewController
   private TableColumn<Reservation, Date> checkInDate;
   @FXML
   private TableColumn<Reservation, Date> checkOutDate;
+  @FXML
+  private Text errorText;
 
 
   @Override
@@ -39,8 +45,10 @@ public class HistoryViewController implements ViewController
   }
   private void bindProperty(){
     roomNumber.setCellValueFactory(new PropertyValueFactory<Reservation,Integer>("roomNumber"));
-    checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkInDate"));
-    checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("checkOutDate"));
+    checkInDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("startDate"));
+    checkOutDate.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("endDate"));
+    errorText.textProperty().bind(historyViewModel.errorProperty());
+
     history.setItems(historyViewModel.getReserveHistory(viewHandler.getGuest()));
     history.getSelectionModel().selectedItemProperty().addListener((obs, oldVal,newVal) -> historyViewModel.selectedRoomProperty().set(newVal));
 
@@ -58,11 +66,12 @@ public class HistoryViewController implements ViewController
   }
   @FXML
   private void CheckIn(ActionEvent actionEvent){
-//    historyViewModel.checkIn();
+    historyViewModel.checkIn();
+
   }
   @FXML
   private void CheckOut(ActionEvent actionEvent){
-//    historyViewModel.checkOut();
+    historyViewModel.checkOut();
   }
 
 }

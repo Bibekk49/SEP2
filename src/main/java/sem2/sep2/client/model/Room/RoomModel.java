@@ -21,6 +21,7 @@ public interface RoomModel extends Subject {
   Request cancelReservation(Reservation reservation);
   Request getCurrentReservationsByGuest(String username);
   Request<ReservationList> getallCurrentReservations();
+  Request changeRoomState(int roomNumber, String state);
 
 //  List<Reservation> getHistory();
   void addPropertyChangeListener(String propertyName, PropertyChangeListener listener);
